@@ -4,7 +4,7 @@ const client = new Discord.Client(
     { intents:["GUILDS", "GUILD_MESSAGES", "GUILD_MESSAGES"] }
 )
 
-client.login("OTMzMzUyMjgxNDgxNTcyMzUy.YegSDA.CqAqNQmC0h7vVZ8AdQOrVWebY58")
+client.login(process.env.token)
 
 //BAN
 client.on("messageCreate", message => {
