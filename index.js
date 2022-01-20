@@ -111,7 +111,7 @@ client.on("messageCreate", message => {
 // STATO
 client.on('ready', () => {
     //Stato classico (Sta guardando..., Sta giocando a...)
-    client.user.setActivity('Nuovo Bot!', { type: 'WATCHING' }); //Oppure LISTENING, PLAYING
+    client.user.setActivity('Creeply V1', { type: 'WATCHING' }); //Oppure LISTENING, PLAYING
 })
 
 // CLEAR
@@ -216,3 +216,134 @@ client.on("guildMemberAdd", member => {
 
     member.roles.add("933384681498505258");
 });
+
+var ticket = new Discord.MessageEmbed()
+.setTitle("**Hai bisogno di aiuto?**")
+.setDescription("Clicca il bottone per aprire un ticket")
+
+//Prima di tutto mandare il messaggio del ticket
+client.on("messageCreate", message => {
+    if (message.content == "!comando") {
+        var button1 = new Discord.MessageButton()
+            .setLabel("Apri ticket")
+            .setCustomId("apriTicket")
+            .setStyle("PRIMARY")
+
+        var row = new Discord.MessageActionRow()
+            .addComponents(button1)
+
+            message.channel.send({ embeds: [ticket] })
+    }
+})
+
+client.on("interactionCreate", interaction => {
+    if (interaction.customId == "apriTicket") {
+        interaction.deferUpdate()
+        if (interaction.guild.channels.cache.find(canale => canale.topic == `User ID: ${interaction.user.id}`)) {
+            interaction.user.send("Hai gia un ticket aperto").catch(() => { })
+            return
+        }
+        interaction.guild.channels.create(interaction.user.username, {
+            type: "text",
+            topic: `User ID: ${interaction.user.id}`,
+            parent: "933801615545233408", //Settare la categoria,
+            permissionOverwrites: [
+                {
+                    id: interaction.guild.id,
+                    deny: ["VIEW_CHANNEL"]
+                },
+                {
+                    id: interaction.user.id,
+                    allow: ["VIEW_CHANNEL"]
+                },
+                { //Aggiungere altri "blocchi" se si vogliono dare permessi anche a ruoli o utenti
+                    id: "870224089548226560",
+                    allow: ["VIEW_CHANNEL"]
+                }
+            ]
+        }).then(canale => {
+            canale.send("Grazie per aver aperto un ticket")
+        })
+    }
+})
+
+client.on("messageCreate", message => {
+    if (message.content == "!tclose") {
+        var topic = message.channel.topic;
+        if (!topic) {
+            message.channel.send("Non puoi utilizzare questo comando qui");
+            return
+        }
+        if (topic.startsWith("User ID:")) {
+            var idUtente = topic.slice(9);
+            if (message.author.id == idUtente || message.member.permissions.has("MANAGE_CHANNELS")) {
+                message.channel.delete();
+            }
+        }
+        else {
+            message.channel.send("Non puoi utilizzare questo comando qui")
+        }
+    }
+    if (message.content.startsWith("!add")) {
+        var topic = message.channel.topic;
+        if (!topic) {
+            message.channel.send("Non puoi utilizzare questo comando qui");
+            return
+        }
+        if (topic.startsWith("User ID:")) {
+            var idUtente = topic.slice(9);
+            if (message.author.id == idUtente || message.member.permissions.has("MANAGE_CHANNELS")) {
+                var utente = message.mentions.members.first();
+                if (!utente) {
+                    message.channel.send("Inserire un utente valido");
+                    return
+                }
+                var haIlPermesso = message.channel.permissionsFor(utente).has("VIEW_CHANNEL", true)
+                if (haIlPermesso) {
+                    message.channel.send("Questo utente ha gia accesso al ticket")
+                    return
+                }
+                message.channel.permissionOverwrites.edit(utente, {
+                    VIEW_CHANNEL: true
+                })
+                message.channel.send(`${utente.toString()} è stato aggiunto al ticket`)
+            }
+        }
+        else {
+            message.channel.send("Non puoi utilizzare questo comando qui")
+        }
+    }
+    if (message.content.startsWith("!remove")) {
+        var topic = message.channel.topic;
+        if (!topic) {
+            message.channel.send("Non puoi utilizzare questo comando qui");
+            return
+        }
+        if (topic.startsWith("User ID:")) {
+            var idUtente = topic.slice(9);
+            if (message.author.id == idUtente || message.member.permissions.has("MANAGE_CHANNELS")) {
+                var utente = message.mentions.members.first();
+                if (!utente) {
+                    message.channel.send("Inserire un utente valido");
+                    return
+                }
+                var haIlPermesso = message.channel.permissionsFor(utente).has("VIEW_CHANNEL", true)
+                if (!haIlPermesso) {
+                    message.channel.send("Questo utente non ha gia accesso al ticket")
+                    return
+                }
+                if (utente.permissions.has("MANAGE_CHANNELS")) {
+                    message.channel.send("Non puoi rimuovere questo utente")
+                    return
+                }
+                message.channel.permissionOverwrites.edit(utente, {
+                    VIEW_CHANNEL: false
+                })
+                message.channel.send(`${utente.toString()} è stato rimosso al ticket`)
+            }
+        }
+        else {
+            message.channel.send("Non puoi utilizzare questo comando qui")
+        }
+    }
+})
