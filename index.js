@@ -232,7 +232,7 @@ client.on("messageCreate", message => {
         var row = new Discord.MessageActionRow()
             .addComponents(button1)
 
-            message.channel.send({ embeds: [ticket] })
+            message.channel.send({ embeds: [ticket], components: [row]  })
     }
 })
 
