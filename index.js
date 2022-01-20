@@ -219,7 +219,13 @@ client.on("guildMemberAdd", member => {
 
 var ticket = new Discord.MessageEmbed()
 .setTitle("**Hai bisogno di aiuto?**")
-.setDescription("Clicca il bottone per aprire un ticket")
+.setDescription("Clicca il bottone per aprire un ticket e parlare con lo staff di problemi che stai riscontrando nel server!")
+.setColor("DARK_GOLD")
+
+var ticket1 = new Discord.MessageEmbed()
+.setTitle("**Grazie per aver aperto un ticket!**")
+.setDescription("A breve uno staffer ti risponderà, nel frattempo facci sapere di cosa hai bisogno!")
+.setColor("GREEN")
 
 //Prima di tutto mandare il messaggio del ticket
 client.on("messageCreate", message => {
@@ -262,7 +268,7 @@ client.on("interactionCreate", interaction => {
                 }
             ]
         }).then(canale => {
-            canale.send("Grazie per aver aperto un ticket")
+            canale.send( {embeds: [ticket1] })
         })
     }
 })
