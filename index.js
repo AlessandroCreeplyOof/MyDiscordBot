@@ -6,6 +6,13 @@ const client = new Discord.Client(
 
 client.login("OTMzMzUyMjgxNDgxNTcyMzUy.YegSDA.uTatV2KjfoYkQyaJQFttIGPMOes")
 
+const MongoClient = require("mongodb"),MongoClient;
+
+var url = "mongodb+srv://Creeply:jAfvQqKE49Xs.LZ@clousterbotcreeply.yak7n.mongodb.net/test"
+MongoClient.connect(url, function(err, db) {
+    var database = db.db("databaseprova")
+})
+
 //BAN
 client.on("messageCreate", message => {
     if (message.content.startsWith("!forceban")) {
@@ -373,3 +380,90 @@ client.on("messageCreate", message => {
         }
     }
 })
+
+setInterval(function () {
+    var canale = client.channels.cache.get("934122248502136893")
+    ytch.getChannelInfo("UCqFJX8iQDEjfh-qMfB5Urww")
+        .then(response => {
+            canale.setName(`🧑Subscribers: ${response.subscriberCount}`)
+        })
+}, 1000 * 60)
+
+client.on("messageCreate", message => {
+    if (message.content == "!lastvideo") {
+        ytch.getChannelVideos("UCqFJX8iQDEjfh-qMfB5Urww")
+            .then(response => {
+                var embed = new Discord.MessageEmbed()
+                    .setTitle("Last video")
+                    .setDescription("Ultimo video uscito sul canale")
+                    .addField("Title", response.items[0].title)
+                    .addField("Link", "https://www.youtube.com/watch?v=" + response.items[0].videoId)
+                    .addField("Views", response.items[0].viewCount.toString())
+                    .addField("Duration", response.items[0].durationText)
+                    .addField("Published", response.items[0].publishedText)
+                    .setImage(response.items[0].videoThumbnails[3].url)
+
+                message.channel.send({ embeds: [embed] })
+            })
+    }
+})
+
+const ms = require('ms');
+client.on("message", message => {
+    con.query("SELECT * FROM serverstats", async (err, result) => {
+        var tempban = JSON.parse(result[0].tempban)
+        if (message.content.startsWith("!tempban")) {
+            if (!message.member.permissions.has("BAN_MEMBERS")) {
+                return message.channel.send("Non hai il permesso");
+            }
+            var utente = message.mentions.members.first();
+            if (!utente) {
+                return message.channel.send("Utente non valido");   
+            }
+            if (tempban.hasOwnProperty(utente.user.id)) {
+                return message.channel.send("Questo utente Ã¨ gia bannato")
+            }
+            var args = message.content.split(/\s+/);
+            var time = args[2];
+            if (!time) {
+                return message.channel.send("Inserire un tempo")
+            }
+            time = ms(time);
+            if (!time) {
+                return message.channel.send("Inserire un tempo valido")
+            }
+            var reason = args.splice(3).join(" ");
+            if (!reason) {
+                reason = "Nessun motivo"
+            }
+            if (utente.permissions.has("BAN_MEMBERS")) {
+                return message.channel.send("Non puoi bannare questo utente")
+            }
+            utente.ban({ reason: reason })
+            tempban[utente.user.id] = {
+                "time": time / 1000,
+                "reason": reason
+            }
+            var embed = new Discord.MessageEmbed()
+                    .setTitle(`${utente.user.username} tempbannato`)
+                    .setDescription(`Utente bannato per ${ms(time, { long: true })}\rReason: ${reason}`)
+
+                message.channel.send({embeds: [embed]})
+            con.query("UPDATE serverstats SET tempban = '" + JSON.stringify(tempban) + "'")
+        }
+    })
+})
+setInterval(function () {
+    con.query("SELECT * FROM serverstats", (err, result) => {
+        var tempban = JSON.parse(result[0].tempban)
+        for (var i = 0; i < Object.keys(tempban).length; i++) {
+            tempban[Object.keys(tempban)[i]].time = tempban[Object.keys(tempban)[i]].time - 5;
+            if (tempban[Object.keys(tempban)[i]].time <= 0) {
+                var server = client.guilds.cache.get("idServer") //Settare id server
+                server.members.unban(Object.keys(tempban)[i])
+                delete tempban[Object.keys(tempban)[i]]
+            }
+        }
+        con.query("UPDATE serverstats SET tempban = '" + JSON.stringify(tempban) + "'");
+    })
+}, 5000)
