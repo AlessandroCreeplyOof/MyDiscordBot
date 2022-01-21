@@ -381,22 +381,3 @@ setInterval(function () {
             canale.setName(`🧑Subscribers: ${response.subscriberCount}`)
         })
 }, 1000 * 60)
-
-client.on("messageCreate", message => {
-    if (message.content == "!lastvideo") {
-        ytch.getChannelVideos("UCqFJX8iQDEjfh-qMfB5Urww")
-            .then(response => {
-                var embed = new Discord.MessageEmbed()
-                    .setTitle("Last video")
-                    .setDescription("Ultimo video uscito sul canale")
-                    .addField("Title", response.items[0].title)
-                    .addField("Link", "https://www.youtube.com/watch?v=" + response.items[0].videoId)
-                    .addField("Views", response.items[0].viewCount.toString())
-                    .addField("Duration", response.items[0].durationText)
-                    .addField("Published", response.items[0].publishedText)
-                    .setImage(response.items[0].videoThumbnails[3].url)
-
-                message.channel.send({ embeds: [embed] })
-            })
-    }
-})
