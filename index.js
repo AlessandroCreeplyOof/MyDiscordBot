@@ -373,11 +373,3 @@ client.on("messageCreate", message => {
         }
     }
 })
-
-setInterval(function () {
-    var canale = client.channels.cache.get("934122248502136893")
-    ytch.getChannelInfo("UCqFJX8iQDEjfh-qMfB5Urww")
-        .then(response => {
-            canale.setName(`🧑Subscribers: ${response.subscriberCount}`)
-        })
-}, 1000 * 60)
