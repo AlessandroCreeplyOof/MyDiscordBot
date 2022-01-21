@@ -6,13 +6,6 @@ const client = new Discord.Client(
 
 client.login("OTMzMzUyMjgxNDgxNTcyMzUy.YegSDA.uTatV2KjfoYkQyaJQFttIGPMOes")
 
-const MongoClient = require("mongodb"),MongoClient;
-
-var url = "mongodb+srv://Creeply:jAfvQqKE49Xs.LZ@clousterbotcreeply.yak7n.mongodb.net/test"
-MongoClient.connect(url, function(err, db) {
-    var database = db.db("databaseprova")
-})
-
 //BAN
 client.on("messageCreate", message => {
     if (message.content.startsWith("!forceban")) {
