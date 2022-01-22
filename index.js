@@ -393,4 +393,9 @@ client.once('ready', () => {
 client.on('ready', () => {
     console.log("✅Online | Bot On!")
 client.channels.cache.get("934182975267041321").send("✅ Online | Bot On!")
+    }) 
+
+client.on('offline', () => {
+    console.log("❌ Offline | Bot Off!")
+client.channels.cache.get("934182975267041321").send("❌ Offline| Bot Off!")
     })
