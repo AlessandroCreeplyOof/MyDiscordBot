@@ -452,3 +452,8 @@ client.channels.cache.get("934182975267041321").send( {embeds: [online] })
         }
     })
 
+    client.on('ready', () => {
+        //Stato classico (Sta guardando..., Sta giocando a...)
+        client.user.setActivity('Creeply V1', { type: 'WATCHING' }); //Oppure LISTENING, PLAYING
+        client.user.setStatus('idle') //Oppure idle, dnd, invisible
+    })
