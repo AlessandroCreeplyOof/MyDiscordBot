@@ -397,5 +397,5 @@ var online = new Discord.MessageEmbed()
 
 client.on('ready', () => {
     console.log("✅Online | Bot On!")
-client.channels.cache.get("934182975267041321").send( {embeds: [ticket1] })
+client.channels.cache.get("934182975267041321").send( {embeds: [online] })
     }) 
