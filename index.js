@@ -8,7 +8,7 @@ client.login("OTMzMzUyMjgxNDgxNTcyMzUy.YegSDA.uTatV2KjfoYkQyaJQFttIGPMOes")
 
 //BAN
 client.on("messageCreate", message => {
-    if (message.content.startsWith("!forceban")) {
+    if (message.content.startsWith("!ban")) {
         var utente = message.mentions.members.first();
         if (!message.member.permissions.has('BAN_MEMBERS')) {
             return message.channel.send('Non hai il permesso');
@@ -24,6 +24,9 @@ client.on("messageCreate", message => {
                 var embed = new Discord.MessageEmbed()
                     .setTitle(`${utente.user.username} bannato`)
                     .setDescription(`Utente bannato da ${message.author.toString()}`)
+                    .setColor("RED")
+                    .setTimestamp("")
+                    .setFooter("Bannato il")
 
                 message.channel.send({ embeds: [embed] })
             })
@@ -36,7 +39,7 @@ client.on("messageCreate", message => {
 
     if (message.member.roles.cache.has("933352810895007844") || message.member.roles.cache.has("933352811800969236")) return
 
-    var parolacce = ["cazzo", "porco dio", "porcodio"]
+    var parolacce = ["porcodio", "porco dio", "porcamadonna", "dioporco", "madonnaporca", "porca madonna", "madonna porca"]
     var trovata = false;
     var testo = message.content;
 
@@ -50,8 +53,10 @@ client.on("messageCreate", message => {
     if (trovata) {
         message.delete();
         var embed = new Discord.MessageEmbed()
-            .setTitle("Hai detto una parolaccia")
+            .setTitle("Hai scritto una parole bloccata!")
             .setDescription("Hai scritto un messaggio con parole bloccate\rIl tuo messaggio: " + testo)
+            .setColor("DARK_RED")
+            .setTimestamp("")
 
         message.channel.send({ embeds: [embed] })
     }
@@ -125,8 +130,8 @@ client.on("messageCreate", message => {
             return message.channel.send("Non puoi cancellare più di 100 messaggi")
         }
         message.channel.bulkDelete(count, true)
-        message.channel.send(count + " messaggi eliminati").then(msg => {
-            msg.delete({ timeout: 5000 })
+        message.channel.send(count + " messaggi eliminati con successo!").then(msg => {
+            msg.delete({ timeout: 100000 })
         })
     }
 })
@@ -147,26 +152,8 @@ client.on("messageCreate", message => {
         var embed = new Discord.MessageEmbed()
             .setTitle(`${utente.user.username} mutato`)
             .setDescription(`Utente mutato da ${message.author.toString()}`)
-
-        message.channel.send({ embeds: [embed] })
-    }
-})
-
-client.on("messageCreate", message => {
-    if (message.content.startsWith("!ban")) {
-        var utente = message.mentions.members.first();
-        if (!message.member.permissions.has("MANAGE_ROLES")) {
-            return message.channel.send('Non hai il permesso');
-        }
-        if (!utente) {
-            return message.channel.send('Non hai menzionato nessun utente');
-        }
-
-        utente.roles.add("933814083340361748")
-
-        var embed = new Discord.MessageEmbed()
-            .setTitle(`${utente.user.username} bannato`)
-            .setDescription(`Utente bannato dall'operatore: ${message.author.toString()}`)
+            .setColor("FUCHSIA")
+            .setTimestamp("")
 
         message.channel.send({ embeds: [embed] })
     }
@@ -218,6 +205,8 @@ client.on("messageCreate", message => {
                 var embed = new Discord.MessageEmbed()
                     .setTitle(`${utente.user.username} kickato`)
                     .setDescription(`Utente kickato da ${message.author.toString()}`)
+                    .setColor("ORANGE")
+                    .setTimestamp("")
 
                 message.channel.send({ embeds: [embed] })
             })
@@ -368,28 +357,6 @@ client.on("messageCreate", message => {
     }
 })
 
-client.once('ready', () => {
-    console.log('Beast Bot is ready');
-
-     client.guilds.cache.forEach(guild => {
-      console.log(`${guild.name} | ${guild.id}`);
-   
-    setInterval(() => {
-      let server = client.guilds.cache.reduce((a, b) => a + b.memberCount, 0)
-      client.user.setPresence({
-        activity: {
-          name: `${server} members || $help ||.`,
-          type: "WATCHING"
-        },
-        status: "online"
-      })
-        
-      
-    }, 1500);
-   
-    })
-});
-
 var online = new Discord.MessageEmbed()
 .setTitle("🟢 **BOT ONLINE**")
 .setDescription("Il Bot è Online ✅")
@@ -399,3 +366,80 @@ client.on('ready', () => {
     console.log("✅Online | Bot On!")
 client.channels.cache.get("934182975267041321").send( {embeds: [online] })
     }) 
+
+    client.on("messageCreate", message => {
+        if (message.content.startsWith("!unmute")) {
+            var utente = message.mentions.members.first();
+            if (!message.member.permissions.has("MANAGE_ROLES")) {
+                return message.channel.send('Non hai il permesso');
+            }
+            if (!utente) {
+                return message.channel.send('Non hai menzionato nessun utente');
+            }
+    
+            utente.roles.remove("896396962113421392")
+    
+            var embed = new Discord.MessageEmbed()
+                .setTitle(`${utente.user.username} smutato`)
+                .setDescription(`Utente smutato da ${message.author.toString()}`)
+                .setTimestamp("")
+                .setColor("GREEN")
+    
+            message.channel.send({ embeds: [embed] })
+        }
+    })
+
+    client.on("messageCreate", async message => {
+        if (message.content.startsWith("!unban")) {
+            if (!message.member.permissions.has('BAN_MEMBERS')) {
+                return message.channel.send('Non hai il permesso');
+            }
+    
+            var args = message.content.split(/\s+/);
+            var idUtente = args[1]
+    
+            if (!idUtente) {
+                return message.channel.send("Non hai scritto l'id di nessun utente");
+            }
+    
+            message.guild.members.unban(idUtente)
+                .then(() => {
+                    var embed = new Discord.MessageEmbed()
+                        .setTitle("Utente sbannato")
+                        .setDescription("Questo utente è stato sbannato")
+                        .setColor("DARK_GREEN")
+                        .setTimestamp("")
+    
+                    message.channel.send({ embeds: [embed] })
+                })
+                .catch(() => { message.channel.send("Utente non valido o non bannato") })
+        }
+    })
+
+    client.on("messageCreate", message => {
+        if (message.content.startsWith("!say")) {
+            var args = message.content.split(/\s+/);
+            var testo;
+            testo = args.slice(1).join(" ");
+            if (!testo) {
+                return message.channel.send("Inserire un messaggio");
+            }
+            if (message.content.includes("@everyone") || message.content.includes("@here")) {
+                return message.channel.send("Non taggare everyone o here");
+            }
+            message.delete()
+    
+            //Messaggio classico
+            message.channel.send(testo)
+    
+            //Embed
+            var embed = new Discord.MessageEmbed()
+                .setTitle("Say By Utente")
+                .setDescription(testo)
+                .setColor("YELLOW")
+                .setTimestamp("")
+    
+            message.channel.send({embeds: [embed]})
+        }
+    })
+
