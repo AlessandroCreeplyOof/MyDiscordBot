@@ -429,15 +429,24 @@ client.channels.cache.get("934182975267041321").send( {embeds: [online] })
             }
             message.delete()
     
-            //Messaggio classico
-            message.channel.send(testo)
-    
             //Embed
             var embed = new Discord.MessageEmbed()
                 .setTitle("Say By Utente")
                 .setDescription(testo)
                 .setColor("YELLOW")
                 .setTimestamp("")
+    
+            message.channel.send({embeds: [embed]})
+        }
+    })
+
+    client.on("messageCreate", message => {
+        if (message.content == "!ping") {
+            var embed = new Discord.MessageEmbed()
+                .setTitle("Ping del bot")
+                .setDescription("Ecco la latenza del bot")
+                .addField("Ping", `${client.ws.ping}ms`)
+                .setColor("RANDOM")
     
             message.channel.send({embeds: [embed]})
         }
