@@ -108,12 +108,6 @@ client.on("messageCreate", message => {
     }
 })
 
-// STATO
-client.on('ready', () => {
-    //Stato classico (Sta guardando..., Sta giocando a...)
-    client.user.setActivity('Creeply V1', { type: 'WATCHING' }); //Oppure LISTENING, PLAYING
-})
-
 // CLEAR
 client.on("messageCreate", message => {
     if (message.content.startsWith("!clear")) {
@@ -373,3 +367,25 @@ client.on("messageCreate", message => {
         }
     }
 })
+
+client.once('ready', () => {
+    console.log('Beast Bot is ready');
+
+     client.guilds.cache.forEach(guild => {
+      console.log(`${guild.name} | ${guild.id}`);
+   
+    setInterval(() => {
+      let server = client.guilds.cache.reduce((a, b) => a + b.memberCount, 0)
+      client.user.setPresence({
+        activity: {
+          name: `${server} members || $help ||.`,
+          type: "WATCHING"
+        },
+        status: "online"
+      })
+        
+      
+    }, 1500);
+   
+    })
+});
