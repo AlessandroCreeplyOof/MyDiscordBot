@@ -21,7 +21,7 @@ client.on("messageCreate", message => {
 
     if(!message.content.startsWith(prefix) || message.author.bot) return
 
-    const args = message.content.slice(prefix.lenght).trim().split(/+/);
+    const args = message.content.slice(prefix.lenght).trim().split(/ +/);
     const command = args.shift().toLowerCase();
 
     if(!client.commands.has(command)) return
