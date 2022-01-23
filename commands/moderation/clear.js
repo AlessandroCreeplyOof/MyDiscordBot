@@ -1,27 +1,63 @@
-
-  module.exports.run = async (bot, message, args) => {
-
-
-    
-    if(message.member.hasPermission("ADMINISTRATOR")) {     ///To allow a simple moderator to use the command just put MANAGE_MESSAGES in place of ADMINISTRATOR 
-      let messagecount = parseInt(args[0]);
-    
-      if(isNaN(messagecount)) return message.channel.send(":x: " + "| Please mention the amount of message that you want to delete");
-    
-      if(messagecount > 100){
-        message.channel.send(":x: " + "| Error, you can only delete between 2 and 100 messages at one time !")
-      }else if(messagecount < 2 ) {
-        message.channel.send(":x: " + "| Error, you can only delete between 2 and 100 messages at one time !")
-      } else {
-    
-      }{
-        message.channel.fetchMessages({limit: messagecount}).then(messages => message.channel.bulkDelete(messages, true));
-      }
-    } else {
-      return message.reply(":x: " + "| You need to be \"ADMINISTRATOR\" to do that")
-    }
-    }
-    
-    module.exports.help = {
-        name: "clear"
-    }
+const Discord = require("discord.js")
+ 
+module.exports = {
+ nombre: 'clear',
+ alias: ['clearmessages', 'limpiar'],
+ descripcion: 'Elimina mensajes',
+ uso: 'clear <cantidad>\nclearmessages <cantidad>\nlimpiar <cantidad>',
+ run: async (client, message, args) => {
+ 
+     if(!message.member.hasPermission("ADMINISTRATOR")){
+const embed = new Discord.RichEmbed()
+  .setTitle('ERROR: Permessi insufficenti!')
+  .setDescription("Non hai il permesso!")
+  .setFooter(client.user.tag, client.user.DisplayAvatarURL)
+  .setColor("RED")
+  .setTimestamp();
+ message.channel.send(embed)
+}
+ 
+   if(!args[0]){
+   const embed2 = new Discord.RichEmbed()
+   .setTitle('ERROR: Numero invalido!')
+   .setDescription('Numero invalido!')
+   .setTimestamp();     
+   message.channel.send(embed2)
+}
+ 
+   const number = args[0]
+  if(number >= 100 || number <= 0){
+       const embed2 = new Discord.RichEmbed()
+   .setTitle('ERROR: Numero Invalido')
+   .setDescription('Il numero che hai scritto è invalido!')
+   .setTimestamp();     
+   message.channel.send(embed2)    
+   }
+ 
+  const number2 = parseInt(number)
+ 
+     if(isNaN(number2)){
+  const embed3 = new Discord.RichEmbed()
+  .setTitle("ERROR: Questo non è un numero!")
+  .setDescription("Hai scritto qualcosa che non è un numero!")
+  .setTimestamp();
+ 
+  message.channel.send(embed3)
+}
+ 
+ 
+  message.channel.bulkDelete(number2)
+    .then(m => {
+      const embed4 = new Discord.RichEmbed()
+     .setTitle(`Ho eliminato con successo **${number}** messaggi da questa chat!`)
+     .setTimestamp();
+ 
+    setTimeout(() => {
+     message.channel.send(embed4)
+}, 500)
+    }).catch(error => {
+      message.channel.send('Errore!')
+  })
+ 
+}
+}
