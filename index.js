@@ -4,31 +4,11 @@ const client = new Discord.Client(
     { intents:["GUILDS", "GUILD_MESSAGES", "GUILD_MESSAGES"] }
 )
 
-client.login("OTMzMzUyMjgxNDgxNTcyMzUy.YegSDA.uTatV2KjfoYkQyaJQFttIGPMOes")
+client.login("OTMzMzUyMjgxNDgxNTcyMzUy.YegSDA.cVRn8mPzJ78o9LKtXmIwnvAUes0")
 
 const fs = require("fs");
 
 client.commands = new Discord.Collection();
-
-const commandsFiles = fs.readdirSync("./commands").filter(file => file.endsWith(".js"));
-for (const file of commandsFiles){
-    const command = require(`./commands/${file}`);
-    client.commands.set(command.name, command);
-}
-
-client.on("messageCreate", message => {
-    const prefix = "!";
-
-    if(!message.content.startsWith(prefix) || message.author.bot) return
-
-    const args = message.content.slice(prefix.lenght).trim().split(/ +/);
-    const command = args.shift().toLowerCase();
-
-    if(!client.commands.has(command)) return
-
-    client.commands.get(command).execute(message,args);
-})
-
 
 //FILTRO PAROLACCE
 client.on("messageCreate", message => {
