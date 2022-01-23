@@ -12,7 +12,7 @@ client.commands = new Discord.Collection();
 
 const commandsFiles = fs.readdirSync("./commands").filter(file => file.endsWith(".js"));
 for (const file of commandsFiles){
-    var command = require(`./commands/${file}`);
+    const command = require(`./commands/${file}`);
     client.commands.set(command.name, command);
 }
 
@@ -26,7 +26,7 @@ client.on("messageCreate", message => {
 
     if(!client.commands.has(command)) return
 
-    client.commands.get(command).execute(message,args)
+    client.commands.get(command).execute(message,args);
 })
 
 
