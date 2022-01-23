@@ -454,6 +454,24 @@ client.channels.cache.get("934182975267041321").send( {embeds: [online] })
 
     client.on('ready', () => {
         //Stato classico (Sta guardando..., Sta giocando a...)
-        client.user.setActivity('Creeply V1', { type: 'WATCHING' }); //Oppure LISTENING, PLAYING
-        client.user.setStatus('idle') //Oppure idle, dnd, invisible
+        client.user.setActivity('Changelog v2322', { type: 'WATCHING' }); //Oppure LISTENING, PLAYING
+        client.user.setStatus('online') //Oppure idle, dnd, invisible
     })
+
+    const command = require('./command')
+
+    command(client, 'suggest', message => {
+    var  content = message.content.replace('!suggest',' ')
+    const channel = client.channels.cache.get('934745362814623814')
+
+    const embed = new MessageEmbed()
+
+    .setTitle('New Suggestion!')
+
+    .addField(`Sent by: ${message.author.username}`, `${content}`)
+
+    .setColor("RED")
+
+    channel.send(embed)
+
+})
