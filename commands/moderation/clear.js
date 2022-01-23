@@ -1,10 +1,9 @@
 const Discord = require("discord.js")
  
 module.exports = {
- nombre: 'clear',
- alias: ['clearmessages', 'limpiar'],
- descripcion: 'Elimina mensajes',
- uso: 'clear <cantidad>\nclearmessages <cantidad>\nlimpiar <cantidad>',
+ name: 'clear',
+ alias: ['clearmessages'],
+ descripcion: 'Elimina messaggis',
  run: async (client, message, args) => {
  
      if(!message.member.hasPermission("ADMINISTRATOR")){
