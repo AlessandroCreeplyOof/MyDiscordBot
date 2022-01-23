@@ -6,31 +6,46 @@ const client = new Discord.Client(
 
 client.login("OTMzMzUyMjgxNDgxNTcyMzUy.YegSDA.uTatV2KjfoYkQyaJQFttIGPMOes")
 
-//BAN
-client.on("messageCreate", message => {
-    if (message.content.startsWith("!ban")) {
-        var utente = message.mentions.members.first();
-        if (!message.member.permissions.has('BAN_MEMBERS')) {
-            return message.channel.send('Non hai il permesso');
-        }
-        if (!utente) {
-            return message.channel.send('Non hai menzionato nessun utente');
-        }
-        if (!utente.bannable) {
-            return message.channel.send('Io non ho il permesso');
-        }
-        utente.ban()
-            .then(() => {
-                var embed = new Discord.MessageEmbed()
-                    .setTitle(`${utente.user.username} bannato`)
-                    .setDescription(`Utente bannato da ${message.author.toString()}`)
-                    .setColor("RED")
-                    .setTimestamp("")
-                    .setFooter("Bannato il")
+const fs = require("fs");
+global.ytch = require('yt-channel-info');
 
-                message.channel.send({ embeds: [embed] })
-            })
+client.commands = new Discord.Collection();
+
+const commandsFiles = fs.readdirSync("./commands").filter(file => file.endsWith(".js"));
+for (const file of commandsFiles) {
+    const command = require(`./commands/${file}`);
+    client.commands.set(command.name, command);
+}
+
+const commandsFolder = fs.readdirSync("./commands");
+for (const folder of commandsFolder) {
+    const commandsFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith(".js"));
+    for (const file of commandsFiles) {
+        const command = require(`./commands/${folder}/${file}`);
+        client.commands.set(command.name, command);
     }
+}
+
+client.on("message", message => {
+    const prefix = "!";
+
+    if (!message.content.startsWith(prefix) || message.author.bot) return
+
+    const args = message.content.slice(prefix.length).trim().split(/ +/);
+    const command = args.shift().toLowerCase();
+
+    if (!client.commands.has(command) && !client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(command))) return
+
+    var comando = client.commands.get(command) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(command))
+
+    if (comando.onlyStaff) {
+        if (!message.member.hasPermission("ADMINISTRATOR")) {
+            message.channel.send("Non hai il permesso di eseguire questo comando")
+            return
+        }
+    }
+
+    comando.execute(message, args);
 })
 
 //FILTRO PAROLACCE
