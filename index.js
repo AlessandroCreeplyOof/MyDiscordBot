@@ -1,6 +1,6 @@
 // INIZIALIZZA IL BOT
 const Discord = require("discord.js")
-const client = new Discord.Client(
+global.client = new Discord.Client(
     { intents:["GUILDS", "GUILD_MESSAGES", "GUILD_MESSAGES"] }
 )
 

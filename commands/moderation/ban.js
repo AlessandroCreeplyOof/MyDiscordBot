@@ -1,27 +1,46 @@
 const Discord = require("discord.js")
-const client = new Discord.Client(
-    { intents:["GUILDS", "GUILD_MESSAGES", "GUILD_MESSAGES"] }
-)
 
-client.on("messageCreate", message => {
-    if (message.content.startsWith("!ban")) {
-        var utente = message.mentions.members.first();
-        if (!message.member.permissions.has('BAN_MEMBERS')) {
-            return message.channel.send('Non hai il permesso');
+module.exports = {
+    name: "ban",
+    description: "This command ban's someone",
+    category: "moderation",
+    example: ["!ban @member"],
+    callback: async ({ message, args }) => {
+      try {
+          
+      const member = message.mentions.members.first();
+      const permission = message.member.permissions.has(Discord.Permissions.FLAGS.BAN_MEMBERS)
+    
+      if (!permission)
+        return message.reply({ 
+            contents: "❌ | You don't have permission to use this command"
+        });
+    
+      if (!args[0]) return message.reply({ content: `❌ | Please specify someone` });
+    
+      if (!member) return message.reply({ content: `💤 | Cannot find that member...` } );
+    
+      if (member.id === message.author.id)
+        return message.reply({ content: `❌ | You cannot ban yourself!` });
+    
+      if (message.member.roles.highest.position < member.roles.highest.position)
+        return message.reply({
+          content: `❌ | You cannot ban user who have higher role than you...`
+        });
+    
+      if (!member.bannable) return message.reply({ content: `❌ | I cannot ban that member`});
+    
+      return (
+        (await member.ban()) +
+        message
+          .reply({
+            content: `:anger: | User ${member} has been banned`
+          })
+          .then((msg) => {
+            setTimeout(() => msg.delete(), 5000);
+          })
+      );
+        } catch(err) {
+          message.reply({ content: `awww there was an ${err}` })
         }
-        if (!utente) {
-            return message.channel.send('Non hai menzionato nessun utente');
-        }
-        if (!utente.bannable) {
-            return message.channel.send('Io non ho il permesso');
-        }
-        utente.ban()
-            .then(() => {
-                var embed = new Discord.MessageEmbed()
-                    .setTitle(`${utente.user.username} bannato`)
-                    .setDescription(`Utente bannato da ${message.author.toString()}`)
-
-                message.channel.send({ embeds: [embed] })
-            })
-    }
-})
+    }, };
