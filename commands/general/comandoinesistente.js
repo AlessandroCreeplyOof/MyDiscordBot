@@ -1,7 +1,7 @@
 const Discord = require("discord.js")
 
 client.on("messageCreate", message => {
-    if (message.content.startsWith == "!") {
+    if (message.content == "!") {
         const embed = new Discord.MessageEmbed()
             .setTitle("🔴 COMANDO NON TROVATO!") //Titolo
             .setDescription("Questo comando non è stato trovato, sei sicuro di averlo scritto bene?") //Descrizione
