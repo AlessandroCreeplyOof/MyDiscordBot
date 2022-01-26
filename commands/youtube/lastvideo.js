@@ -13,7 +13,7 @@ client.on("messageCreate", message => {
                 .addField("Views", response.items[0].viewCount.toString(), true)
                 .addField("Durata", response.items[0].durationText, true)
                 .addField("Pubblicato il", response.items[0].publishedText, true)
-            message.channel.send({embeds: [embeds]})
+            message.channel.send({embeds: [embed]})
         })
     }
 })
