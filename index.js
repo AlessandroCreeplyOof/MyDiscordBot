@@ -4,7 +4,7 @@ global.client = new Discord.Client(
     { intents:["GUILDS", "GUILD_MESSAGES", "GUILD_MESSAGES"] }
 )
 
-client.login("OTMzMzUyMjgxNDgxNTcyMzUy.YegSDA.cVRn8mPzJ78o9LKtXmIwnvAUes0")
+client.login("OTM3MzQ1MTk3MDYxMzEyNTIz.YfaYvg.ALjAeWYBr4eOvS4fuLyfnUR0xuM")
 
 const fs = require("fs");
 
