@@ -1,9 +1,9 @@
 const Discord = require("discord.js")
 
 var ticket = new Discord.MessageEmbed()
-.setTitle("**Hai bisogno di aiuto?**")
+.setTitle("**APRI un TICKET DI SUPPORTO!**")
 .setDescription("Clicca il bottone per aprire un ticket e parlare con lo staff di problemi che stai riscontrando nel server!")
-.setColor("DARK_GOLD")
+.setColor("DEFAULT")
 
 var ticket1 = new Discord.MessageEmbed()
 .setTitle("**Grazie per aver aperto un ticket!**")
@@ -12,9 +12,10 @@ var ticket1 = new Discord.MessageEmbed()
 
 //Prima di tutto mandare il messaggio del ticket
 client.on("messageCreate", message => {
-    if (message.content == "!comando") {
+    if (message.content == "!ticketmessage") {
         var button1 = new Discord.MessageButton()
             .setLabel("Apri ticket")
+            .setEmoji("🚑")
             .setCustomId("apriTicket")
             .setStyle("PRIMARY")
 
@@ -51,7 +52,7 @@ client.on("interactionCreate", interaction => {
                 }
             ]
         }).then(canale => {
-            canale.send( {embeds: [ticket1] })
+            canale.send( { embeds: [ticket1] })
         })
     }
 })
