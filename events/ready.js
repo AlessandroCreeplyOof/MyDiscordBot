@@ -9,3 +9,9 @@ client.on('ready', () => {
     console.log("✅Online | Bot On!")
 client.channels.cache.get("934182975267041321").send( {embeds: [online] })
     }) 
+
+    client.on("guildMemberAdd", member => {
+        if (member.user.bot) return
+    
+        member.roles.add("933384681498505258");
+    });
