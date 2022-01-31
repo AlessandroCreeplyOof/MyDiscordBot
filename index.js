@@ -1,8 +1,8 @@
 // INIZIALIZZA IL BOT
 const Discord = require("discord.js")
-global.client = new Discord.Client(
-    { intents:["GUILDS", "GUILD_MESSAGES", "GUILD_MESSAGES"] }
-)
+global.client = new Discord.Client({
+    intents: 32767
+});
 
 client.login("OTM3MzQ1MTk3MDYxMzEyNTIz.YfaYvg.ALjAeWYBr4eOvS4fuLyfnUR0xuM")
 
