@@ -2,9 +2,7 @@ const Discord = require("discord.js")
 
 var privaterooms = new Discord.MessageEmbed()
 .setTitle("🔐 **CREA UNA STANZA PRIVATA!** 🔐")
-.setDescription("Scegli tramite i **bottoni** qui sotto:")
-.addField("**Stanza Vocale:** __Una stanza vocale privata__")
-.addField("**Stanza Testuale:** __Una stanza testuale privata__")
+.setDescription("Scegli tramite i **bottoni** qui sotto quale tipo di stanza creare! (Vocale o Testuale)")
 .setColor("GOLD")
 
 var vocale = new Discord.MessageEmbed()
@@ -53,8 +51,6 @@ client.on("interactionCreate", interaction => {
                     allow: ["VIEW_CHANNEL"]
                 }
             ]
-        }).then(canale => {
-            canale.send( { embeds: [ticket1] })
         })
     }
 })
