@@ -14,10 +14,19 @@ client.on("messageCreate", message => {
             .setCustomId("apriVocale")
             .setStyle("PRIMARY")
 
-        var row = new Discord.MessageActionRow()
+        var row2 = new Discord.MessageActionRow()
             .addComponents(button1)
 
-            message.channel.send({ embeds: [privaterooms], components: [row]  })
+        var button1 = new Discord.MessageButton()
+            .setLabel("Canale Testuale")
+            .setEmoji("✍️")
+            .setCustomId("apriTestuale")
+            .setStyle("PRIMARY")
+
+        var row = new Discord.MessageActionRow()
+            .addComponents(button2)
+
+            message.channel.send({ embeds: [privaterooms], components: [row, row2]  })
     }
 })
 
