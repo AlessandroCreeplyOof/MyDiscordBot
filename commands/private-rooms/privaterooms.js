@@ -5,11 +5,6 @@ var privaterooms = new Discord.MessageEmbed()
 .setDescription("Scegli tramite i **bottoni** qui sotto quale tipo di stanza creare! (Vocale o Testuale)")
 .setColor("GOLD")
 
-var vocale = new Discord.MessageEmbed()
-.setTitle("**Grazie per aver aperto un ticket!**")
-.setDescription("A breve uno staffer ti risponderà, nel frattempo facci sapere di cosa hai bisogno!")
-.setColor("GREEN")
-
 //Prima di tutto mandare il messaggio del ticket
 client.on("messageCreate", message => {
     if (message.content == "!privaterooms") {
@@ -22,7 +17,7 @@ client.on("messageCreate", message => {
         var row = new Discord.MessageActionRow()
             .addComponents(button1)
 
-            message.channel.send({ embeds: [ticket], components: [row]  })
+            message.channel.send({ embeds: [privaterooms], components: [row]  })
     }
 })
 
