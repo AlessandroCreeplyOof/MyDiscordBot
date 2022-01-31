@@ -24,13 +24,12 @@ client.on("messageCreate", message => {
 client.on("interactionCreate", interaction => {
     if (interaction.customId == "apriVocale") {
         interaction.deferUpdate()
-        if (interaction.guild.channels.cache.find(canale => canale.topic == `Stanza di: ${interaction.user.id}`)) {
+        if (interaction.guild.channels.cache.find(canale => canale.name == `${interaction.user.name}`)) {
             interaction.user.send("Hai gia una stanza vocale aperta!").catch(() => { })
             return
         }
         interaction.guild.channels.create(interaction.user.username, {
-            type: "vocal",
-            topic: `Stanza di: ${interaction.user.id}`,
+            type: "voice",
             parent: "937779880815378442", //Settare la categoria,
             permissionOverwrites: [
                 {
