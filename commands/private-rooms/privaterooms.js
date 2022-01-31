@@ -29,8 +29,8 @@ client.on("interactionCreate", interaction => {
             return
         }
         interaction.guild.channels.create(interaction.user.username, {
-            type: "voice",
-            topic: `User ID: ${interaction.user.id}`,
+            type: "vocal",
+            topic: `Stanza di: ${interaction.user.id}`,
             parent: "937779880815378442", //Settare la categoria,
             permissionOverwrites: [
                 {
