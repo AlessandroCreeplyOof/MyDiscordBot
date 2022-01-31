@@ -3,7 +3,7 @@ const Discord = require("discord.js")
 client.on("guildMemberRemove", member => {
     if (member.user.bot) return
     var embed = new Discord.MessageEmbed()
-        .setTitle(`${member.toString()} | #GOODBAY`)
+        .setTitle(`#GOODBAY`)
         .setDescription(`${member.toString()}, è uscito dal server`)
         .setColor("RED")
         .setTimestamp("")
