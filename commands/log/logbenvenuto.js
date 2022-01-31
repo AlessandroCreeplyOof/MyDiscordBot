@@ -6,7 +6,6 @@ client.on("guildMemberAdd", member => {
         .setTitle("#WELCOME")
         .setDescription(`${member.toString()} è entrato nel server, Siamo a **${member.guild.memberCount} Membri`)
         .setColor("YELLOW")
-        .setTimestamp("")
 
     client.channels.cache.get("937720962730819614").send({embeds: [embed]}); 
 })
