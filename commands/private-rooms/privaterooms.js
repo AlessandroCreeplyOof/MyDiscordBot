@@ -29,7 +29,7 @@ client.on("interactionCreate", interaction => {
             return
         }
         interaction.guild.channels.create(interaction.user.username, {
-            type: "voice",
+            type: "GUILD_VOICE",
             parent: "937779880815378442", //Settare la categoria,
             permissionOverwrites: [
                 {
