@@ -1,7 +1,5 @@
 const Discord = require("discord.js")
 
-var idcanale = 937720962730819614
-
 client.on("guildMemberRemove", member => {
     if (member.user.bot) return
     var embed = new Discord.MessageEmbed()
@@ -10,5 +8,5 @@ client.on("guildMemberRemove", member => {
         .setColor("RED")
         .setTimestamp("")
 
-    client.channels.cache.get(idcanale).send({embeds: [embed]}); 
+    client.channels.cache.get("937720962730819614").send({embeds: [embed]}); 
 })
