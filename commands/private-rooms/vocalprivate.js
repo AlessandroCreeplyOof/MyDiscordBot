@@ -1,44 +1,41 @@
 const Discord = require("discord.js")
 
-var privaterooms = new Discord.MessageEmbed()
-.setTitle("🔐 **CREA UNA STANZA PRIVATA!** 🔐")
-.setDescription("Scegli tramite i **bottoni** qui sotto quale tipo di stanza creare! (Vocale o Testuale)")
+var stanzaprivata = new Discord.MessageEmbed()
+.setTitle("**STANZA PRIVATA**")
+.setDescription("Clicca uno di questi bottoni, per scegliere quale tipo di stanza aprire!")
 .setColor("GOLD")
+
+var apristanza = new Discord.MessageEmbed()
+.setTitle("**Ecco la tua stanza!**")
+.setDescription("La tua stanza è stata creata correttamente!")
+.setColor("GREEN")
 
 //Prima di tutto mandare il messaggio del ticket
 client.on("messageCreate", message => {
-    if (message.content == "!privaterooms") {
+    if (message.content == "!stanzamessage") {
         var button1 = new Discord.MessageButton()
-            .setLabel("Canale Vocale")
-            .setEmoji("🔊")
-            .setCustomId("apriVocale")
-            .setStyle("PRIMARY")
-
-        var row2 = new Discord.MessageActionRow()
-            .addComponents(button1)
-
-        var button1 = new Discord.MessageButton()
-            .setLabel("Canale Testuale")
+            .setLabel("Stanza Testuale")
             .setEmoji("✍️")
             .setCustomId("apriTestuale")
             .setStyle("PRIMARY")
 
         var row = new Discord.MessageActionRow()
-            .addComponents(button2)
+            .addComponents(button1)
 
-            message.channel.send({ embeds: [privaterooms], components: [row, row2]  })
+            message.channel.send({ embeds: [stanzaprivata], components: [row]  })
     }
 })
 
 client.on("interactionCreate", interaction => {
-    if (interaction.customId == "apriVocale") {
+    if (interaction.customId == "apriTestuale") {
         interaction.deferUpdate()
-        if (interaction.guild.channels.cache.find(canale => canale.name == `${interaction.user.name}`)) {
-            interaction.user.send("Hai gia una stanza vocale aperta!").catch(() => { })
+        if (interaction.guild.channels.cache.find(canale => canale.topic == `Stanza di: ${interaction.user.id}`)) {
+            interaction.user.send("Hai già un canale testuale aperto!").catch(() => { })
             return
         }
         interaction.guild.channels.create(interaction.user.username, {
-            type: "GUILD_VOICE",
+            type: "text",
+            topic: `Stanza di: ${interaction.user.id}`,
             parent: "937779880815378442", //Settare la categoria,
             permissionOverwrites: [
                 {
@@ -49,11 +46,9 @@ client.on("interactionCreate", interaction => {
                     id: interaction.user.id,
                     allow: ["VIEW_CHANNEL"]
                 },
-                { //Aggiungere altri "blocchi" se si vogliono dare permessi anche a ruoli o utenti
-                    id: "870224089548226560",
-                    allow: ["VIEW_CHANNEL"]
-                }
             ]
+        }).then(canale => {
+            canale.send( { embeds: [apristanza] })
         })
     }
 })
