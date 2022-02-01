@@ -7,7 +7,7 @@ client.on("messageCreate", message => {
             message.channel.send("Non puoi utilizzare questo comando qui");
             return
         }
-        if (topic.startsWith("User ID:")) {
+        if (topic.startsWith("Stanza di:")) {
             var idUtente = topic.slice(9);
             if (message.author.id == idUtente || message.member.permissions.has("MANAGE_CHANNELS")) {
                 message.channel.delete();
@@ -23,7 +23,7 @@ client.on("messageCreate", message => {
             message.channel.send("Non puoi utilizzare questo comando qui");
             return
         }
-        if (topic.startsWith("User ID:")) {
+        if (topic.startsWith("Stanza di:")) {
             var idUtente = topic.slice(9);
             if (message.author.id == idUtente || message.member.permissions.has("MANAGE_CHANNELS")) {
                 var utente = message.mentions.members.first();
