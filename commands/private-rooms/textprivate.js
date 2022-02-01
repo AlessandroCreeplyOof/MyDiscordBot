@@ -19,8 +19,14 @@ client.on("messageCreate", message => {
             .setCustomId("apriTestuale")
             .setStyle("PRIMARY")
 
+        var button2 = new Discord.MessageButton()
+            .setLabel("Stanza Vocale")
+            .setEmoji("🔊")
+            .setCustomId("apriVocale")
+            .setStyle("PRIMARY")
+
         var row = new Discord.MessageActionRow()
-            .addComponents(button1)
+            .addComponents(button1, button2)
 
             message.channel.send({ embeds: [stanzaprivata], components: [row]  })
     }
