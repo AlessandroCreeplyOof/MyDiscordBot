@@ -25,26 +25,6 @@ for (const folder of commandsFolder) {
     }
 }
 
-//!Event Handler
-const eventsFolders = fs.readdirSync('./events');
-for (const folder of eventsFolders) {
-    const eventsFiles = fs.readdirSync(`./events/${folder}`)
-
-    for (const file of eventsFiles) {
-        if (file.endsWith(`.js`)) {
-            const event = require(`./events/${folder}/${file}`);
-            client.on(event.name, (...args) => event.execute(...args));
-        }
-        else {
-            const eventsFiles2 = fs.readdirSync(`./events/${folder}/${file}`)
-            for (const file2 of eventsFiles2) {
-                const event = require(`./events/${folder}/${file}/${file2}`);
-                client.on(event.name, (...args) => event.execute(...args));
-            }
-        }
-    }
-}
-
 //!Commands Check
 client.on(`messageCreate`, message => {
     const prefix = config.prefix;
