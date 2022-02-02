@@ -25,22 +25,6 @@ for (const folder of commandsFolder) {
     }
 }
 
-//!Commands Check
-client.on(`messageCreate`, message => {
-    const prefix = config.prefix;
-
-    if (!message.content.startsWith(prefix) || message.author.bot || !message.guild) return
-
-    const args = message.content.toLowerCase().slice(prefix.length).trim().split(/ +/);
-    const command = args.shift().toLowerCase();
-
-    if (!client.commands.has(command) && !client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(command))) return
-
-    var comando = client.commands.get(command) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(command))
-
-    comando.execute(message, args);
-})
-
 client.on("messageCreate", message => {
     const prefix = "!";
 
