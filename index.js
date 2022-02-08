@@ -25,12 +25,6 @@ for (const folder of commandsFolder) {
     }
 }
 
-const eventsFiles = fs.readdirSync("./events").filter(file => file.endsWith(".js"));
-for (const file of eventsFiles) {
-    const event = require(`./events/${file}`);
-    client.on(event.name, (...args) => event.execute(...args))
-}
-
 client.on("message", message => {
     const prefix = "!";
 
