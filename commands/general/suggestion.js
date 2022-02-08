@@ -1,37 +1,41 @@
-const Discord = require("discord.js")
 
-client.on("messageCreate", message => {
-    if (message.content.startsWith("!suggest ")) {
-        var args = message.content.split(/\s+/);
-        var bug;
-        testo = args.slice(1).join(" ");
-        if (!bug) {
-          var errore = new MessageEmbed()
-          .setTitle("Errore")
-          .setColor("RED")
-          .setDescription("Inserisci Un Suggerimento prima di inviare!")
-            return message.channel.send({embeds: [errore]});
-        }
-        message.delete()
+const { MessageEmbed } = require("discord.js")
+
+module.exports = {
+    name: "suggest",
+    usage: "suggest <message>",
+    description: "Send your Suggestion",
+    category: "main",
+    run: (client, message, args) => {
+      
+      if(!args.length) {
+        return message.channel.send("Please Give the Suggestion")
+      }
+      
+      let channel = message.guild.channels.cache.find((x) => (x.name === "suggestion" || x.name === "suggestions"))
+      
+      
+      if(!channel) {
+        return message.channel.send("there is no channel with name - suggestions")
+      }
+                                                      
+      
+      let embed = new MessageEmbed()
+      .setAuthor("SUGGESTION: " + message.author.tag, message.author.avatarURL())
+      .setThumbnail(message.author.avatarURL())
+      .setColor("#ff2050")
+      .setDescription(args.join(" "))
+      .setTimestamp()
+      
+      
+      channel.send(embed).then(m => {
+        m.react("✅")
+        m.react("❌")
+      })
+      
   
-  
-  
-        var sium = new MessageEmbed()
-        .setTitle("Successo")
-        .setDescription(`📩 Hai inviato con successo il tuo suggerimento! \r📑Bug:\r ` + "**"+  bug + "**")
-        .setColor("ACQUA")
-        message.channel.send({embeds: [sium]})
-  
-  
-  
-        var newsuggest = new MessageEmbed()
-        .setTitle("New Bug")
-        .setColor("GREEN")
-        .setDescription(`<@789100941218938910> **SUGGEST**\r**👤Utente:**\r${message.author.toString()}\r**📑Suggerimento:**\r ` + "**"+  bug + "**")
-  
-     
-  
-  
-        client.channels.cache.get('939895753290154015').send({embeds: [newsuggest]}); 
+      
+      message.channel.send("Sended Your Suggestion to " + channel)
+      
     }
-  })
+  }
