@@ -2,8 +2,8 @@ const Discord = require("discord.js")
 
 client.on('ready', () => {
     //Stato classico (Sta guardando..., Sta giocando a...)
-    client.user.setActivity('Nuovo Logo!', { type: 'WATCHING' }); //Oppure LISTENING, PLAYING
-    client.user.setStatus('online') //Oppure idle, dnd, invisible
+    client.user.setActivity('Manutenzione...', { type: 'WATCHING' }); //Oppure LISTENING, PLAYING
+    client.user.setStatus('idle') //Oppure idle, dnd, invisible
 })
 
 setInterval(function () {

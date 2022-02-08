@@ -69,3 +69,14 @@ client.on("guildMemberRemove", member => {
 
     client.channels.cache.get("937720962730819614").send({embeds: [embed]}); 
 })
+
+const online = new Discord.MessageEmbed()
+.setTitle("✅ #BOTLOG")
+.setDescription(`🟢 BOT ONLINE`)
+.setColor("GREEN")
+.setTimestamp("")
+
+client.on('ready', () => {
+    console.log("✅Online | Bot On!")
+    client.channels.cache.get("934182975267041321").send({embeds: [online]})
+    })
