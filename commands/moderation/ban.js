@@ -17,6 +17,7 @@ client.on("messageCreate", message => {
               var embed = new Discord.MessageEmbed()
                   .setTitle(`${utente.user.username} bannato`)
                   .setDescription(`Utente bannato da ${message.author.toString()}`)
+                  .setThumbnail(`immagini/ban.png`)
 
               message.channel.send({ embeds: [embed] })
           })
