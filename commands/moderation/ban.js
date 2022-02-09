@@ -9,7 +9,7 @@ var noperms = new Discord.MessageEmbed()
 var menzione = new Discord.MessageEmbed()
 .setTitle(`Errore di sintassi`)
 .setDescription(`Non hai menzionato nessun utente da bannare!`)
-.setColor(`ORANGE`)
+.setColor(`YELLOW`)
 .setThumbnail(`https://media.discordapp.net/attachments/941101779297378314/941101830543396864/sintassi2.png`)
 
 client.on("messageCreate", message => {
@@ -19,7 +19,7 @@ client.on("messageCreate", message => {
           return message.channel.send({ embeds: [noperms] });
       }
       if (!utente) {
-          return message.channel.send('Non hai menzionato nessun utente');
+          return message.channel.send({ embeds: [menzione] });
       }
       if (!utente.bannable) {
           return message.channel.send('Io non ho il permesso');
