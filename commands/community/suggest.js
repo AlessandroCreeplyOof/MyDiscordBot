@@ -1,53 +1,40 @@
+const { MessageEmbed } = require("discord.js")
+
+
 module.exports = {
-    name: "suggest",
-    aliases: ["suggestion", "suggerimento"],
-    onlyStaff: false,
-    availableOnDM: false,
-    description: "Fare un suggerimento per il bot, server o canale",
-    syntax: "!suggest [suggerimento]",
-    async execute(message, args, client, property) {
-        let contenuto = args.join(" ")
+  name: "suggest",
+  usage: "suggest <message>",
+  description: "Send your Suggestion",
+  run: (client, message, args) => {
+    
+    if(!args.length) {
+      return message.channel.send("Please Give the Suggestion")
+    }
+    
+    let channel = message.guild.channels.cache.find((x) => (x.name === "suggestion" || x.name === "suggestions"))
+    
+    
+    if(!channel) {
+      return message.channel.send("there is no channel with name - suggestions")
+    }
+                                                    
+    
+    let embed = new MessageEmbed()
+    .setAuthor("SUGGESTION: " + message.author.tag, message.author.avatarURL())
+    .setThumbnail(message.author.avatarURL())
+    .setColor("#ff2050")
+    .setDescription(args.join(" "))
+    .setTimestamp()
+    
+    
+    channel.send(embed).then(m => {
+      m.react("✅")
+      m.react("❌")
+    })
+    
 
-        if (!contenuto) {
-            return botCommandMessage(message, "Error", "Inserire un suggerimento", "Scrivi il testo della tua suggestion", property)
-        }
-
-        if (contenuto.length > 500) {
-            return botCommandMessage(message, "Error", "Suggerimento troppo lungo", "Scrivi una suggestion non più lunga di 500 caratteri", property)
-        }
-
-        var embed = new Discord.MessageEmbed()
-            .setTitle("💡 New suggestion 💡")
-            .setColor("#fcba03")
-            .setThumbnail(message.member.user.displayAvatarURL({ dynamic: true }))
-            .setDescription("Attendi che lo staff approvi il tuo suggerimento")
-            .addField(":bookmark_tabs: Suggestion", contenuto)
-
-        message.channel.send(embed)
-
-        var embed = new Discord.MessageEmbed()
-            .setTitle("💡 New suggestion 💡")
-            .setColor("#fcba03")
-            .setThumbnail(message.member.user.displayAvatarURL({ dynamic: true }))
-            .addField(":bust_in_silhouette: User", `${message.author.username} (ID: ${message.author.id})`)
-            .addField("Status", "Pending")
-            .addField("Text", contenuto)
-
-        var button1 = new disbut.MessageButton()
-            .setStyle('red')
-            .setLabel('Rifiuta')
-            .setID(`rifiutaSuggestion`)
-        var button2 = new disbut.MessageButton()
-            .setStyle('green')
-            .setLabel('Approva')
-            .setID(`approvaSuggestion`)
-
-        var row = new disbut.MessageActionRow()
-            .addComponent(button1)
-            .addComponent(button2)
-
-        let canale = client.channels.cache.find(channel => channel.id == "936758854593687582");
-
-        canale.send(embed, row)
-    },
-};
+    
+    message.channel.send("Sended Your Suggestion to " + channel)
+    
+  }
+}
