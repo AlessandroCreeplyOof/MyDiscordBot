@@ -30,12 +30,6 @@ for (const folder of commandsFolder) {
     }
 }
 
-//FUNCTIONS
-const functionFiles = fs.readdirSync('./functions').filter(file => file.endsWith('.js'));
-for (const file of functionFiles) {
-    require(`./functions/${file}`);
-}
-
 //LOG BENVENUTO E ADDIO
 client.on("guildMemberAdd", member => {
     if (member.user.bot) return
