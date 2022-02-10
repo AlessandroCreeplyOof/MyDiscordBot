@@ -29,25 +29,7 @@ for (const folder of commandsFolder) {
         }
     }
 }
-//EVENTS
-const eventsFolders = fs.readdirSync('./events');
-for (const folder of eventsFolders) {
-    const eventsFiles = fs.readdirSync(`./events/${folder}`)
 
-    for (const file of eventsFiles) {
-        if (file.endsWith(".js")) {
-            const event = require(`./events/${folder}/${file}`);
-            client.on(event.name, (...args) => event.execute(...args));
-        }
-        else {
-            const eventsFiles2 = fs.readdirSync(`./events/${folder}/${file}`)
-            for (const file2 of eventsFiles2) {
-                const event = require(`./events/${folder}/${file}/${file2}`);
-                client.on(event.name, (...args) => event.execute(...args));
-            }
-        }
-    }
-}
 //FUNCTIONS
 const functionFiles = fs.readdirSync('./functions').filter(file => file.endsWith('.js'));
 for (const file of functionFiles) {
