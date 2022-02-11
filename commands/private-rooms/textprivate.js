@@ -4,7 +4,6 @@ var stanzaprivata = new Discord.MessageEmbed()
 .setTitle("**STANZA PRIVATA**")
 .setDescription("Vuoi aprire una stanza con i tuoi amici?", `
 - \`✍️ Stanza di tipo: **TESTUALE**`)
-.addField("🔊 Stanza di tipo: *VOCALE* (DIsable at the momemnt)")
 .setColor("GOLD")
 
 var apristanza = new Discord.MessageEmbed()
