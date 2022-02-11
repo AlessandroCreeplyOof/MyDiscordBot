@@ -2,23 +2,20 @@ const Discord = require("discord.js")
 
 var stanzaprivata = new Discord.MessageEmbed()
 .setTitle("**STANZA PRIVATA**")
-.setDescription("Clicca uno di questi bottoni, per scegliere quale tipo di stanza aprire!")
+.setDescription("Vuoi aprire una stanza con i tuoi amici?", `
+- \`✍️ Stanza di tipo: **TESTUALE**`)
+.addField("🔊 Stanza di tipo: *VOCALE* (DIsable at the momemnt)")
 .setColor("GOLD")
 
 var apristanza = new Discord.MessageEmbed()
-.setTitle(":closed_lock_with_key: Private room :closed_lock_with_key:")
+.setTitle(":closed_lock_with_key: Come funzionano? :closed_lock_with_key:")
 .setColor("#FFAC33")
-.addField(":bookmark_tabs: Tutti i comandi", `
-- \`!pdelete\` - **Eliminare** la stanza
-- \`!padd [user]\` - **Aggiungere** un utente alla stanza privata
-- \`!premove [user]\` - **Rimuovere** un utente dalla stanza privata
-- \`!pkick [user]\` - **Kickare** un utente dalla stanza (Potrà **rientrare** quando vuole)
-- \`!prename [name]\` - **Rinominare** la stanza (Se hai una stanza compresa di chat **testuale** + **vocale** dovrà invece utilizzare rispettivamente \`!ptrename\` e \`!pvrename\` in modo da **scegliere** quale canale rinominare)`)
-.addField(":scroll: Regole", `
-- È vietato il **flood** e lo **spam**. Evitare di spammare messaggi ripetuti per ricevere esperienza
-- Evitare la condivisione di immagini, contenuti o messaggi **NSFW**, con linguaggi sensibili o **violenti**
-- Vietato lo spam di link **illeciti**, software o plugin **malevoli**
-- Si applicano anche tutte le regole del server`)
+.addField(":bookmark_tabs: Tutti i comandi delle stanze", `
+- \`!pdelete\` - **Elimina** la tua stanza
+- \`!padd [user]\` - **Aggiungi** un tuo amico alla stanza
+- \`!premove [user]\` - **Rimuovi/Banna** un utente dalla stanza
+.addField(":scroll: Regole per le stanze", `
+- `Si applicano tutte le regole del server che si possono trovare in <#869234720049872926>`)
 
 //Prima di tutto mandare il messaggio del ticket
 client.on("messageCreate", message => {
@@ -34,6 +31,7 @@ client.on("messageCreate", message => {
             .setEmoji("🔊")
             .setCustomId("apriVocale")
             .setStyle("PRIMARY")
+            .setDisabled()
 
         var row = new Discord.MessageActionRow()
             .addComponents(button1, button2)
