@@ -22,16 +22,16 @@ client.on("messageCreate", message => {
                     elencoPermessi += `- ${permessi[i]}\r`
         }
         var embed = new Discord.MessageEmbed()
-            .setTitle("User Stats Of" + utente.user.tag)
+            .setTitle("User Stats Of " + utente.user.tag)
             .setDescription("Tutte le info di questo utente")
             .setThumbnail(utente.user.displayAvatarURL())
-            .addField("🧾 User id", utente.user.id, true)
-            .addField("🌐 Status", utente.presence ? utente.presence.status : "offline", true)
+            .addField("🧾 `User id`", utente.user.id, true)
+            .addField("🌐 `Status`", utente.presence ? utente.presence.status : "offline", true)
             .addField("🤖 Is a bot?", utente.user.bot ? "Yes" : "No", true)
-            .addField("💽 Account created", utente.user.createdAt.toDateString(), true)
-            .addField("🗞️ Joined this server", utente.joinedAt.toDateString(), true)
-            .addField("📁 Permissions", elencoPermessi, false)
-            .addField("👕 Roles", utente.roles.cache.map(ruolo => ruolo.name).join("\r"), false)
+            .addField("💽 `Account created`", utente.user.createdAt.toDateString(), true)
+            .addField("🗞️ `Joined this server`", utente.joinedAt.toDateString(), true)
+            .addField("📁 `Permissions`", elencoPermessi, false)
+            .addField("👕 `Roles`", utente.roles.cache.map(ruolo => ruolo.name).join("\r"), false)
         message.channel.send({ embeds: [embed] })
     }
 })
