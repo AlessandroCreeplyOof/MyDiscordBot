@@ -11,9 +11,7 @@ var apristanza = new Discord.MessageEmbed()
 .addField(":bookmark_tabs: Tutti i comandi delle stanze", `
 - \`!pdelete\` - **Elimina** la tua stanza
 - \`!padd [user]\` - **Aggiungi** un tuo amico alla stanza
-- \`!premove [user]\` - **Rimuovi/Banna** un utente dalla stanza
-.addField(":scroll: Regole per le stanze", `
-- `Si applicano tutte le regole del server che si possono trovare in <#869234720049872926>`)
+- \`!premove [user]\` - **Rimuovi/Banna** un utente dalla stanza`)
 
 //Prima di tutto mandare il messaggio del ticket
 client.on("messageCreate", message => {
