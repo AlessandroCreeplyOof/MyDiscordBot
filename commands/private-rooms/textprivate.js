@@ -72,12 +72,13 @@ client.on("interactionCreate", interaction => {
 client.on("interactionCreate", interaction => {
     if (interaction.customId == "apriVocale") {
         interaction.deferUpdate()
-        if (interaction.guild.channels.cache.find(canale => canale.topic == `🔐 ${interaction.user.name}`)) {
-            interaction.user.send("Hai già un canale testuale aperto!").catch(() => { })
+        if (interaction.guild.channels.cache.find(canale => canale.name == `🔐 ${interaction.user.name}`)) {
+            interaction.user.send("Hai già un canale vocale aperto!").catch(() => { })
             return
         }
         interaction.guild.channels.create(interaction.user.username, {
-            type: "text",
+            type: "voice",
+            name: `🔐 ${interaction.user.name}`,
             parent: "937779880815378442", //Settare la categoria,
             permissionOverwrites: [
                 {
@@ -89,8 +90,6 @@ client.on("interactionCreate", interaction => {
                     allow: ["VIEW_CHANNEL"]
                 },
             ]
-        }).then(canale => {
-            canale.send( { embeds: [apristanza] })
         })
     }
 })
