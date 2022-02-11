@@ -72,6 +72,10 @@ client.on("interactionCreate", interaction => {
 client.on("interactionCreate", interaction => {
     if (interaction.customId == "apriVocale") {
         interaction.deferUpdate()
+        if (interaction.guild.channels.cache.find(canale => canale.name == `${interaction.user.name}`)) {
+            interaction.user.send("Hai già un canale testuale aperto!").catch(() => { })
+            return
+        }
         interaction.guild.channels.create(interaction.user.username, {
             type: "vocal",
             parent: "937779880815378442", //Settare la categoria,
