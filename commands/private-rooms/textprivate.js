@@ -1,9 +1,8 @@
 const Discord = require("discord.js")
 
 var stanzaprivata = new Discord.MessageEmbed()
-.setTitle("**STANZA PRIVATA**")
-.setDescription("Vuoi aprire una stanza con i tuoi amici?", `
-- \`✍️ Stanza di tipo: **TESTUALE**`)
+.setTitle("**STANZA PRIVATA | Scegli che tipo di stanza aprire**")
+.setDescription("✍️ Stanza di tipo: **TESTUALE**")
 .setColor("GOLD")
 
 var apristanza = new Discord.MessageEmbed()
