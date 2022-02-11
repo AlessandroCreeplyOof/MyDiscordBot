@@ -1,7 +1,7 @@
 const Discord = require("discord.js")
 
 client.on("messageCreate", message => {
-    if (message.content == "!pclose") {
+    if (message.content == "!pdelete") {
         var topic = message.channel.topic;
         if (!topic) {
             message.channel.send("Non puoi utilizzare questo comando qui");
