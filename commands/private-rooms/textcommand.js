@@ -1,10 +1,22 @@
 const Discord = require("discord.js")
 
+var nonpuoi = new Discord.MessageEmbed()
+.setTitle(`Errore`)
+.setDescription(`Non puoi usare questo comando qui!`)
+.setColor(`GREY`)
+.setThumbnail(`https://cdn.discordapp.com/attachments/941101779297378314/942011608996147230/giastanza-removebg-preview_1.png`)
+
+var sintassi = new Discord.MessageEmbed()
+.setTitle(`Utente non rilevato`)
+.setDescription(`Oops! Qualcosa è andato storto! Sintassi corretta: [!padd @utente o !premove @utente]`)
+.setColor(`GREY`)
+.setThumbnail(`https://cdn.discordapp.com/attachments/941101779297378314/942011608996147230/giastanza-removebg-preview_1.png`)
+
 client.on("messageCreate", message => {
     if (message.content == "!pdelete") {
         var topic = message.channel.topic;
         if (!topic) {
-            message.channel.send("Non puoi utilizzare questo comando qui");
+            message.channel.send({ embeds: [nonpuoi] });
             return
         }
         if (topic.startsWith("Stanza di:")) {
@@ -14,13 +26,13 @@ client.on("messageCreate", message => {
             }
         }
         else {
-            message.channel.send("Non puoi utilizzare questo comando qui")
+            message.channel.send({ embeds: [nonpuoi] })
         }
     }
     if (message.content.startsWith("!padd")) {
         var topic = message.channel.topic;
         if (!topic) {
-            message.channel.send("Non puoi utilizzare questo comando qui");
+            message.channel.send({ embeds: [nonpuoi] });
             return
         }
         if (topic.startsWith("Stanza di:")) {
@@ -28,7 +40,7 @@ client.on("messageCreate", message => {
             if (message.author.id == idUtente || message.member.permissions.has("MANAGE_CHANNELS")) {
                 var utente = message.mentions.members.first();
                 if (!utente) {
-                    message.channel.send("Inserire un utente valido");
+                    message.channel.send({ embeds: [sintassi] });
                     return
                 }
                 var haIlPermesso = message.channel.permissionsFor(utente).has("VIEW_CHANNEL", true)
@@ -48,13 +60,13 @@ client.on("messageCreate", message => {
             }
         }
         else {
-            message.channel.send("Non puoi utilizzare questo comando qui")
+            message.channel.send({ embeds: [nonpuoi] })
         }
     }
     if (message.content.startsWith("!pban")) {
         var topic = message.channel.topic;
         if (!topic) {
-            message.channel.send("Non puoi utilizzare questo comando qui");
+            message.channel.send({ embeds: [nonpuoi] });
             return
         }
         if (topic.startsWith("Stanza di:")) {
@@ -62,7 +74,7 @@ client.on("messageCreate", message => {
             if (message.author.id == idUtente || message.member.permissions.has("MANAGE_CHANNELS")) {
                 var utente = message.mentions.members.first();
                 if (!utente) {
-                    message.channel.send("Inserire un utente valido");
+                    message.channel.send({ embeds: [sintassi] });
                     return
                 }
                 var haIlPermesso = message.channel.permissionsFor(utente).has("VIEW_CHANNEL", true)
@@ -77,11 +89,16 @@ client.on("messageCreate", message => {
                 message.channel.permissionOverwrites.edit(utente, {
                     VIEW_CHANNEL: false
                 })
-                message.channel.send(`${utente.toString()} è stato bannato dalla stanza`)
+                var utenterimosso = new Discord.MessageEmbed()
+                .setTitle(`#BAN ${utente.toString()}`)
+                .setDescription(`Da ora ` + `${utente.toString()}` + ` sarà bannato dalla tua stanza`)
+                .setColor(`PURPLE`)
+                .setThumbnail(`https://media.discordapp.net/attachments/941101779297378314/941101829847130122/noperms.png`)
+                message.channel.send({ embeds: [utenterimosso] })
             }
         }
         else {
-            message.channel.send("Non puoi utilizzare questo comando qui")
+            message.channel.send({ embeds: [nonpuoi] })
         }
     }
 })
