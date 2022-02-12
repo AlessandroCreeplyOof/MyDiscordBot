@@ -12,6 +12,24 @@ var sintassi = new Discord.MessageEmbed()
 .setColor(`GREY`)
 .setThumbnail(`https://cdn.discordapp.com/attachments/941101779297378314/942011608996147230/giastanza-removebg-preview_1.png`)
 
+var maistato = new Discord.MessageEmbed()
+.setTitle(`Errore`)
+.setDescription(`Questo utente non è mai stato in questa chat!`)
+.setColor(`GREY`)
+.setThumbnail(`https://cdn.discordapp.com/attachments/941101779297378314/942011608996147230/giastanza-removebg-preview_1.png`)
+
+var moderatoreno = new Discord.MessageEmbed()
+.setTitle(`Errore`)
+.setDescription(`Non puoi rimuovere un moderatore dalla tua stanza!`)
+.setColor(`GREY`)
+.setThumbnail(`https://cdn.discordapp.com/attachments/941101779297378314/942011608996147230/giastanza-removebg-preview_1.png`)
+
+var giàaccesso = new Discord.MessageEmbed()
+.setTitle(`Errore`)
+.setDescription(`Questo utente ha già accesso alla stanza!`)
+.setColor(`GREY`)
+.setThumbnail(`https://cdn.discordapp.com/attachments/941101779297378314/942011608996147230/giastanza-removebg-preview_1.png`)
+
 client.on("messageCreate", message => {
     if (message.content == "!pdelete") {
         var topic = message.channel.topic;
@@ -45,7 +63,7 @@ client.on("messageCreate", message => {
                 }
                 var haIlPermesso = message.channel.permissionsFor(utente).has("VIEW_CHANNEL", true)
                 if (haIlPermesso) {
-                    message.channel.send("Questo utente ha gia accesso alla stanza")
+                    message.channel.send({ embeds: [giàaccesso] })
                     return
                 }
                 message.channel.permissionOverwrites.edit(utente, {
@@ -79,11 +97,11 @@ client.on("messageCreate", message => {
                 }
                 var haIlPermesso = message.channel.permissionsFor(utente).has("VIEW_CHANNEL", true)
                 if (!haIlPermesso) {
-                    message.channel.send("Questo utente non è mai stato in questa stanza!")
+                    message.channel.send({ embeds: [maistato] })
                     return
                 }
                 if (utente.permissions.has("MANAGE_CHANNELS")) {
-                    message.channel.send("Non puoi rimuovere questo utente poichè è un moderatore!")
+                    message.channel.send({ embeds: [moderatoreno] })
                     return
                 }
                 message.channel.permissionOverwrites.edit(utente, {
