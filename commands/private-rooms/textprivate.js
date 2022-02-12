@@ -6,10 +6,10 @@ var stanzaprivata = new Discord.MessageEmbed()
 .setColor("GOLD")
 
 var giastanza = new Discord.MessageEmbed()
-.setTitle("HAi già una stanza")
+.setTitle("Hai già una stanza")
 .setDescription("Non puoi aprire un altra stanza privata!")
 .setColor("GREY")
-.setImage("https://cdn.discordapp.com/attachments/941101779297378314/942011608996147230/giastanza-removebg-preview_1.png")
+.setThumbnail("https://cdn.discordapp.com/attachments/941101779297378314/942011608996147230/giastanza-removebg-preview_1.png")
 
 var apristanza = new Discord.MessageEmbed()
 .setTitle(":closed_lock_with_key: Come funzionano? :closed_lock_with_key:")
