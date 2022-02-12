@@ -8,13 +8,13 @@ var nontrovato = new Discord.MessageEmbed()
 
 var nonpermesso1 = new Discord.MessageEmbed()
 .setTitle(`Errore`)
-.setDescription(`Non hai il permesso per bannare questo utente!`)
+.setDescription(`Non hai il permesso per mutare questo utente!`)
 .setColor(`RED`)
 .setThumbnail(`https://media.discordapp.net/attachments/941101779297378314/942011608996147230/giastanza-removebg-preview_1.png`)
 
 var nonmenzione = new Discord.MessageEmbed()
 .setTitle(`Errore`)
-.setDescription(`Non hai menzionato nessuno da kickare!`)
+.setDescription(`Non hai menzionato nessuno da mutare!`)
 .setColor(`GREY`)
 .setThumbnail(`https://media.discordapp.net/attachments/941101779297378314/942011608996147230/giastanza-removebg-preview_1.png`)
 

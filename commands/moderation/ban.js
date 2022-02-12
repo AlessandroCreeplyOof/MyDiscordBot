@@ -14,7 +14,7 @@ var nonpermesso1 = new Discord.MessageEmbed()
 
 var nonmenzione = new Discord.MessageEmbed()
 .setTitle(`Errore`)
-.setDescription(`Non hai menzionato nessuno da kickare!`)
+.setDescription(`Non hai menzionato nessuno da bannare!`)
 .setColor(`GREY`)
 .setThumbnail(`https://media.discordapp.net/attachments/941101779297378314/942011608996147230/giastanza-removebg-preview_1.png`)
 
