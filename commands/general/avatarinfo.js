@@ -3,8 +3,6 @@ const Discord = require("discord.js")
 client.on("messageCreate", message => {
     if (message.content.startsWith("!avatar")) {
         if (message.content.trim() == "!avatar") {
-            if (!message.member.roles.cache.has("870224089548226560")) {
-                return message.channel.send("Disponibile quando uscirà il nuovo changelog!");
             var utente = message.member;
         }
         else {
@@ -23,4 +21,4 @@ client.on("messageCreate", message => {
             }))
         message.channel.send({ embeds: [embed] })
     }
-}})
+})

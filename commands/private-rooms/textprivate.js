@@ -33,6 +33,7 @@ client.on("messageCreate", message => {
             .setEmoji("🔊")
             .setCustomId("apriVocale")
             .setStyle("PRIMARY")
+            .setDisabled()
 
         var row = new Discord.MessageActionRow()
             .addComponents(button1, button2)
