@@ -1,7 +1,7 @@
 const Discord = require("discord.js")
 
 client.on("messageCreate", message => {
-    if (message.content == "!ping", "!test") {
+    if (message.content == "!ping") {
         var embed = new Discord.MessageEmbed()
             .setTitle("Ping del bot")
             .setDescription("Ecco la latenza del bot")
