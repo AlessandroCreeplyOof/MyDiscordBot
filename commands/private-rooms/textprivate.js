@@ -33,7 +33,6 @@ client.on("messageCreate", message => {
             .setEmoji("🔊")
             .setCustomId("apriVocale")
             .setStyle("PRIMARY")
-            .setDisabled()
 
         var row = new Discord.MessageActionRow()
             .addComponents(button1, button2)
@@ -72,7 +71,7 @@ client.on("interactionCreate", interaction => {
 client.on("interactionCreate", interaction => {
     if (interaction.customId == "apriVocale") {
         interaction.deferUpdate()
-        if (interaction.guild.channels.cache.find(canale => canale.name == `${interaction.user.name}`)) {
+        if (interaction.guild.channels.cache.find(canale => canale.name == `🔊╵${interaction.user.username}`)) {
             interaction.user.send("Hai già un canale testuale aperto!").catch(() => { })
             return
         }
