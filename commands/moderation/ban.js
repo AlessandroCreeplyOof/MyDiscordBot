@@ -1,28 +1,34 @@
 const Discord = require("discord.js")
 
-var noperms = new Discord.MessageEmbed()
-.setTitle(`Non hai il permesso!`)
-.setDescription(`Non è stato rilevato il permesso che ti permette di eseguire la seguente azione: **BAN**`)
-.setColor(`RED`)
-.setThumbnail(`https://media.discordapp.net/attachments/941101779297378314/941101829847130122/noperms.png`)
+var nontrovato = new Discord.MessageEmbed()
+.setTitle(`Errore`)
+.setDescription(`Ooops, non sono riuscito a trovare questo utente!`)
+.setColor(`GREY`)
+.setThumbnail(`https://media.discordapp.net/attachments/941101779297378314/942011608996147230/giastanza-removebg-preview_1.png`)
 
-var menzione = new Discord.MessageEmbed()
-.setTitle(`Errore di sintassi`)
-.setDescription(`Non hai menzionato nessun utente da bannare!`)
-.setColor(`YELLOW`)
-.setThumbnail(`https://media.discordapp.net/attachments/941101779297378314/941101830543396864/sintassi2.png`)
+var nonpermesso1 = new Discord.MessageEmbed()
+.setTitle(`Errore`)
+.setDescription(`Non hai il permesso per bannare questo utente!`)
+.setColor(`RED`)
+.setThumbnail(`https://media.discordapp.net/attachments/941101779297378314/942011608996147230/giastanza-removebg-preview_1.png`)
+
+var nonmenzione = new Discord.MessageEmbed()
+.setTitle(`Errore`)
+.setDescription(`Non hai menzionato nessuno da kickare!`)
+.setColor(`GREY`)
+.setThumbnail(`https://media.discordapp.net/attachments/941101779297378314/942011608996147230/giastanza-removebg-preview_1.png`)
 
 client.on("messageCreate", message => {
   if (message.content.startsWith("!ban")) {
       var utente = message.mentions.members.first();
       if (!message.member.permissions.has('BAN_MEMBERS')) {
-          return message.channel.send({ embeds: [noperms] });
+          return message.channel.send({ embeds: [nonpermesso1] });
       }
       if (!utente) {
-          return message.channel.send({ embeds: [menzione] });
+          return message.channel.send({ embeds: [nonmenzione] });
       }
       if (!utente.bannable) {
-          return message.channel.send('Io non ho il permesso');
+          return message.channel.send({embeds: [nonpermesso1] });
       }
       utente.ban()
           .then(() => {

@@ -21,8 +21,8 @@ client.on("messageCreate", message => {
         var embed = new Discord.MessageEmbed()
             .setTitle("Hai scritto una parole bloccata!")
             .setDescription("Hai scritto un messaggio con parole bloccate\rIl tuo messaggio: " + testo)
-            .setColor("DARK_RED")
-            .setTimestamp("")
+            .setColor("PURPLE")
+            .setThumbnail("https://cdn.discordapp.com/attachments/941101779297378314/941101829847130122/noperms.png")
 
         message.channel.send({ embeds: [embed] })
     }

@@ -1,5 +1,11 @@
 const Discord = require("discord.js")
 
+var nontrovato = new Discord.MessageEmbed()
+.setTitle("Errore") //Titolo
+.setColor("GREY") // Colore principale
+.setDescription("Non ho trovato questo canale/categoria!") //Descrizione
+.setThumbnail("https://cdn.discordapp.com/attachments/941101779297378314/942011608996147230/giastanza-removebg-preview_1.png")
+
 client.on("messageCreate", message => {
     if (message.content.startsWith("!channelinfo")) {
         if (message.content == "!channelinfo") {
@@ -9,7 +15,7 @@ client.on("messageCreate", message => {
             var canale = message.mentions.channels.first();
         }
         if (!canale) {
-            return message.channel.send("Canale non trovato");
+            return message.channel.send({ embeds: [nontrovato] });
         }
         switch (canale.type) {
             case "GUILD_TEXT": canale.type = "Text"; break;
