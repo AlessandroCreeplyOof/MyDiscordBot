@@ -63,3 +63,13 @@ client.on('ready', () => {
     console.log("✅Online | Bot On!")
     client.channels.cache.get("934182975267041321").send({embeds: [online]})
     })
+
+    client.on("guildMemberAdd", member => {
+        if (member.user.bot) return
+        var utente = member();
+        var embed = new Discord.MessageEmbed()
+            .setTitle("Benvenuto!")
+            .setDescription(`Ciao ${member.toString()}, benvenuto in ${member.guild.name}. Sei il **${member.guild.memberCount}° Membro**`)
+    
+        client.utente.send({embeds: [embed]}); 
+    })
