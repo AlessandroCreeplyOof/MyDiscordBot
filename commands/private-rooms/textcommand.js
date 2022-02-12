@@ -1,11 +1,5 @@
 const Discord = require("discord.js")
 
-var utenteaggiunto = new Discord.MessageEmbed()
-.setTitle(`Utente Aggiunto con successo`)
-.setDescription(`Da ora ` + `${utente.toString()}` + ` potrà scrivere in questa chat!`)
-.setColor(`GREEN`)
-.setThumbnail(`https://media.discordapp.net/attachments/941101779297378314/941101829457051738/eseguito.png`)
-
 client.on("messageCreate", message => {
     if (message.content == "!pdelete") {
         var topic = message.channel.topic;
@@ -42,6 +36,12 @@ client.on("messageCreate", message => {
                     message.channel.send("Questo utente ha gia accesso alla stanza")
                     return
                 }
+                var utenteaggiunto = new Discord.MessageEmbed()
+                .setTitle(`Utente Aggiunto con successo`)
+                .setDescription(`Da ora ` + `${utente.toString()}` + ` potrà scrivere in questa chat!`)
+                .setColor(`GREEN`)
+                .setThumbnail(`https://media.discordapp.net/attachments/941101779297378314/941101829457051738/eseguito.png`)
+                
                 message.channel.permissionOverwrites.edit(utente, {
                     VIEW_CHANNEL: true
                 })
