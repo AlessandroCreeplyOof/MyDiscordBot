@@ -5,6 +5,12 @@ var stanzaprivata = new Discord.MessageEmbed()
 .setDescription("✍️ Stanza di tipo: **TESTUALE**")
 .setColor("GOLD")
 
+var giastanza = new Discord.MessageEmbed()
+.setTitle("HAi già una stanza")
+.setDescription("Non puoi aprire un altra stanza privata!")
+.setColor("GREY")
+.setImage("https://cdn.discordapp.com/attachments/941101779297378314/942011608996147230/giastanza-removebg-preview_1.png")
+
 var apristanza = new Discord.MessageEmbed()
 .setTitle(":closed_lock_with_key: Come funzionano? :closed_lock_with_key:")
 .setColor("#FFAC33")
@@ -40,10 +46,10 @@ client.on("interactionCreate", interaction => {
     if (interaction.customId == "apriTestuale") {
         interaction.deferUpdate()
         if (interaction.guild.channels.cache.find(canale => canale.topic == `Stanza di: ${interaction.user.id}`)) {
-            interaction.user.send("Hai già un canale testuale aperto!").catch(() => { })
+            interaction.user.send({ embeds: [giastanza] }).catch(() => { })
             return
         }
-        interaction.guild.channels.create(interaction.user.username, {
+        interaction.guild.channels.create("💬╵" + interaction.user.username, {
             type: "text",
             topic: `Stanza di: ${interaction.user.id}`,
             parent: "937779880815378442", //Settare la categoria,
@@ -70,7 +76,7 @@ client.on("interactionCreate", interaction => {
             interaction.user.send("Hai già un canale testuale aperto!").catch(() => { })
             return
         }
-        interaction.guild.channels.create(interaction.user.username, {
+        interaction.guild.channels.create("🔊╵" + interaction.user.username, {
             type: "voice",
             parent: "937779880815378442", //Settare la categoria,
             permissionOverwrites: [
