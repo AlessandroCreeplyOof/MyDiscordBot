@@ -3,7 +3,7 @@ const Discord = require("discord.js")
 var ticket = new Discord.MessageEmbed()
 .setTitle("**APRI un TICKET DI SUPPORTO!**")
 .setDescription("Stai riscontrando **problemi?** \n \n Apri un ticket e lo staff ti aiuterà in ogni tuo problema ;)")
-.setColor("")
+.setColor("#2969cf")
 .setImage("https://media.discordapp.net/attachments/941101779297378314/942424504876015636/TICKETGRAPHIC.png?width=1193&height=671")
 
 var giaticket = new Discord.MessageEmbed()
@@ -13,7 +13,7 @@ var giaticket = new Discord.MessageEmbed()
 .setImage("https://media.discordapp.net/attachments/941101779297378314/942424826373603378/TICKETGIA.png?width=1193&height=671")
 
 var ticket1 = new Discord.MessageEmbed()
-.setTitle("🎟️ Benvenuto nel tuo ticket 🎟️")
+.setTitle("🚑 Benvenuto nel tuo ticket")
 .setColor("#FFAC33")
 .setImage("https://media.discordapp.net/attachments/941101779297378314/942424475415240714/TICKETOPEN.png?width=1193&height=671")
 .addField(":bookmark_tabs: Ecco i comandi del ticket", `
@@ -26,7 +26,7 @@ client.on("messageCreate", message => {
     if (message.content == "!ticketmessage") {
         if (!message.member.roles.cache.has("869234525576765552")) {
             return message.channel.send("Non puoi eseguire questo comando perchè non hai il permesso");
-            
+
         var button1 = new Discord.MessageButton()
             .setLabel("Apri ticket")
             .setEmoji("🚑")
