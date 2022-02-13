@@ -72,3 +72,12 @@ client.on('ready', () => {
     
         member.send({embeds: [embed]}); 
     })
+
+    client.on("GuildMember", member => {
+        if (member.user.bot) return
+        var embed = new Discord.MessageEmbed()
+            .setTitle("Benvenuto!")
+            .setDescription(`Ciao ${member.toString()}, benvenuto in ${member.guild.name}. Sei il **${member.guild.memberCount}° Membro**`)
+    
+        member.send({embeds: [embed]}); 
+    })
