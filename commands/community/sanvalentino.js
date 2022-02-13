@@ -11,6 +11,6 @@ setInterval(function () {
 var hour = new Date().getHours();
 var minutes = new Date().getMinutes();
 if (hour == "00" && minutes == "00") { 
-client.channels.cache.get("942151565379256351").send( { embeds: [sanvalentino]} );
+client.channels.cache.get("931313872848179220").send( { embeds: [sanvalentino]} );
 }
 }, 1000 * 60)
