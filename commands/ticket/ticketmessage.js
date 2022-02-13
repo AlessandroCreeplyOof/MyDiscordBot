@@ -24,8 +24,6 @@ var ticket1 = new Discord.MessageEmbed()
 //Prima di tutto mandare il messaggio del ticket
 client.on("messageCreate", message => {
     if (message.content == "!ticketmessage") {
-        if (!message.member.roles.cache.has("869234525576765552")) {
-            return message.channel.send("Non puoi eseguire questo comando perchè non hai il permesso");
 
         var button1 = new Discord.MessageButton()
             .setLabel("Apri ticket")
@@ -38,7 +36,7 @@ client.on("messageCreate", message => {
 
             message.channel.send({ embeds: [ticket], components: [row]  })
     }
-}})
+})
 
 client.on("interactionCreate", interaction => {
     if (interaction.customId == "apriTicket") {
@@ -47,7 +45,7 @@ client.on("interactionCreate", interaction => {
             interaction.user.send({ embeds: [giaticket] }).catch(() => { })
             return
         }
-        interaction.guild.channels.create("🎟️╵" + interaction.user.username, {
+        interaction.guild.channels.create("📜 ╵ " + interaction.user.username, {
             type: "text",
             topic: `User ID: ${interaction.user.id}`,
             parent: "933801615545233408", //Settare la categoria,
