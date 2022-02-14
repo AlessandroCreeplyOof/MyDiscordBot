@@ -10,7 +10,7 @@ var giastanza = new Discord.MessageEmbed()
 .setTitle("Hai già una stanza")
 .setDescription("Non puoi aprire un altra stanza privata!")
 .setColor("GREY")
-.setThumbnail("https://media.discordapp.net/attachments/941101779297378314/942864854182678628/HaiPrivateRooms.png?width=1193&height=671")
+.setImage("https://media.discordapp.net/attachments/941101779297378314/942864854182678628/HaiPrivateRooms.png?width=1193&height=671")
 
 var apristanza = new Discord.MessageEmbed()
 .setTitle(":closed_lock_with_key: Come funzionano? :closed_lock_with_key:")
@@ -19,7 +19,7 @@ var apristanza = new Discord.MessageEmbed()
 .addField(":bookmark_tabs: Tutti i comandi delle stanze", `
 - \`!pdelete\` - **Elimina** la tua stanza
 - \`!padd [user]\` - **Aggiungi** un tuo amico alla stanza
-- \`!premove [user]\` - **Rimuovi/Banna** un utente dalla stanza`)
+- \`!pban [user]\` - **Rimuovi/Banna** un utente dalla stanza`)
 
 //Prima di tutto mandare il messaggio del ticket
 client.on("messageCreate", message => {
