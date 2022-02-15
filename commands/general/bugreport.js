@@ -1,0 +1,38 @@
+client.on("messageCreate", message => {
+    if (message.content == "!bugreport") {
+let report = args.join(" ");
+
+if (!report && !(message.attachments).array()[0]) {
+    return botCommandMessage(message, "Error", "Inserire un report", "Scrivi il testo del tuo report", property)
+}
+
+var embed = new Discord.MessageEmbed()
+    .setTitle(":beetle: Bug reportato :beetle:")
+    .setColor("#77B256")
+    .setDescription(`**Grazie** per aver segnalato questo problema. È già stato **consegnato** allo staff che lo **risolverà** a breve`)
+    .addField(":page_facing_up: Text", report ? report : "None")
+
+var attachments = "";
+message.attachments.array().forEach(attachment => {
+    attachments += `[File link](${attachment.url}), `
+})
+if (attachments)
+    attachments = attachments.slice(0, -2);
+
+embed
+    .addField(":paperclip: Attachments", attachments ? attachments : "None")
+
+message.channel.send(embed)
+
+var embed = new Discord.MessageEmbed()
+    .setTitle(":beetle: Bug report :beetle:")
+    .setColor("#6DA54C")
+    .addField(":alarm_clock: Time", moment(new Date().getTime()).format("ddd DD MMM YYYY, HH:mm:ss"), true)
+    .addField(":bust_in_silhouette: User", `${message.author.toString()} (ID: ${message.author.id})`, false)
+    .addField("Text", report ? report : "None")
+    .addField("Attachments", attachments ? attachments : "None")
+
+if (!isMaintenance())
+    client.channels.cache.get("937711348664635453").send(embed);
+}
+});
