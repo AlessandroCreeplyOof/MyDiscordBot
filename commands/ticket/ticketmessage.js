@@ -12,6 +12,12 @@ var giaticket = new Discord.MessageEmbed()
 .setColor("GREY")
 .setImage("https://media.discordapp.net/attachments/941101779297378314/942424826373603378/TICKETGIA.png?width=1193&height=671")
 
+var chiudiTicket = new Discord.MessageButton()
+.setLabel("Chiudi Ticket")
+.setEmoji("❌")
+.setCustomId("chiudiTicket")
+.setStyle("DANGER")
+
 var ticket1 = new Discord.MessageEmbed()
 .setTitle("🚑 Benvenuto nel tuo ticket")
 .setColor("#FFAC33")
@@ -45,7 +51,7 @@ client.on("interactionCreate", interaction => {
             interaction.user.send({ embeds: [giaticket] }).catch(() => { })
             return
         }
-        interaction.guild.channels.create("📜 ╵ " + interaction.user.username, {
+        interaction.guild.channels.create("📜╵" + interaction.user.username, {
             type: "text",
             topic: `User ID: ${interaction.user.id}`,
             parent: "933801615545233408", //Settare la categoria,
@@ -64,7 +70,7 @@ client.on("interactionCreate", interaction => {
                 }
             ]
         }).then(canale => {
-            canale.send( { embeds: [ticket1] })
+            canale.send( { embeds: [ticket1] }, { components: [chiudiTicket] } )
         })
     }
 })
