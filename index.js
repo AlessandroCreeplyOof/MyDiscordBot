@@ -89,7 +89,7 @@ client.on('ready', () => {
     })
 
     client.on("message", message => {
-        if (message.content.toLowerCase() == "shutdown") { // Note that this is an example and anyone can use this command.
+        if (message.content.toLowerCase() == "!reload") { // Note that this is an example and anyone can use this command.
             client.channels.cache.get("934182975267041321").send({embeds: [offline]}).then(() => {
                 client.destroy();
             })
