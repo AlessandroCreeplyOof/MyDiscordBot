@@ -4,10 +4,6 @@ client.on("messageCreate", message => {
     if (message.content.startsWith("!suggest")) {
         var suggest = args.join(" ")
 
-        if (!suggest) {
-            return botCommandMessage(message, "Errore", "Devi scrivere un testo!")
-        }
-
         var embed = new Discord.MessageEmbed()
         .setTitle("💡 Nuovo Suggerimento 💡")
         .setColor("BLUE")
