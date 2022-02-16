@@ -21,6 +21,7 @@ var nonmenzione = new Discord.MessageEmbed()
 client.on("messageCreate", message => {
   if (message.content.startsWith("!ban")) {
       var utente = message.mentions.members.first();
+    }
       if (!message.member.permissions.has('BAN_MEMBERS')) {
           return message.channel.send({ embeds: [nonpermesso1] });
       }
@@ -35,10 +36,11 @@ client.on("messageCreate", message => {
               var embed = new Discord.MessageEmbed()
                   .setTitle(`#BAN ${utente.user.username}`)
                   .setDescription(`L'utente è stato bannato da: ${message.author.toString()}`)
+                  .addField(`Motivo: null`)
                   .setColor(`RED`)
                   .setThumbnail(`https://media.discordapp.net/attachments/941101779297378314/941101829046042755/ban.png`)
 
               message.channel.send({ embeds: [embed] })
           })
   }
-})
+)
