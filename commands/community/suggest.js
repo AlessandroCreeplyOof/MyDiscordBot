@@ -8,15 +8,12 @@ client.on("messageCreate", message => {
             return botCommandMessage(message, "Errore", "Devi scrivere un testo!")
         }
 
-        if (suggest.length > 200) {
-            return botCommandMessage(message, "Errore!", "Il tuo suggerimento è troppo lungo", "Scrivi un suggerimento che non sia più lungo di 200")
-        }
         var embed = new Discord.MessageEmbed()
-        .setTitle("💡 Suggerimento 💡")
+        .setTitle("💡 Nuovo Suggerimento 💡")
         .setColor("BLUE")
-        .setThumbnail(message.member.user.displayAvatarURL({ dynamic: true }))
-        .setDescription(":bookmark_tabs: Suggestion", contenuto)
+        .setThumbnail(message.member.user.displayAvatarURL)
+        .setDescription(" Suggestion:", suggest)
 
-    message.channel.send({ embeds: [embed] })
+        client.channels.cache.get("935660406796591104").send( {embeds: [embed] })
     }
 })
