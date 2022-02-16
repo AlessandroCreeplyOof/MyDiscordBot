@@ -88,4 +88,12 @@ client.on('ready', () => {
         member.send({embeds: [embed]}); 
     })
 
+    const shutdown = async function() {
+        if (hasShutdown) return;
+        hasShutdown = true;
+        console.log('Shutting down...');
+        client.channels.cache.get("934182975267041321").send({embeds: [offline]})
+        if (stop) await stop();
+      }
+
 
