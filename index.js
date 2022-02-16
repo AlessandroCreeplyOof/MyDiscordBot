@@ -88,12 +88,12 @@ client.on('ready', () => {
         member.send({embeds: [embed]}); 
     })
 
-    const shutdown = async function() {
-        if (hasShutdown) return;
-        hasShutdown = true;
-        console.log('Shutting down...');
-        client.channels.cache.get("934182975267041321").send({embeds: [offline]})
-        if (stop) await stop();
-      }
+    client.on("message", message => {
+        if (message.content.toLowerCase() == "shutdown") { // Note that this is an example and anyone can use this command.
+            client.channels.cache.get("934182975267041321").send({embeds: [offline]}).then(() => {
+                client.destroy();
+            })
+        }
+    })
 
 
