@@ -1,12 +1,6 @@
 const Discord = require("discord.js")
-const { description, execute } = require("../community/suggest")
 
-module.exports = {
-    name: `ban`,
-    description: `Banna un utente`,
-    execute(client, messages, args) {
-
-        const nontrovato = new Discord.MessageEmbed()
+const nontrovato = new Discord.MessageEmbed()
 .setTitle(`Errore`)
 .setDescription(`Ooops, non sono riuscito a trovare questo utente!`)
 .setColor(`GREY`)
@@ -24,6 +18,8 @@ const nonmenzione = new Discord.MessageEmbed()
 .setColor(`GREY`)
 .setThumbnail(`https://media.discordapp.net/attachments/941101779297378314/942011608996147230/giastanza-removebg-preview_1.png`)
 
+client.on("messageCreate", message => {
+    if (message.content.startsWith("!ban")) {
                 const utente = message.mentions.members.first();
                 if (!message.member.permissions.has('BAN_MEMBERS')) {
                     return message.channel.send({embeds : [nonpermesso1]});
@@ -45,5 +41,5 @@ const nonmenzione = new Discord.MessageEmbed()
                         message.channel.send({ embeds: [embed] })
                     })
             }
-}
+})
     
