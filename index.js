@@ -103,4 +103,16 @@ var row = new Discord.MessageActionRow()
         member.send({embeds: [welcome], components: [row]}); 
     })
 
+    client.on("guildMemberAdd", member => {
+        if (member.user.bot) return
+
+        var byebye = new Discord.MessageEmbed()
+        .setTitle("Bye bye")
+        .setDescription(`Hey ${member.toString()}, ci dispiace che tu sia uscito dal server... ma se tu vorrai rientrare noi ti aspettiamo!`)
+        .setImage("https://media.discordapp.net/attachments/941101779297378314/944266920255963206/communitybanner_1.png?width=1250&height=625")
+        .setColor("BLURPLE")
+
+        member.send({embeds: [byebye], components: [row]}); 
+    })
+
 
