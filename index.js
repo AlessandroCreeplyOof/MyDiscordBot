@@ -72,15 +72,6 @@ client.on('ready', () => {
 
     client.on("guildMemberAdd", member => {
         if (member.user.bot) return
-        var embed = new Discord.MessageEmbed()
-            .setTitle("Benvenuto!")
-            .setDescription(`Ciao ${member.toString()}, benvenuto in ${member.guild.name}. Sei il **${member.guild.memberCount}° Membroo**`)
-    
-        member.send({embeds: [embed]}); 
-    })
-
-    client.on("GuildMember", member => {
-        if (member.user.bot) return
 
         var annunci = new Discord.MessageButton()
 .setLabel("Canale Annunci")
@@ -108,7 +99,7 @@ var row = new Discord.MessageActionRow()
             .setDescription(`Hey ${member.toString()}, benvenuto nel server ufficiale di **Creeply!** \n \n Divertiti nel mio server e chatta con altri utenti rispettando ovviamente il regolamento \n \n **Clicca i bottoni qui sotto per capire al meglio le funzioni del server!`)
             .setImage("https://media.discordapp.net/attachments/941101779297378314/944266920255963206/communitybanner_1.png?width=1250&height=625")
     
-        member.send({embeds: [welcome], components: [row] }); 
+        member.send({embeds: [welcome], components: [row]}); 
     })
 
 
