@@ -103,20 +103,12 @@ var suggerimenti = new Discord.MessageButton()
 var row = new Discord.MessageActionRow()
 .addComponents(annunci, suggerimenti, chat)
 
-        var embed = new Discord.MessageEmbed()
+        var welcome = new Discord.MessageEmbed()
             .setTitle("Benvenuto!")
             .setDescription(`Hey ${member.toString()}, benvenuto nel server ufficiale di **Creeply!** \n \n Divertiti nel mio server e chatta con altri utenti rispettando ovviamente il regolamento \n \n **Clicca i bottoni qui sotto per capire al meglio le funzioni del server!`)
             .setImage("https://media.discordapp.net/attachments/941101779297378314/944266920255963206/communitybanner_1.png?width=1250&height=625")
     
-        member.send({embeds: [embed], components: [row] }); 
-    })
-
-    client.on("message", message => {
-        if (message.content.toLowerCase() == "!offlinebot") { // Note that this is an example and anyone can use this command.
-            client.channels.cache.get("934182975267041321").send({embeds: [offline]}).then(() => {
-                client.destroy();
-            })
-        }
+        member.send({embeds: [welcome], components: [row] }); 
     })
 
 
