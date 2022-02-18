@@ -112,7 +112,7 @@ var row = new Discord.MessageActionRow()
         .setImage("https://media.discordapp.net/attachments/941101779297378314/944266920255963206/communitybanner_1.png?width=1250&height=625")
         .setColor("BLURPLE")
 
-        member.send({embeds: [byebye], components: [row]}); 
+        member.send({embeds: [byebye]}); 
     })
 
 
