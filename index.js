@@ -103,7 +103,7 @@ var row = new Discord.MessageActionRow()
         member.send({embeds: [welcome], components: [row]}); 
     })
 
-    client.on("guildMemberAdd", member => {
+    client.on("GuildMemberRemove", member => {
         if (member.user.bot) return
 
         var byebye = new Discord.MessageEmbed()
