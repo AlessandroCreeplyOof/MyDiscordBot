@@ -76,19 +76,19 @@ client.on('ready', () => {
         var annunci = new Discord.MessageButton()
 .setLabel("Canale Annunci")
 .setEmoji("📣")
-.setStyle("URL")
+.setStyle("LINK")
 .setURL("https://discord.com/channels/869222535181529140/887061611557294091")
 
 var chat = new Discord.MessageButton()
 .setLabel("Regolamento")
 .setEmoji("📜")
-.setStyle("URL")
+.setStyle("LINK")
 .setURL("https://discord.com/channels/869222535181529140/869234720049872926")
 
 var suggerimenti = new Discord.MessageButton()
 .setLabel("Suggerimenti")
 .setEmoji("🔮")
-.setStyle("URL")
+.setStyle("LINK")
 .setURL("https://discord.com/channels/869222535181529140/934745362814623814")
 
 var row = new Discord.MessageActionRow()
