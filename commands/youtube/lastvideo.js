@@ -1,7 +1,5 @@
 const Discord = require("discord.js")
 
-const ytch = require('yt-channel-info');
-
 client.on("messageCreate", message => {
     if (message.content == "!lastvideo") {
         const channelId = 'UCqFJX8iQDEjfh-qMfB5Urww' //Settare id del tuo canale YouTube
