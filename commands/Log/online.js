@@ -1,3 +1,5 @@
+const Discord = require("discord.js")
+
 const online = new Discord.MessageEmbed()
 .setTitle("📥 #BOTLOG")
 .setDescription(`🟢 Il bot è andato online!`)
