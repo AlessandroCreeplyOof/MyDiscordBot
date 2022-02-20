@@ -32,7 +32,7 @@ client.on("messageCreate", message => {
          .setColor("DARK_ORANGE")
          .setTimestamp()
 
-         client.channels.send({embeds: [suggerimentoinviato]});
+         client.channel.send({embeds: [suggerimentoinviato]});
 
         const suggesta = new Discord.MessageEmbed()
 .setTitle(`💡 Suggestions`)
