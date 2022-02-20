@@ -7,7 +7,7 @@ client.on("messageCreate", message => {
             .setTitle(server.name)
             .setDescription("Tutte le info su questo server")
             .setThumbnail(server.iconURL())
-            .addField("🏸 Owner", client.users.cache.get(server.ownerId).username, true)
+            .addField("🏸 Owner `", client.users.cache.get(server.ownerId).username + "`", true)
             .addField("🔧 Server id", server.id, true)
             .addField("👨‍👩‍👧‍👧 Members", server.memberCount.toString(), false)
             .addField("🪧 Channels", server.channels.cache.size.toString(), false)

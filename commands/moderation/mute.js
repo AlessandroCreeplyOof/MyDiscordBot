@@ -30,12 +30,19 @@ client.on("messageCreate", message => {
 
         utente.roles.add("896396962113421392")
 
+        var logmute = new Discord.MessageEmbed()
+        .setTitle(`#MUTE ${utente.user.username}`)
+        .setDescription(`Nuovo mute \n ${utente.user.username} è stato mutato \n 🌐 Moderatore: ${message.author.toString()}`)
+        .setColor("RED")
+        .setTimestamp("")
+
         var embed = new Discord.MessageEmbed()
             .setTitle(`#MUTE ${utente.user.username}`)
-            .setDescription(`Utente mutato da ${message.author.toString()}`)
+            .setDescription(`L'utente ${utente.user.username} è stato mutato \n 🌐 Moderatore: ${message.author.toString()}`)
             .setColor("PURPLE")
             .setTimestamp("")
 
         message.channel.send({ embeds: [embed] })
+        client.channels.cache.get("944904295034290236").send({embeds: [logmute]}); 
     }
 })
