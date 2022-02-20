@@ -1,6 +1,4 @@
 const Discord = require("discord.js");
-const { MembershipStates } = require("discord.js/typings/enums");
-const { userInfo } = require("os");
 require('events').EventEmitter.prototype._maxListeners = 100;
 
 client.on("messageCreate", message => {
