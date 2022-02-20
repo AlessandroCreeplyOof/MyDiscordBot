@@ -10,7 +10,7 @@ var troppolungo = new Discord.MessageEmbed()
 var nonvalido = new Discord.MessageEmbed()
 .setTitle(`💡 Suggerimento non valido`)
 .setColor("ORANGE")
-.setDescription("Non hai inserito nessun testo! \n `Syntax: !suggest [testo]`")
+.setDescription("Non hai inserito nessun testo! \n \n `Syntax: !suggest [testo]`")
 
 client.on("messageCreate", message => {
     if (message.content.startsWith("!suggest")) {
@@ -19,11 +19,6 @@ client.on("messageCreate", message => {
 
         if (!suggest) {
             message.channel.send({embeds: [nonvalido]})
-            return
-        }
-
-        if (suggest.lenght > 500) {
-            message.channel.send({embeds: [troppolungo]})
             return
         }
 
@@ -90,7 +85,6 @@ client.on("interactionCreate", interaction => {
 })
 client.on("interactionCreate", interaction => {
     if (interaction.customId == "rifiutasuggest") {
-        client.message.set({embeds: [giaaccettato], components: [null]})
         interaction.deferUpdate()
             interaction.user.send({embeds: [suggerimentorfiutatoo]})
     }
