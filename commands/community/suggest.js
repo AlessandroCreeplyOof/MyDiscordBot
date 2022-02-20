@@ -32,8 +32,6 @@ client.on("messageCreate", message => {
          .setColor("DARK_ORANGE")
          .setTimestamp()
 
-         client.channel.send({embeds: [suggerimentoinviato]});
-
         const suggesta = new Discord.MessageEmbed()
 .setTitle(`💡 Suggestions`)
 .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/944975611791822848/suggestcanvas-removebg-preview.png")
@@ -52,6 +50,7 @@ client.on("interactionCreate", interaction => {
     }
 })
         client.channels.cache.get("936758688180473887").send({embeds: [embed], components: [row] }); 
+        client.channel.send({embeds: [suggerimentoinviato]});
     }
 })
 
