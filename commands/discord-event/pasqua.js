@@ -32,3 +32,9 @@ client.on("messageCreate", message => {
             message.channel.send({embeds: [embed], components: [row]})
     }
 })
+
+client.on("clickButton", (button) => {
+    if (button.id == "apriUovo") {
+        button.message.channel.send("Non puoi aprire un uovo!")
+    }
+})
