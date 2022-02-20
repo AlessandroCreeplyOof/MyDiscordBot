@@ -49,7 +49,7 @@ client.on("messageCreate", message => {
             .setDescription("Tutte le statistiche su questo canale")
             .addField("📜 Channel ID", canale.id, true)
             .addField("🗞️ Type", canale.type, true)
-            .addField("🔢 Position", canale.rawPosition.toString() + true)
+            .addField("🔢 Position", canale.rawPosition.toString(), true)
             .addField("🧱 Category", `<#${canale.parentId}>`, true)
             .addField("🧾 Topic", !canale.topic ? "No topic" : canale.topic, true)
             .addField("🔞 NSFW", canale.nsfw ? "Yes" : "No", true)
