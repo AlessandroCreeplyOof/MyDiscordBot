@@ -6,6 +6,8 @@ client.on("messageCreate", message => {
         var args = message.content.split(/\s+/);
         var suggest = args.slice(1).join(" ")
 
+// Embed & Buttons
+
         var accetta = new Discord.MessageButton()
             .setLabel("✅ Approva")
             .setCustomId("approvasuggest")
@@ -46,6 +48,15 @@ const suggerimentorfiutatoo = new Discord.MessageEmbed()
 .setDescription("Il tuo suggerimento purtroppo è stato rifiutato dallo staff, grazie per l'impegno per il suggerimento!")
 .setTimestamp()
 
+const giaaccettato = new Discord.MessageEmbed()
+.setTitle(`👍 Questo suggerimento è stato già accettato!`)
+.setThumbnail("https://media.discordapp.net/attachments/941101779297378314/944975611791822848/suggestcanvas-removebg-preview.png")
+.setColor("GREEN")
+.setDescription("`Questo suggerimento è stato accettato da un moderatore!` \n \n", suggest)
+.setTimestamp()
+
+// INTERAZIONI
+
 client.on("interactionCreate", interaction => {
     if (interaction.customId == "approvasuggest") {
         interaction.deferUpdate()
@@ -58,10 +69,13 @@ client.on("interactionCreate", interaction => {
 })
 client.on("interactionCreate", interaction => {
     if (interaction.customId == "rifiutasuggest") {
+        interaction.message.edit({embeds: [giaaccettato], components: [null]})
         interaction.deferUpdate()
             interaction.user.send({embeds: [suggerimentorfiutatoo]})
     }
 })
+
+// Inviare messaggi
 
         client.channels.cache.get("936758688180473887").send({embeds: [embed], components: [row] }); 
         message.channel.send({embeds: [suggerimentoinviato]});
