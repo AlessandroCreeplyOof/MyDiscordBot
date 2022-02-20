@@ -32,9 +32,16 @@ client.on("messageCreate", message => {
             message.channel.send({embeds: [embed], components: [row]})
     }
 })
+const uovoaperto = new Discord.MessageEmbed()
+.setTitle("Uovo Di Pasqua | Aperto con successo")
+.setColor("AQUA")
+.setDescription("Hai aperto con successo un uovo di pasqua! \n \n <:regalo:944925534624821248> Premio: 500+ XP \n ⏰ Giorno: 1")
+.setThumbnail("https://media.discordapp.net/attachments/941101779297378314/944926917897883678/EggAperto.png")
 
-client.on("clickButton", (button) => {
-    if (button.id == "apriUovo") {
-        button.message.channel.send("Non puoi aprire un uovo!")
-    }
-})
+
+client.on("interactionCreate", interaction => {
+    if (interaction.customId == "apriUovo") {
+        interaction.deferUpdate()
+            interaction.user.send({ embeds: [uovoaperto] })
+            return
+        }})
