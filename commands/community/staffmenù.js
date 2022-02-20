@@ -7,7 +7,7 @@ client.on("messageCreate", message => {
 
         const tdo1 = new Discord.MessageEmbed()
         .setTitle(`💡 Things To Do`)
-        .setDescription("`", thingstodo, "` \n \n Stato: IN REVISIONE")
+        .setDescription(thingstodo)
         .setColor("WHITE")
         .setTimestamp()
     }
