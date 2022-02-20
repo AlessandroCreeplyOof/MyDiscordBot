@@ -26,6 +26,12 @@ client.on("messageCreate", message => {
         .setDescription(suggest)
         .setTimestamp()
 
+         const suggerimentoinviato = new Discord.MessageEmbed()
+         .setTitle(`💡 Suggerimento inviato`)
+         .setDescription("`Il tuo suggerimento è stato inviato allo staff con successo!` \n \n Attendi che lo staff lo accetti!")
+         .setColor("DARK_ORANGE")
+         .setTimestamp()
+
         const suggesta = new Discord.MessageEmbed()
 .setTitle(`💡 Suggestions`)
 .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/944975611791822848/suggestcanvas-removebg-preview.png")
@@ -43,8 +49,8 @@ client.on("interactionCreate", interaction => {
             })
     }
 })
-
-        client.channels.cache.get("944545494531715112").send({embeds: [embed], components: [row] }); 
+        client.channels.send({embeds: [suggerimentoinviato]})
+        client.channels.cache.get("936758688180473887").send({embeds: [embed], components: [row] }); 
     }
 })
 
