@@ -12,8 +12,8 @@ client.on("messageCreate", message => {
         const chiudiUovo = new Discord.MessageButton()
             .setLabel("Regala Uovo")
             .setCustomId("regalaUovo")
-            .setStyle("DANGER")
-            .setEmoji("❌")
+            .setStyle("PRIMARY")
+            .setEmoji("<:regalo:944925534624821248>")
         
         const forseUovo = new Discord.MessageButton()
             .setCustomId("forseUovo")
