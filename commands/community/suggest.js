@@ -45,7 +45,7 @@ const suggerimentorfiutato = new Discord.MessageEmbed()
 .setTitle(`❌ Il tuo suggerimento è stato rifiutato!`)
 .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/944975611791822848/suggestcanvas-removebg-preview.png")
 .setColor("RED")
-.setDescription("Il tuo suggerimento purtroppo è stato rifiutato dallo staff, grazie per l'impegno per il suggerimento! \n \n Contenuto Suggerimento: \n", suggest)
+.setDescription("Il tuo suggerimento purtroppo è stato rifiutato dallo staff, grazie per l'impegno per il suggerimento!")
 .setTimestamp()
 
 client.on("interactionCreate", interaction => {
