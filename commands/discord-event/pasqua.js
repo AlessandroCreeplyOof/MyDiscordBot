@@ -41,10 +41,27 @@ const uovoaperto = new Discord.MessageEmbed()
 .setDescription("Hai aperto con successo un uovo di pasqua! \n \n <:regalo:944925534624821248> Premio: 500+ XP \n ⏰ Giorno: 1")
 .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/944926917897883678/EggAperto.png")
 
+var menu = new Discord.MessageSelectMenu()
+.setPlaceholder("Apri altre uova")
+.setCustomId("menu")
+.setMinValues("1")
+.setMaxValues("1")
+.addOptions(opzione1)
+.addOptions(opzione2)
+
+var opzione1 = new Discord.Options
+.setLabel("Giorno 1")
+.setDescription("Apri il regalo del primo giorno")
+.setEmoji("<:regalo:944925534624821248>")
+
+var opzione2 = new Discord.Options
+.setLabel("Giorno 2")
+.setDescription("Non puoi ancora aprire questo regalo!")
+.setEmoji("<:regalo:944925534624821248>")
 
 client.on("interactionCreate", interaction => {
     if (interaction.customId == "apriUovo") {
         interaction.deferUpdate()
-            interaction.channel.edit({ embeds: [uovoaperto] })
+            interaction.channel.send({ embeds: [uovoaperto], components: [menu] })
             return
         }})
