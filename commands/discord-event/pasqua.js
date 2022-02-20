@@ -46,12 +46,6 @@ var menu = new Discord.MessageSelectMenu()
 .setCustomId("menu")
 .setMinValues("1")
 .setMaxValues("1")
-.addOptions([
-    {
-        label: `Giorno 1`,
-        setEmoji: `<:regalo:944925534624821248>`,
-    }
-])
 
 client.on("interactionCreate", interaction => {
     if (interaction.customId == "apriUovo") {
