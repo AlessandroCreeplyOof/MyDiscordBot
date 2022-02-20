@@ -33,13 +33,15 @@ client.on("messageCreate", message => {
 .setDescription(suggest)
 .setTimestamp()
 
-        client.channels.cache.get("944545494531715112").send({embeds: [embed], components: [row] }); 
-    }
-})
-
 client.on("interactionCreate", interaction => {
     if (interaction.customId == "approvasuggest") {
         interaction.deferUpdate()
             client.channels.cache.get("944987091421499404").send({ embeds: [suggesta] })
     }
 })
+
+        client.channels.cache.get("944545494531715112").send({embeds: [embed], components: [row] }); 
+    }
+})
+
+
