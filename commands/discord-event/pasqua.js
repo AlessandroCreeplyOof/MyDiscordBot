@@ -45,6 +45,6 @@ const uovoaperto = new Discord.MessageEmbed()
 client.on("interactionCreate", interaction => {
     if (interaction.customId == "apriUovo") {
         interaction.deferUpdate()
-            interaction.channel.send({ embeds: [uovoaperto] })
+            interaction.channel.replace({ embeds: [uovoaperto] })
             return
         }})
