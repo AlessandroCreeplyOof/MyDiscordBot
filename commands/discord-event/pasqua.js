@@ -2,6 +2,9 @@ const Discord = require("discord.js")
 
 client.on("messageCreate", message => {
     if (message.content == "!egg") {
+        if (!message.member.roles.cache.has("870224089548226560")) {
+            return message.channel.send("Non puoi eseguire questo comando adesso! Aspetta il 10 Aprile 2022!");
+        } 
 
         const apriUovo = new Discord.MessageButton()
             .setLabel("Apri Uovo")
@@ -42,6 +45,6 @@ const uovoaperto = new Discord.MessageEmbed()
 client.on("interactionCreate", interaction => {
     if (interaction.customId == "apriUovo") {
         interaction.deferUpdate()
-            interaction.user.send({ embeds: [uovoaperto] })
+            interaction.channel.send({ embeds: [uovoaperto] })
             return
         }})
