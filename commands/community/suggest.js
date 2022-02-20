@@ -50,7 +50,7 @@ client.on("interactionCreate", interaction => {
     }
 })
         client.channels.cache.get("936758688180473887").send({embeds: [embed], components: [row] }); 
-        client.channel.send({embeds: [suggerimentoinviato]});
+        message.channel.send({embeds: [suggerimentoinviato]});
     }
 })
 
