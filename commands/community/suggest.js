@@ -37,7 +37,7 @@ client.on("messageCreate", message => {
 })
 
 client.on("interactionCreate", interaction => {
-    if (interaction.customId == "approva") {
+    if (interaction.customId == "approvasuggest") {
         interaction.deferUpdate()
             interaction.channel.cache.get("944987091421499404").send({ embeds: [suggestaccettato] }).catch(() => { })
             return
