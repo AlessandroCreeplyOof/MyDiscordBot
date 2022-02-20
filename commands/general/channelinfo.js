@@ -44,18 +44,16 @@ client.on("messageCreate", message => {
                 .addField("📝 Category created", canale.createdAt.toDateString())
             return message.channel.send({ embeds: [embed] })
         }
-        if (canale.type == "Text") {
         var embed = new Discord.MessageEmbed()
             .setTitle(canale.name)
             .setDescription("Tutte le statistiche su questo canale")
-            .addField("📜 Channel ID", canale.id, true)
-            .addField("🗞️ Type", canale.type, true)
-            .addField("🔢 Position", canale.rawPosition.toString(), true)
-            .addField("🧱 Category", `<#${canale.parentId}>`, true)
-            .addField("🧾 Topic", !canale.topic ? "No topic" : canale.topic, true)
-            .addField("🔞 NSFW", canale.nsfw ? "Yes" : "No", true)
-            .addField("📝 Channel created", canale.createdAt.toDateString, "`"())
+            .addField("Channel ID", canale.id, true)
+            .addField("Type", canale.type, true)
+            .addField("Position", canale.rawPosition.toString(), true)
+            .addField("Category", `<#${canale.parentId}>`, true)
+            .addField("Topic", !canale.topic ? "No topic" : canale.topic, true)
+            .addField("NSFW", canale.nsfw ? "Yes" : "No", true)
+            .addField("Channel created", canale.createdAt.toDateString())
         message.channel.send({ embeds: [embed] })
     }
-}
 })
