@@ -6,7 +6,7 @@ global.client = new Discord.Client({
 
 client.login("OTM3MzQ1MTk3MDYxMzEyNTIz.YfaYvg.ALjAeWYBr4eOvS4fuLyfnUR0xuM")
 
-require('events').EventEmitter.prototype._maxListeners = 1000;
+require('events').EventEmitter.prototype._maxListeners = 100;
 
 const fs = require("fs");
 global.ytch = require('yt-channel-info');
@@ -48,19 +48,6 @@ client.on("message", message => {
     }
 
     comando.execute(message, args);
-})
-
-client.on("messageCreate", async (message, guild) => {
-    client.channels.fetch()
-    if(message.channel.type == "dm") {
-        const dmEmbed = new Discord.MessageEmbed()
-        .setTitle(`New DM`)
-        .setColor(`RANDOM`)
-        .setTimestamp()
-        .setDescription(`**User:** ${message.author.tag}\n**User ID:** ${message.author.id}\n**At:** ${new Date()}\n\n**Content** \`\`\`${message.content}\`\`\``)
-
-        client.channels.cache.get("944915188421910578").send({embeds: [dmEmbed]})
-    }
 })
 
 
