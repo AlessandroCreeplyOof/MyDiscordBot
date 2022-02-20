@@ -1,4 +1,5 @@
 const Discord = require("discord.js")
+require('events').EventEmitter.prototype._maxListeners = 100;
 
 client.on("messageCreate", message => {
     if (message.content.startsWith("!suggest")) {
