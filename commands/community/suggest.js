@@ -25,7 +25,21 @@ client.on("messageCreate", message => {
         .setDescription(suggest)
         .setTimestamp()
 
+        var suggestaccettato = new Discord.MessageEmbed()
+        .setTitle(`💡 Suggest by ${message.author.toString()}`)
+        .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/944975611791822848/suggestcanvas-removebg-preview.png")
+        .setColor("ORANGE")
+        .setDescription(suggest)
+        .setTimestamp()
+
         client.channels.cache.get("944545494531715112").send({embeds: [embed], components: [row] }); 
     }
 })
 
+client.on("interactionCreate", interaction => {
+    if (interaction.customId == "approva") {
+        interaction.deferUpdate()
+            interaction.channel.cache.get("944987091421499404").send({ embeds: [suggestaccettato] }).catch(() => { })
+            return
+    }
+})
