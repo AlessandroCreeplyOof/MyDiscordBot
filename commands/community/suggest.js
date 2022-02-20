@@ -39,7 +39,7 @@ client.on("messageCreate", message => {
 .setDescription(suggest)
 .setTimestamp()
 
-const suggerimentorfiutato = new Discord.MessageEmbed()
+const suggerimentorfiutatoo = new Discord.MessageEmbed()
 .setTitle(`❌ Il tuo suggerimento è stato rifiutato!`)
 .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/944975611791822848/suggestcanvas-removebg-preview.png")
 .setColor("RED")
@@ -59,7 +59,7 @@ client.on("interactionCreate", interaction => {
 client.on("interactionCreate", interaction => {
     if (interaction.customId == "rifiutasuggest") {
         interaction.deferUpdate()
-            interaction.user.send({embeds: [suggerimentorfiutato]})
+            interaction.user.send({embeds: [suggerimentorfiutatoo]})
     }
 })
 
