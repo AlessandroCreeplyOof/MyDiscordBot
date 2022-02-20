@@ -44,6 +44,7 @@ client.on("messageCreate", message => {
                 .addField("📝 Category created", canale.createdAt.toDateString())
             return message.channel.send({ embeds: [embed] })
         }
+        if (canale.type == "Text") {
         var embed = new Discord.MessageEmbed()
             .setTitle(canale.name)
             .setDescription("Tutte le statistiche su questo canale")
@@ -56,4 +57,5 @@ client.on("messageCreate", message => {
             .addField("📝 Channel created", canale.createdAt.toDateString, "`"())
         message.channel.send({ embeds: [embed] })
     }
+}
 })
