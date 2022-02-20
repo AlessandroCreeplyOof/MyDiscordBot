@@ -10,8 +10,8 @@ client.on("messageCreate", message => {
             .setEmoji("🥚")
     
         const chiudiUovo = new Discord.MessageButton()
-            .setLabel("Rifiuta Uovo")
-            .setCustomId("chiudiUovo")
+            .setLabel("Regala Uovo")
+            .setCustomId("regalaUovo")
             .setStyle("DANGER")
             .setEmoji("❌")
         
