@@ -16,8 +16,8 @@ setInterval(() => {
 
                 if (!giaMandato) {
                     client.channels.cache.get("935660406796591104").send(`🎥  -- NUOVO VIDEO -- 🎥
-Ciao, è appena uscito un video su **${response.items[0].author}**
-Andate a vedere "${response.items[0].title}"
+Ciao, è appena uscito un video sul canale di **${response.items[0].author}**
+Andate a vedere ora "${response.items[0].title}"
 https://www.youtu.be/${idVideo}`) //Importate non levare l'id del video
                 }
             })

@@ -1,22 +1,16 @@
 const Discord = require("discord.js")
 
-var nontrovato = new Discord.MessageEmbed()
-.setTitle(`Errore`)
-.setDescription(`Ooops, non sono riuscito a trovare questo utente!`)
-.setColor(`GREY`)
-.setThumbnail(`https://media.discordapp.net/attachments/941101779297378314/942011608996147230/giastanza-removebg-preview_1.png`)
+const nonpermesso1 = new Discord.MessageEmbed()
+.setTitle(`Error 404`)
+.setDescription(`Non hai il permesso per eseguire questa azione!`)
+.setColor(`ORANGE`)
+.setThumbnail(`https://media.discordapp.net/attachments/941101779297378314/944975611208794162/permsscanvas-removebg-preview.png`)
 
-var nonpermesso1 = new Discord.MessageEmbed()
-.setTitle(`Errore`)
-.setDescription(`Non hai il permesso per rimuovere le infrazioni a questo utente!`)
-.setColor(`RED`)
-.setThumbnail(`https://media.discordapp.net/attachments/941101779297378314/942011608996147230/giastanza-removebg-preview_1.png`)
-
-var nonmenzione = new Discord.MessageEmbed()
-.setTitle(`Errore`)
-.setDescription(`Non hai menzionato nessuno da cui togliere l'infrazione`)
-.setColor(`GREY`)
-.setThumbnail(`https://media.discordapp.net/attachments/941101779297378314/942011608996147230/giastanza-removebg-preview_1.png`)
+const nonmenzione = new Discord.MessageEmbed()
+.setTitle(`Error 404`)
+.setDescription("Non hai menzionato nessun utente da unbannare/mutare! \n \n **Syntax:** `!unban/unmute [utente]`")
+.setColor(`ORANGE`)
+.setThumbnail(`https://media.discordapp.net/attachments/941101779297378314/944976235568701491/mentionscanvas-removebg-preview.png`)
 
 client.on("messageCreate", message => {
     if (message.content.startsWith("!unmute")) {
@@ -32,8 +26,8 @@ client.on("messageCreate", message => {
 
         var embed = new Discord.MessageEmbed()
             .setTitle(`#UNMUTE ${utente.user.username}`)
-            .setDescription(`Utente unmutato da ${message.author.toString()}`)
-            .setTimestamp("")
+            .setDescription(`Moderator: ${message.author.toString()}`)
+            .setTimestamp()
             .setColor("PURPLE")
 
         message.channel.send({ embeds: [embed] })
@@ -57,10 +51,10 @@ client.on("messageCreate", async message => {
         message.guild.members.unban(idUtente)
             .then(() => {
                 var embed = new Discord.MessageEmbed()
-                    .setTitle("#UNBAN")
-                    .setDescription("Questo utente è stato sbannato")
-                    .setColor("GREEN")
-                    .setTimestamp("")
+                    .setTitle(`#UNBAN ${utente.user.username}`)
+                    .setDescription(`Moderator: ${message.author.toString()}`)
+                    .setColor("PURPLE")
+                    .setTimestamp()
 
                 message.channel.send({ embeds: [embed] })
                 client.channels.cache.get("944904295034290236").send({embeds: [embed]}); 

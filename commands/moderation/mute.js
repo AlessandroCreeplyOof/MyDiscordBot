@@ -1,22 +1,16 @@
 const Discord = require("discord.js")
 
-var nontrovato = new Discord.MessageEmbed()
-.setTitle(`Errore`)
-.setDescription(`Ooops, non sono riuscito a trovare questo utente!`)
-.setColor(`GREY`)
-.setThumbnail(`https://media.discordapp.net/attachments/941101779297378314/942011608996147230/giastanza-removebg-preview_1.png`)
+const nonpermesso1 = new Discord.MessageEmbed()
+.setTitle(`Error 404`)
+.setDescription(`Non hai il permesso per eseguire questa azione!`)
+.setColor(`ORANGE`)
+.setThumbnail(`https://media.discordapp.net/attachments/941101779297378314/944975611208794162/permsscanvas-removebg-preview.png`)
 
-var nonpermesso1 = new Discord.MessageEmbed()
-.setTitle(`Errore`)
-.setDescription(`Non hai il permesso per mutare questo utente!`)
-.setColor(`RED`)
-.setThumbnail(`https://media.discordapp.net/attachments/941101779297378314/942011608996147230/giastanza-removebg-preview_1.png`)
-
-var nonmenzione = new Discord.MessageEmbed()
-.setTitle(`Errore`)
-.setDescription(`Non hai menzionato nessuno da mutare!`)
-.setColor(`GREY`)
-.setThumbnail(`https://media.discordapp.net/attachments/941101779297378314/942011608996147230/giastanza-removebg-preview_1.png`)
+const nonmenzione = new Discord.MessageEmbed()
+.setTitle(`Error 404`)
+.setDescription("Non hai menzionato nessun utente da mutare! \n \n **Syntax:** `!mute [utente]`")
+.setColor(`ORANGE`)
+.setThumbnail(`https://media.discordapp.net/attachments/941101779297378314/944976235568701491/mentionscanvas-removebg-preview.png`)
 
 client.on("messageCreate", message => {
     if (message.content.startsWith("!mute")) {
@@ -37,8 +31,8 @@ client.on("messageCreate", message => {
         .setTimestamp("")
 
         var embed = new Discord.MessageEmbed()
-            .setTitle(`#MUTE ${utente.user.username}`)
-            .setDescription(`L'utente ${utente.user.username} è stato mutato \n \n 🌐 Moderatore: ${message.author.toString()}`)
+            .setAuthor(`#MUTE ${utente.user.username}`)
+            .setDescription(`Reason: \n Nessun Motivo \n Moderator: ${message.author.toString()}`)
             .setColor("PURPLE")
             .setTimestamp("")
 
