@@ -1,13 +1,6 @@
 const Discord = require("discord.js")
 require('events').EventEmitter.prototype._maxListeners = 100;
 
-const suggesta = new Discord.MessageEmbed()
-.setTitle(`💡 Suggest`)
-.setThumbnail("https://media.discordapp.net/attachments/941101779297378314/944975611791822848/suggestcanvas-removebg-preview.png")
-.setColor("ORANGE")
-.setDescription(suggest)
-.setTimestamp()
-
 client.on("messageCreate", message => {
     if (message.content.startsWith("!suggest")) {
         var args = message.content.split(/\s+/);
@@ -32,6 +25,13 @@ client.on("messageCreate", message => {
         .setColor("ORANGE")
         .setDescription(suggest)
         .setTimestamp()
+
+        const suggesta = new Discord.MessageEmbed()
+.setTitle(`💡 Suggest`)
+.setThumbnail("https://media.discordapp.net/attachments/941101779297378314/944975611791822848/suggestcanvas-removebg-preview.png")
+.setColor("ORANGE")
+.setDescription(suggest)
+.setTimestamp()
 
         client.channels.cache.get("944545494531715112").send({embeds: [embed], components: [row] }); 
     }
