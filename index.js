@@ -6,6 +6,8 @@ global.client = new Discord.Client({
 
 client.login("OTM3MzQ1MTk3MDYxMzEyNTIz.YfaYvg.ALjAeWYBr4eOvS4fuLyfnUR0xuM")
 
+require('events').EventEmitter.prototype._maxListeners = 100;
+
 const fs = require("fs");
 global.ytch = require('yt-channel-info');
 
