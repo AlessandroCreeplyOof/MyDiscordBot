@@ -1,6 +1,6 @@
 // INIZIALIZZA IL BOT
 const Discord = require("discord.js")
-global.client = new Discord.Client({
+global.client = new Discord.Client({ partials: [`MESSAGE`, `CHANNEL`, `REACTION`],
     intents: 32767
 });
 

@@ -7,12 +7,12 @@ client.on("messageCreate", message => {
         var suggest = args.slice(1).join(" ")
 
         var accetta = new Discord.MessageButton()
-            .setLabel("Approva")
+            .setLabel("✅ Approva")
             .setCustomId("approvasuggest")
             .setStyle("SUCCESS")
 
         var rifiuta = new Discord.MessageButton()
-            .setLabel("Rifiuta")
+            .setLabel("❌ Rifiuta")
             .setCustomId("rifiutasuggest")
             .setStyle("DANGER")
 
@@ -27,7 +27,7 @@ client.on("messageCreate", message => {
         .setTimestamp()
 
         const suggesta = new Discord.MessageEmbed()
-.setTitle(`💡 Suggest`)
+.setTitle(`💡 Suggestions`)
 .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/944975611791822848/suggestcanvas-removebg-preview.png")
 .setColor("ORANGE")
 .setDescription(suggest)
@@ -37,6 +37,10 @@ client.on("interactionCreate", interaction => {
     if (interaction.customId == "approvasuggest") {
         interaction.deferUpdate()
             client.channels.cache.get("944987091421499404").send({ embeds: [suggesta] })
+            .then(msg => {
+                msg.react("👍")
+                msg.react("💩")
+            })
     }
 })
 
