@@ -18,12 +18,12 @@ client.on("messageCreate", message => {
         var suggest = args.slice(1).join(" ")
 
         if (!suggest) {
-            error({embeds: [nonvalido]})
+            message.channel.send({embeds: [nonvalido]})
             return
         }
 
         if (suggest.lenght > 500) {
-            error({embeds: [troppolungo]})
+            message.channel.send({embeds: [troppolungo]})
             return
         }
 
