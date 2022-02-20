@@ -6,7 +6,7 @@ client.on("messageCreate", message => {
         var suggest = args[1]
 
         var embed = new Discord.MessageEmbed()
-        .setTitle(`💡Suggerimento by + ${message.author.toString}`)
+        .setTitle(`💡 Nuovo Suggerimento`)
         .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/944975611791822848/suggestcanvas-removebg-preview.png")
         .setDescription(suggest)
         .setTimestamp()
