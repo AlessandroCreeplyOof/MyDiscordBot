@@ -1,4 +1,6 @@
-const Discord = require("discord.js")
+const Discord = require("discord.js");
+const { MembershipStates } = require("discord.js/typings/enums");
+const { userInfo } = require("os");
 require('events').EventEmitter.prototype._maxListeners = 100;
 
 client.on("messageCreate", message => {
@@ -39,6 +41,13 @@ client.on("messageCreate", message => {
 .setDescription(suggest)
 .setTimestamp()
 
+const suggerimentorfiutato = new Discord.MessageEmbed()
+.setTitle(`❌ Il tuo suggerimento è stato rifiutato!`)
+.setThumbnail("https://media.discordapp.net/attachments/941101779297378314/944975611791822848/suggestcanvas-removebg-preview.png")
+.setColor("RED")
+.setDescription("Il tuo suggerimento purtroppo è stato rifiutato dallo staff, grazie per l'impegno per il suggerimento! \n \n Contenuto Suggerimento: \n", suggest)
+.setTimestamp()
+
 client.on("interactionCreate", interaction => {
     if (interaction.customId == "approvasuggest") {
         interaction.deferUpdate()
@@ -49,6 +58,13 @@ client.on("interactionCreate", interaction => {
             })
     }
 })
+client.on("interactionCreate", interaction => {
+    if (interaction.customId == "rifiutasuggest") {
+        interaction.deferUpdate()
+            interaction.member.send({embeds: [suggerimentorfiutato]})
+    }
+})
+
         client.channels.cache.get("936758688180473887").send({embeds: [embed], components: [row] }); 
         message.channel.send({embeds: [suggerimentoinviato]});
     }
