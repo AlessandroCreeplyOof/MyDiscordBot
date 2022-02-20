@@ -1,10 +1,9 @@
 const Discord = require("discord.js")
 
 var nontrovato = new Discord.MessageEmbed()
-.setTitle("Errore") //Titolo
-.setColor("GREY") // Colore principale
-.setDescription("Non ho trovato questo canale/categoria!") //Descrizione
-.setThumbnail("https://cdn.discordapp.com/attachments/941101779297378314/942011608996147230/giastanza-removebg-preview_1.png")
+.setTitle("Error 404") //Titolo
+.setColor("ORANGE") // Colore principale
+.setDescription("Non ho trovato questo canale/categoria \n \n **Syntax:** `!channelinfo [canale/categoria]`") //Descrizione
 
 client.on("messageCreate", message => {
     if (message.content.startsWith("!channelinfo")) {
