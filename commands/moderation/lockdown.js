@@ -2,13 +2,12 @@ const Discord = require("discord.js")
 
 var lockdownon = new Discord.MessageEmbed()
 .setTitle(`LOCKDOWN ATTIVATO`)
-.setDescription(`Da questo momento non sarà più possibile inviare messaggi nel server!`)
+.setDescription(`E' appena stato attivato il sistema di LOCKDOWN del server! \n \n Da ora fino a tempo inderminato tutti gli utenti non potranno più visualizzare i canali del server`)
 .setColor(`RED`)
-.setThumbnail(`https://media.discordapp.net/attachments/941101779297378314/941101829847130122/noperms.png`)
 
 var lockdownoff = new Discord.MessageEmbed()
 .setTitle(`LOCKDOWN DISATTIVATO`)
-.setDescription(`Da ora sarà possibile continuare a mandare messaggi nel server!`)
+.setDescription(`E' stato finalmente disattivato il sistema di LOCKDOWN del server! \n \n Da ora potrete continuare a chattare nel server! Buona permanenza e ci scusiamo per il disagio`)
 .setColor(`GREEN`)
 .setThumbnail(`https://media.discordapp.net/attachments/941101779297378314/941101829457051738/eseguito.png`)
 
