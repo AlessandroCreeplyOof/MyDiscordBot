@@ -1,10 +1,31 @@
 const Discord = require("discord.js");
+const { BulkOperationBase } = require("mongodb");
 require('events').EventEmitter.prototype._maxListeners = 100;
+
+var troppolungo = new Discord.MessageEmbed()
+.setTitle(`💡 Suggerimento troppo lungo!`)
+.setColor("ORANGE")
+.setDescription("Il testo da te mandato è troppo lungo! \n `Max: 500 Caratteri`")
+
+var nonvalido = new Discord.MessageEmbed()
+.setTitle(`💡 Suggerimento non valido`)
+.setColor("ORANGE")
+.setDescription("Non hai inserito nessun testo! \n `Syntax: !suggest [testo]`")
 
 client.on("messageCreate", message => {
     if (message.content.startsWith("!suggest")) {
         var args = message.content.split(/\s+/);
         var suggest = args.slice(1).join(" ")
+
+        if (!suggest) {
+            error({embeds: [nonvalido]})
+            return
+        }
+
+        if (suggest.lenght > 500) {
+            error({embeds: [troppolungo]})
+            return
+        }
 
 // Embed & Buttons
 
@@ -69,7 +90,7 @@ client.on("interactionCreate", interaction => {
 })
 client.on("interactionCreate", interaction => {
     if (interaction.customId == "rifiutasuggest") {
-        interaction.message.edit({embeds: [giaaccettato], components: [null]})
+        client.message.set({embeds: [giaaccettato], components: [null]})
         interaction.deferUpdate()
             interaction.user.send({embeds: [suggerimentorfiutatoo]})
     }
