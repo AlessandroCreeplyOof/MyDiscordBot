@@ -49,7 +49,7 @@ var menu = new Discord.MessageSelectMenu()
 .addOptions([
     {
         label: `Giorno 1`,
-        emoji: `<:regalo:944925534624821248>`,
+        setEmoji: `<:regalo:944925534624821248>`,
     }
 ])
 
