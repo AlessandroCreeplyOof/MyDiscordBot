@@ -21,7 +21,7 @@ client.on("messageCreate", message => {
 
         var logblock = new Discord.MessageEmbed()
             .setTitle("E' stata rilevata una parola bloccata!")
-            .setDescription("E' stata scritta una parola bloccata! \rParola bloccata: " + parola)
+            .setDescription("E' stata scritta una parola bloccata! \rParola bloccata: " + testo)
             .setColor("ORANGE")
             .setThumbnail("https://cdn.discordapp.com/attachments/941101779297378314/941101829847130122/noperms.png")
 
