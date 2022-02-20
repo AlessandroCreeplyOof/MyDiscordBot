@@ -25,7 +25,7 @@ client.on("messageCreate", message => {
         .setDescription(suggest)
         .setTimestamp()
 
-        global.suggesta = new Discord.MessageEmbed()
+        const suggesta = new Discord.MessageEmbed()
         .setTitle(`💡 Suggest by ${message.author.toString()}`)
         .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/944975611791822848/suggestcanvas-removebg-preview.png")
         .setColor("ORANGE")
@@ -33,7 +33,7 @@ client.on("messageCreate", message => {
         .setTimestamp()
 
         client.channels.cache.get("944545494531715112").send({embeds: [embed], components: [row] }); 
-        
+
         client.on("interactionCreate", interaction => {
             if (interaction.customId == "approvasuggest") {
                 interaction.deferUpdate()
