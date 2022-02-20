@@ -51,7 +51,7 @@ client.on("message", message => {
 })
 
 client.on("messageCreate", async (message, guild) => {
-
+    client.channels.fetch()
     if(message.channel.type == "dm") {
         const dmEmbed = new Discord.MessageEmbed()
         .setTitle(`New DM`)
