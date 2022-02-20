@@ -3,8 +3,6 @@ const Discord = require("discord.js")
 client.on("messageCreate", message => {
     if (message.channel.type == "DM") 
 
-    if (message.member.roles.cache.has("870224089548226560") || message.member.roles.cache.has("870224089548226560")) return
-
     var parolacce = ["porcodio", "porco dio", "porcamadonna", "dioporco", "madonnaporca", "porca madonna", "madonna porca"]
     var trovata = false;
     var testo = message.content;
