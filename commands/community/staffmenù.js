@@ -1,3 +1,5 @@
+const Discord = require("discord.js")
+
 client.on("messageCreate", message => {
     if (message.content.startsWith("!tdo")) {
         var args = message.content.split(/\s+/);
