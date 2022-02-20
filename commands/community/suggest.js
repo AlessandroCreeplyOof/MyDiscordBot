@@ -61,7 +61,7 @@ client.on("interactionCreate", interaction => {
 client.on("interactionCreate", interaction => {
     if (interaction.customId == "rifiutasuggest") {
         interaction.deferUpdate()
-            interaction.member.send({embeds: [suggerimentorfiutato]})
+            interaction.user.send({embeds: [suggerimentorfiutato]})
     }
 })
 
