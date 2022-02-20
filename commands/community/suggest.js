@@ -2,7 +2,7 @@ const Discord = require("discord.js")
 require('events').EventEmitter.prototype._maxListeners = 100;
 
 const suggesta = new Discord.MessageEmbed()
-.setTitle(`💡 Suggest by ${message.author.toString()}`)
+.setTitle(`💡 Suggest`)
 .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/944975611791822848/suggestcanvas-removebg-preview.png")
 .setColor("ORANGE")
 .setDescription(suggest)
