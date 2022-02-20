@@ -25,13 +25,6 @@ client.on("messageCreate", message => {
         .setDescription(suggest)
         .setTimestamp()
 
-        const suggesta = new Discord.MessageEmbed()
-        .setTitle(`💡 Suggest by ${message.author.toString()}`)
-        .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/944975611791822848/suggestcanvas-removebg-preview.png")
-        .setColor("ORANGE")
-        .setDescription(suggest)
-        .setTimestamp()
-
         client.channels.cache.get("944545494531715112").send({embeds: [embed], components: [row] }); 
     }
 })
@@ -39,6 +32,12 @@ client.on("messageCreate", message => {
 client.on("interactionCreate", interaction => {
     if (interaction.customId == "approvasuggest") {
         interaction.deferUpdate()
+        const suggesta = new Discord.MessageEmbed()
+        .setTitle(`💡 Suggest by ${message.author.toString()}`)
+        .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/944975611791822848/suggestcanvas-removebg-preview.png")
+        .setColor("ORANGE")
+        .setDescription(suggest)
+        .setTimestamp()
             client.channels.cache.get("944987091421499404").send({ embeds: [suggesta] })
     }
 })
