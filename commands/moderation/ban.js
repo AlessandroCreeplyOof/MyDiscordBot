@@ -35,14 +35,14 @@ client.on("messageCreate", message => {
 
                         const logban = new Discord.MessageEmbed()
                             .setTitle(`#BAN ${utente.user.username}`)
-                            .setDescription(`Nuovo ban \n ${utente.user.username} è stato bannato dal server \n 🌐 Moderatore: ${message.author.toString()} \n 💬 Motivo: Non disponibile`)
+                            .setDescription(`**Nuovo ban** \n ${utente.user.username} è stato bannato dal server \n \n 🌐 Moderatore: ${message.author.toString()} \n \n 💬 Motivo: Non disponibile`)
                             .setColor("RED")
                             .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/941101829046042755/ban.png")
 
 
                         const embed = new Discord.MessageEmbed()
                             .setTitle(`#BAN ${utente.user.username}`)
-                            .setDescription(`L'utente ${utente.user.username} è stato bannato dal server \n 🌐 Operatore: ${message.author.toString()} \n 💬 Motivo: Non disponibile`)
+                            .setDescription(`L'utente ${utente.user.username} è stato bannato dal server \n \n 🌐 Operatore: ${message.author.toString()} \n \n 💬 Motivo: Non disponibile`)
                             .setColor("ORANGE")
                             .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/941101829046042755/ban.png")
         

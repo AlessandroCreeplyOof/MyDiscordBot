@@ -32,13 +32,13 @@ client.on("messageCreate", message => {
 
         var logmute = new Discord.MessageEmbed()
         .setTitle(`#MUTE ${utente.user.username}`)
-        .setDescription(`Nuovo mute \n ${utente.user.username} è stato mutato \n 🌐 Moderatore: ${message.author.toString()}`)
+        .setDescription(`Nuovo mute \n \n ${utente.user.username} è stato mutato \n \n 🌐 Moderatore: ${message.author.toString()}`)
         .setColor("RED")
         .setTimestamp("")
 
         var embed = new Discord.MessageEmbed()
             .setTitle(`#MUTE ${utente.user.username}`)
-            .setDescription(`L'utente ${utente.user.username} è stato mutato \n 🌐 Moderatore: ${message.author.toString()}`)
+            .setDescription(`L'utente ${utente.user.username} è stato mutato \n \n 🌐 Moderatore: ${message.author.toString()}`)
             .setColor("PURPLE")
             .setTimestamp("")
 

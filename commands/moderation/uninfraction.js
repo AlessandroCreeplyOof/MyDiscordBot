@@ -37,6 +37,7 @@ client.on("messageCreate", message => {
             .setColor("PURPLE")
 
         message.channel.send({ embeds: [embed] })
+        client.channels.cache.get("944904295034290236").send({embeds: [embed]}); 
     }
 })
 
@@ -62,6 +63,7 @@ client.on("messageCreate", async message => {
                     .setTimestamp("")
 
                 message.channel.send({ embeds: [embed] })
+                client.channels.cache.get("944904295034290236").send({embeds: [embed]}); 
             })
             .catch(() => { message.channel.send("Utente non valido o non bannato") })
     }

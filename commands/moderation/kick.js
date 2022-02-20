@@ -32,13 +32,21 @@ client.on("messageCreate", message => {
         }
         utente.kick()
             .then(() => {
+
                 var embed = new Discord.MessageEmbed()
                     .setTitle(`#KICK ${utente.user.username}`)
-                    .setDescription(`Utente kickato da ${message.author.toString()}`)
+                    .setDescription(`L'utente ${utente.user.username} è stato kickato! \n \n 🌐 Moderatore: ${message.author.toString()}`)
                     .setColor("PURPLE")
                     .setThumbnail("https://cdn.discordapp.com/attachments/941101779297378314/941101829046042755/ban.png")
 
+                var logkick = new Discord.MessageEmbed()
+                    .setTitle(`#KICK ${utente.user.username}`)
+                    .setDescription(`**Nuovo Kick** \n \n ${utente.user.username} è stato kickato \n \n 🌐 Moderatore: ${message.author.toString()}`)
+                    .setColor("RED")
+                    .setThumbnail("https://cdn.discordapp.com/attachments/941101779297378314/941101829046042755/ban.png")
+
                 message.channel.send({ embeds: [embed] })
+                client.channels.cache.get("944904295034290236").send({embeds: [logkick]}); 
             })
     }
 })
