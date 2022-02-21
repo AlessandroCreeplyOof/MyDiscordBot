@@ -58,23 +58,29 @@ client.on("messageCreate", message => {
 .setTimestamp()
 
 const suggerimentorfiutatoo = new Discord.MessageEmbed()
-.setTitle(`❌ Il tuo suggerimento è stato rifiutato!`)
+.setTitle(`❌ Suggerimento RIFIUTATO`)
 .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/944975611791822848/suggestcanvas-removebg-preview.png")
 .setColor("RED")
-.setDescription("Il tuo suggerimento purtroppo è stato rifiutato dallo staff, grazie per l'impegno per il suggerimento!")
-.setTimestamp()
+.setDescription("Il tuo suggerimento purtroppo è stato **RIFIUTATO**")
+.addField(":bookmark_tabs: Il tuo suggerimento", suggest, true)
 
 const giaaccettato = new Discord.MessageEmbed()
 .setTitle(`👍 Questo suggerimento è stato già accettato!`)
 .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/944975611791822848/suggestcanvas-removebg-preview.png")
 .setColor("GREEN")
-.setDescription("`Questo suggerimento è stato accettato da un moderatore!` \n \n", suggest)
-.setTimestamp()
+.setDescription("`Questo suggerimento è stato accettato da un moderatore!`")
+
+const giarifiutato = new Discord.MessageEmbed()
+.setTitle(`👍 Questo suggerimento è stato già rifiutato!`)
+.setThumbnail("https://media.discordapp.net/attachments/941101779297378314/944975611791822848/suggestcanvas-removebg-preview.png")
+.setColor("GREEN")
+.setDescription("`Questo suggerimento è stato rifiutato da un moderatore!`", suggest)
 
 // INTERAZIONI
 
 client.on("interactionCreate", interaction => {
     if (interaction.customId == "approvasuggest") {
+        interaction.editReply({embeds: [giaaccettato]})
         interaction.deferUpdate()
             client.channels.cache.get("944987091421499404").send({ embeds: [suggesta] })
             .then(msg => {
@@ -85,6 +91,7 @@ client.on("interactionCreate", interaction => {
 })
 client.on("interactionCreate", interaction => {
     if (interaction.customId == "rifiutasuggest") {
+        interaction.editReply({embeds: [giarifiutato]})
         interaction.deferUpdate()
             interaction.user.send({embeds: [suggerimentorfiutatoo]})
     }
