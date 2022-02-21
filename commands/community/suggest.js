@@ -51,7 +51,7 @@ client.on("messageCreate", message => {
          .setTimestamp()
 
         const suggesta = new Discord.MessageEmbed()
-.setTitle(`💡 Suggestions`)
+.setTitle(`💡 Suggestions by ${message.user.name}`)
 .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/944975611791822848/suggestcanvas-removebg-preview.png")
 .setColor("ORANGE")
 .setDescription(suggest)

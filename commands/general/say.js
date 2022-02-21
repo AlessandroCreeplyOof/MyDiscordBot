@@ -23,7 +23,7 @@ client.on("messageCreate", message => {
 
         //Embed
         var log = new Discord.MessageEmbed()
-            .setTitle("Say By Utente")
+            .setTitle(`Say By ${message.author.name}`)
             .setDescription(testo)
             .setColor("GREEN")
             .setTimestamp()
