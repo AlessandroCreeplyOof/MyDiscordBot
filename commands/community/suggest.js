@@ -51,17 +51,25 @@ client.on("messageCreate", message => {
          .setTimestamp()
 
         const suggesta = new Discord.MessageEmbed()
-.setTitle(`💡 Suggestions by <@${message.author.name()}>`)
+.setTitle(`💡 Suggestions by ${message.author.toString()}`)
 .setThumbnail(message.author.displayAvatarURL())
 .setColor("ORANGE")
 .setDescription(suggest)
 .setTimestamp()
+.setFooter(`ID Suggeritore: ${message.author.toString()}`)
 
 const suggerimentorfiutatoo = new Discord.MessageEmbed()
 .setTitle(`❌ Suggerimento RIFIUTATO`)
 .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/944975611791822848/suggestcanvas-removebg-preview.png")
 .setColor("RED")
 .setDescription("Il tuo suggerimento purtroppo è stato **RIFIUTATO**")
+.addField(":bookmark_tabs: Il tuo suggerimento", suggest, true)
+
+const suggerimentoaccettato = new Discord.MessageEmbed()
+.setTitle(`❌ Suggerimento ACCETTATO`)
+.setThumbnail("https://media.discordapp.net/attachments/941101779297378314/944975611791822848/suggestcanvas-removebg-preview.png")
+.setColor("RED")
+.setDescription("Complimenti! Il tuo suggerimento è stato **ACCETTATO**")
 .addField(":bookmark_tabs: Il tuo suggerimento", suggest, true)
 
 const giaaccettato = new Discord.MessageEmbed()
@@ -80,6 +88,7 @@ const giarifiutato = new Discord.MessageEmbed()
 
 client.on("interactionCreate", interaction => {
     if (interaction.customId == "approvasuggest") {
+        interaction.user.send({embeds: [suggerimentoaccettato]})
         interaction.deferUpdate()
             client.channels.cache.get("944987091421499404").send({ embeds: [suggesta] })
             .then(msg => {
@@ -90,6 +99,7 @@ client.on("interactionCreate", interaction => {
 })
 client.on("interactionCreate", interaction => {
     if (interaction.customId == "rifiutasuggest") {
+        interaction.deferUpdate()
             interaction.user.send({embeds: [suggerimentorfiutatoo]})
     }
 })
