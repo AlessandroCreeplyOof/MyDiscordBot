@@ -23,9 +23,9 @@ client.on("messageCreate", message => {
 
         //Embed
         var log = new Discord.MessageEmbed()
-            .setTitle(`Say By ${message.author.name}`)
+            .setTitle(`Say By ${message.author.ToString()}`)
             .setDescription(testo)
-            .setColor("GREEN")
+            .setColor("BLURPLE")
             .setTimestamp()
 
         message.channel.send(testo)
