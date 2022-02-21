@@ -80,7 +80,6 @@ const giarifiutato = new Discord.MessageEmbed()
 
 client.on("interactionCreate", interaction => {
     if (interaction.customId == "approvasuggest") {
-        interaction.MessageButton.setDisable
         interaction.deferUpdate()
             client.channels.cache.get("944987091421499404").send({ embeds: [suggesta] })
             .then(msg => {
@@ -91,7 +90,6 @@ client.on("interactionCreate", interaction => {
 })
 client.on("interactionCreate", interaction => {
     if (interaction.customId == "rifiutasuggest") {
-        interaction.MessageButton.setDisable
             interaction.user.send({embeds: [suggerimentorfiutatoo]})
     }
 })
