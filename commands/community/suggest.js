@@ -80,7 +80,7 @@ const giarifiutato = new Discord.MessageEmbed()
 
 client.on("interactionCreate", interaction => {
     if (interaction.customId == "approvasuggest") {
-        interaction.editReply({embeds: [giaaccettato]})
+        interaction.editReply()
         interaction.deferUpdate()
             client.channels.cache.get("944987091421499404").send({ embeds: [suggesta] })
             .then(msg => {
@@ -91,8 +91,7 @@ client.on("interactionCreate", interaction => {
 })
 client.on("interactionCreate", interaction => {
     if (interaction.customId == "rifiutasuggest") {
-        interaction.editReply({embeds: [giarifiutato]})
-        interaction.deferUpdate()
+        interaction.editReply()
             interaction.user.send({embeds: [suggerimentorfiutatoo]})
     }
 })
