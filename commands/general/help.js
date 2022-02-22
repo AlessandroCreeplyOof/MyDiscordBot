@@ -30,7 +30,7 @@ const row = new Discord.MessageActionRow()
         label: "Private Rooms",
         description: "Comandi delle stanze private del server",
         value: "rooms",
-        emoji: " 🔐",
+        emoji: "🔐",
     },
     {
         label: "Tickets",
