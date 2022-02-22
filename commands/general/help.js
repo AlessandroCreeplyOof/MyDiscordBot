@@ -11,6 +11,7 @@ const row = new Discord.MessageActionRow()
     {
         label: "General",
         description: "Comandi generali del server!",
+        setCustomId: "general",
         value: "general",
         emoji: "🎡",
     },
@@ -41,6 +42,11 @@ const row = new Discord.MessageActionRow()
 ])
 )
 
+const general = new Discord.MessageEmbed()
+.setTitle("Comandi GENERAL")
+.setDescription("I comandi più generici del server: \n \n **!social** \n Visualizza tutti i social di Creeply")
+.addField("!youtube", "Visualizza il canale youtube di Creeply", true)
+
 client.on("messageCreate", message => {
     if (message.content == ("!help")) {
         var helpembed = new Discord.MessageEmbed()
@@ -51,3 +57,12 @@ client.on("messageCreate", message => {
         message.channel.send({embeds: [helpembed], components: [row]})
     }
 })
+
+client.on("interactionCreate", interaction => {
+    if (interaction.customId == "general") {
+        interaction.deferUpdate()
+        .then(msg => {
+            msg.edit(embeds [general], components [row])
+        })
+            return
+        }})
