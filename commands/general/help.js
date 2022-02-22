@@ -24,13 +24,13 @@ const row = new Discord.MessageActionRow()
         label: "Moderazione",
         description: "Comandi di moderazione del server",
         value: "moderazione",
-        emoji: ":police_officer:",
+        emoji: "👮",
     },
     {
         label: "Private Rooms",
         description: "Comandi delle stanze private del server",
         value: "rooms",
-        emoji: ":closed_lock_with_key:",
+        emoji: " 🔐",
     },
     {
         label: "Tickets",
