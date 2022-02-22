@@ -2,7 +2,7 @@ const Discord = require("discord.js")
 
 client.on('ready', () => {
     //Stato classico (Sta guardando..., Sta giocando a...)
-    client.user.setActivity('Changelog V0222', { type: 'LISTENING' }); //Oppure LISTENING, PLAYING
+    client.user.setActivity('Creeply', { type: 'LISTENING' }); //Oppure LISTENING, PLAYING
     client.user.setStatus('online') //Oppure idle, dnd, invisible
 })
 
