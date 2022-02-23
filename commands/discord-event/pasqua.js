@@ -30,14 +30,21 @@ client.on("messageCreate", message => {
             .setThumbnail("https://cdn.discordapp.com/attachments/941101779297378314/942865860765298718/PasquaEgg.png") //Copertina
 
             message.channel.send({embeds: [embed], components: [row]})
-    }
-})
 
-const uovoaperto = new Discord.MessageEmbed()
+            const uovoaperto = new Discord.MessageEmbed()
 .setTitle("Uovo Di Pasqua | Aperto con successo")
 .setColor("AQUA")
 .setDescription("Hai aperto con successo un uovo di pasqua! \n \n <:regalo:944925534624821248> Non hai ricevuto nulla... Mi spiace... \n ⏰ Giorno: 1")
 .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/944926917897883678/EggAperto.png")
+
+client.on("interactionCreate", interaction => {
+    if (interaction.customId == "apriUovo") {
+        interaction.deferUpdate()
+        const msg = interaction.channel.send({ embeds: [uovoaperto], components: [row] , })
+        msg.edit({ embeds: [embed] })
+        }})
+    }
+})
 
 const row = new Discord.MessageActionRow()
 .addComponents(
@@ -91,10 +98,3 @@ var menu = new Discord.MessageSelectMenu()
 .setCustomId("menu")
 .setMinValues("1")
 .setMaxValues("1")
-
-client.on("interactionCreate", interaction => {
-    if (interaction.customId == "apriUovo") {
-        interaction.deferUpdate()
-        const msg = interaction.channel.send({ embeds: [uovoaperto], components: [row] , })
-        msg.edit({ embeds: [embed] })
-        }})
