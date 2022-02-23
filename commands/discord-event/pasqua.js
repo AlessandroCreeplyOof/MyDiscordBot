@@ -66,6 +66,12 @@ client.on("messageCreate", message => {
                     description: "Apri il sesto uovo dell'evento!",
                     value: "uovo6",
                     emoji: "<:regalo:944925534624821248>",
+                },
+                {
+                    label: "Giorno 7",
+                    description: "Apri il settimo uovo dell'evento!",
+                    value: "uovo7",
+                    emoji: "<:regalo:944925534624821248>",
                 }
             ])
             )
