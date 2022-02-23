@@ -82,7 +82,7 @@ client.on("messageCreate", message => {
             .setDescription("Oooh! Un uovo di pasqua, hai trovato un uovo di pasqua, clicca il pulsante sotto stante per aprirlo! \n \n *I Regali sono completamente casuali*") //Descrizione
             .setThumbnail("https://cdn.discordapp.com/attachments/941101779297378314/942865860765298718/PasquaEgg.png") //Copertina
 
-            message.channel.send({embeds: [embed], components: [uovomenu]})
+            message.channel.send({embeds: [embed], components: [row]})
 
             const uovoaperto = new Discord.MessageEmbed()
 .setTitle("Uovo Di Pasqua | Aperto con successo")
@@ -93,7 +93,7 @@ client.on("messageCreate", message => {
 client.on("interactionCreate", interaction => {
     if (interaction.customId == "apriUovo") {
         interaction.deferUpdate()
-        const msg = interaction.channel.send({ embeds: [uovoaperto], components: [row] , })
+        const msg = interaction.channel.send({ embeds: [uovoaperto], components: [uovomenu] , })
         msg.edit({ embeds: [embed] })
         }})
     }
