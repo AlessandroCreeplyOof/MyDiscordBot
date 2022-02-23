@@ -18,6 +18,9 @@ var chiudiTicket = new Discord.MessageButton()
 .setCustomId("chiudiTicket")
 .setStyle("DANGER")
 
+const chiudilo = new Discord.MessageActionRow()
+.addComponents(chiudiTicket)
+
 var ticket1 = new Discord.MessageEmbed()
 .setTitle("🚑 Benvenuto nel tuo ticket")
 .setColor("#FFAC33")
@@ -70,7 +73,7 @@ client.on("interactionCreate", interaction => {
                 }
             ]
         }).then(canale => {
-            canale.send( { embeds: [ticket1] }, { components: [chiudiTicket] } )
+            canale.send( { embeds: [ticket1] }, { components: [chiudilo] } )
         })
     }
 })
