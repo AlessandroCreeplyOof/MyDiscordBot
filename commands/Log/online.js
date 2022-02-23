@@ -7,8 +7,7 @@ var minuti = data.getMinutes();
 
 const online = new Discord.MessageEmbed()
 .setTitle("Bot ONLINE")
-.setDescription("⏰ Time")
-.addField(datag, hours, minuti)
+.setDescription("⏰ Il bot è online!")
 .setColor("DARK_GREEN")
 
 const offline = new Discord.MessageEmbed()

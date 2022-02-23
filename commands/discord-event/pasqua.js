@@ -99,8 +99,6 @@ client.on("messageCreate", message => {
 client.on("interactionCreate", interaction => {
     if (interaction.customId == "apriUovo") {
         interaction.deferUpdate()
-        const msg = interaction.channel.send({ embeds: [uovoaperto], components: [uovomenu] , })
-        msg.edit({ embeds: [embed] })
         }})
     }
 })
