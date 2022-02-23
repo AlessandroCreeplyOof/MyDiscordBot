@@ -36,7 +36,7 @@ client.on("messageCreate", message => {
 const uovoaperto = new Discord.MessageEmbed()
 .setTitle("Uovo Di Pasqua | Aperto con successo")
 .setColor("AQUA")
-.setDescription("Hai aperto con successo un uovo di pasqua! \n \n <:regalo:944925534624821248> Premio: 500+ XP \n ⏰ Giorno: 1")
+.setDescription("Hai aperto con successo un uovo di pasqua! \n \n <:regalo:944925534624821248> Non hai ricevuto nulla... Mi spiace... \n ⏰ Giorno: 1")
 .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/944926917897883678/EggAperto.png")
 
 const row = new Discord.MessageActionRow()
@@ -95,6 +95,6 @@ var menu = new Discord.MessageSelectMenu()
 client.on("interactionCreate", interaction => {
     if (interaction.customId == "apriUovo") {
         interaction.deferUpdate()
-        interaction.message.edit({ embeds: [uovoaperto], components: [row] })
+        interaction.channel.send({ embeds: [uovoaperto], components: [row] })
             return
         }})
