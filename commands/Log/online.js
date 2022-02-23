@@ -1,10 +1,9 @@
 const Discord = require("discord.js")
 
 const online = new Discord.MessageEmbed()
-.setTitle("📥 #BOTLOG")
-.setDescription(`🟢 Il bot è andato online!`)
-.setColor("GREEN")
-.setTimestamp()
+.setTitle("Bot ONLINE")
+.setDescription(":clock: Time \n `Soon...` ")
+.setColor("DARK_GREEN")
 
 const offline = new Discord.MessageEmbed()
 .setTitle("📤 #BOTLOG")
