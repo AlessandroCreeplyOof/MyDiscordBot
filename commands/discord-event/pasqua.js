@@ -1,11 +1,9 @@
 const Discord = require("discord.js")
 
 client.on("messageCreate", message => {
-    if (message.content == "!egg") {
+    if (message.content == "!pasqua") {
         if (!message.member.roles.cache.has("936909892772593715")) {
-            return message.channel.send("Non puoi eseguire questo comando adesso! Aspetta il 10 Aprile 2022!").then(msg => {
-                setTimeout(() => msg.delete(), 3000);
-            })
+            return message.channel.send("Non puoi eseguire questo comando adesso! Aspetta il 10 Aprile 2022!");
 
         const apriUovo = new Discord.MessageButton()
             .setLabel("Apri Uovo")
@@ -60,31 +58,31 @@ const row = new Discord.MessageActionRow()
     {
         label: "Giorno 2",
         description: "Apri il secondo uovo dell'evento!",
-        value: "uovo",
+        value: "uovo2",
         emoji: "<:regalo:944925534624821248>",
     },
     {
         label: "Giorno 3",
         description: "Apri il terzo uovo dell'evento!",
-        value: "uovo",
+        value: "uovo3",
         emoji: "<:regalo:944925534624821248>",
     },
     {
         label: "Giorno 4",
         description: "Apri il quarto uovo dell'evento!",
-        value: "uovo",
+        value: "uovo4",
         emoji: "<:regalo:944925534624821248>",
     },
     {
         label: "Giorno 5",
         description: "Apri il quinto uovo dell'evento!",
-        value: "uovo",
+        value: "uovo5",
         emoji: "<:regalo:944925534624821248>",
     },
     {
         label: "Giorno 6",
         description: "Apri il sesto uovo dell'evento!",
-        value: "uovo",
+        value: "uovo6",
         emoji: "<:regalo:944925534624821248>",
     }
 ])

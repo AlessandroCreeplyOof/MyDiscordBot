@@ -8,7 +8,7 @@ client.on("messageCreate", message => {
             .setTitle("Candidati come MODERATORE! <:festa:944921599059066931>")
             .setImage("https://media.discordapp.net/attachments/941101779297378314/944266920255963206/communitybanner_1.png?width=1342&height=671")
             .setColor("NAVY")
-            .setDescription("Entra a far parte dei moderatori del server! \n Premi il bottone qui sotto per candidarti, dovrai semplicemnte compilare in breve forms! \n \n **BUONA FORTUNA A CHIUNQUE SI CANDIDERA'!")
+            .setDescription("Entra a far parte dei moderatori del server! \n Premi il bottone qui sotto per candidarti, dovrai semplicemnte compilare in breve forms! \n \n **BUONA FORTUNA A CHIUNQUE SI CANDIDERA'!**")
 
 var bottone = new Discord.MessageButton()
 .setLabel("Candidati Ora!")
