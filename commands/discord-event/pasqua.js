@@ -2,9 +2,10 @@ const Discord = require("discord.js")
 
 client.on("messageCreate", message => {
     if (message.content == "!egg") {
-        if (!message.member.roles.cache.has("870224089548226560")) {
-            return message.channel.send("Non puoi eseguire questo comando adesso! Aspetta il 10 Aprile 2022!");
-        } 
+        if (!message.member.roles.cache.has("936909892772593715")) {
+            return message.channel.send("Non puoi eseguire questo comando adesso! Aspetta il 10 Aprile 2022!").then(msg => {
+                setTimeout(() => msg.delete(), 3000);
+            })
 
         const apriUovo = new Discord.MessageButton()
             .setLabel("Apri Uovo")
@@ -34,7 +35,8 @@ client.on("messageCreate", message => {
 
             message.channel.send({embeds: [embed], components: [row]})
     }
-})
+}})
+
 const uovoaperto = new Discord.MessageEmbed()
 .setTitle("Uovo Di Pasqua | Aperto con successo")
 .setColor("AQUA")
@@ -54,6 +56,36 @@ const row = new Discord.MessageActionRow()
         description: "Apri il primo uovo dell'evento!",
         value: "uovo",
         emoji: "<:regalo:944925534624821248>",
+    },
+    {
+        label: "Giorno 2",
+        description: "Apri il secondo uovo dell'evento!",
+        value: "uovo",
+        emoji: "<:regalo:944925534624821248>",
+    },
+    {
+        label: "Giorno 3",
+        description: "Apri il terzo uovo dell'evento!",
+        value: "uovo",
+        emoji: "<:regalo:944925534624821248>",
+    },
+    {
+        label: "Giorno 4",
+        description: "Apri il quarto uovo dell'evento!",
+        value: "uovo",
+        emoji: "<:regalo:944925534624821248>",
+    },
+    {
+        label: "Giorno 5",
+        description: "Apri il quinto uovo dell'evento!",
+        value: "uovo",
+        emoji: "<:regalo:944925534624821248>",
+    },
+    {
+        label: "Giorno 6",
+        description: "Apri il sesto uovo dell'evento!",
+        value: "uovo",
+        emoji: "<:regalo:944925534624821248>",
     }
 ])
 )
@@ -67,6 +99,6 @@ var menu = new Discord.MessageSelectMenu()
 client.on("interactionCreate", interaction => {
     if (interaction.customId == "apriUovo") {
         interaction.deferUpdate()
-            interaction.channel.send({ embeds: [uovoaperto], components: [row] })
+            interaction.update({ embeds: [uovoaperto], components: [row] })
             return
         }})
