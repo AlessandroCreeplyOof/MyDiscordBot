@@ -1,16 +1,13 @@
 const Discord = require("discord.js")
 
-var currentdate = new Date(); 
-var datetime = "Date Time: " + currentdate.getDate() + "/"
-    + (currentdate.getMonth()+1)  + "/" 
-    + currentdate.getFullYear() + " @ "  
-    + currentdate.getHours() + ":"  
-    + currentdate.getMinutes() + ":" 
-    + currentdate.getSeconds();
+var data = new Date();
+var datag = data.getUTCDate();
+var hours = data.getHours();
+var minuti = data.getMinutes();
 
 const online = new Discord.MessageEmbed()
 .setTitle("Bot ONLINE")
-.setDescription("⏰ Time \n ", datetime)
+.setDescription("⏰ Time \n ", datag, hours, ":", minuti)
 .setColor("DARK_GREEN")
 
 const offline = new Discord.MessageEmbed()
