@@ -2,9 +2,7 @@ const Discord = require("discord.js")
 
 client.on("messageCreate", message => {
     if (message.content == "!pasqua") {
-        if (!message.member.roles.cache.has("936909892772593715")) {
-            return message.channel.send("Non puoi eseguire questo comando adesso! Aspetta il 10 Aprile 2022!");
-
+        
         const apriUovo = new Discord.MessageButton()
             .setLabel("Apri Uovo")
             .setCustomId("apriUovo")
@@ -33,7 +31,7 @@ client.on("messageCreate", message => {
 
             message.channel.send({embeds: [embed], components: [row]})
     }
-}})
+})
 
 const uovoaperto = new Discord.MessageEmbed()
 .setTitle("Uovo Di Pasqua | Aperto con successo")
