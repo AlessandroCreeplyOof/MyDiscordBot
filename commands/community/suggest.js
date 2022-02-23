@@ -8,9 +8,9 @@ var troppolungo = new Discord.MessageEmbed()
 .setDescription("Il testo da te mandato è troppo lungo! \n `Max: 500 Caratteri`")
 
 var nonvalido = new Discord.MessageEmbed()
-.setTitle(`💡 Suggerimento non valido`)
-.setColor("ORANGE")
-.setDescription("Non hai inserito nessun testo! \n \n `Syntax: !suggest [testo]`")
+.setTitle(`:x: Inserire un suggerimento`)
+.setColor("#eb4034")
+.setDescription("Scrivi un testo nel suggerimento! \n \n **Sintassi corretta:** `!suggest [testo]`")
 
 client.on("messageCreate", message => {
     if (message.content.startsWith("!suggest")) {
@@ -51,9 +51,9 @@ client.on("messageCreate", message => {
          .setTimestamp()
 
         const suggesta = new Discord.MessageEmbed()
-.setTitle(`💡 Suggestions by ${message.author.toString()}`)
+.setTitle(`💡 Suggerimento di ${message.author.toString()}`)
 .setThumbnail(message.author.displayAvatarURL())
-.setColor("ORANGE")
+.setColor("#203ea1")
 .setDescription(suggest)
 .setTimestamp()
 .setFooter(`ID Suggeritore: ${message.author.toString()}`)
@@ -66,9 +66,9 @@ const suggerimentorfiutatoo = new Discord.MessageEmbed()
 .addField(":bookmark_tabs: Il tuo suggerimento", suggest, true)
 
 const suggerimentoaccettato = new Discord.MessageEmbed()
-.setTitle(`❌ Suggerimento ACCETTATO`)
+.setTitle(`✅  Suggerimento ACCETTATO`)
 .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/944975611791822848/suggestcanvas-removebg-preview.png")
-.setColor("RED")
+.setColor("GREEN")
 .setDescription("Complimenti! Il tuo suggerimento è stato **ACCETTATO**")
 .addField(":bookmark_tabs: Il tuo suggerimento", suggest, true)
 
