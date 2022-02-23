@@ -95,6 +95,6 @@ var menu = new Discord.MessageSelectMenu()
 client.on("interactionCreate", interaction => {
     if (interaction.customId == "apriUovo") {
         interaction.deferUpdate()
-        interaction.channel.send({ embeds: [uovoaperto], components: [row] })
-            return
+        const msg = interaction.channel.send({ embeds: [uovoaperto], components: [row] , })
+        msg.edit({ embeds: [embed] })
         }})
