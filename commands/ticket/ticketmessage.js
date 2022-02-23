@@ -73,7 +73,7 @@ client.on("interactionCreate", interaction => {
                 }
             ]
         }).then(canale => {
-            canale.send( { embeds: [ticket1] }, { components: [chiudilo] } )
+            canale.send( { embeds: [ticket1], components: [chiudilo] } )
         })
     }
 })
