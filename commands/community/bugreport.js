@@ -39,9 +39,6 @@ client.on("messageCreate", message => {
         var messaggio = args.slice(3).join(" ")
         const utente = message.mentions.members.first();
 
-        if (!message.member.roles.has('869234525576765552')) {
-            return message.channel.send("Solo il founder può eseguire questo comando");
-        }
         if (!utente) {
             return message.channel.send("Non hai inserito nessuno a cui rispondere");
         }
