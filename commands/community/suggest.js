@@ -62,14 +62,8 @@ client.on("messageCreate", message => {
 
 client.on("interactionCreate", interaction => {
     if (interaction.customId == "approvasuggest") {
-        const giaaccettato = new Discord.MessageEmbed()
-.setTitle(`👍 Questo suggerimento è stato già accettato!`)
-.setThumbnail("https://media.discordapp.net/attachments/941101779297378314/944975611791822848/suggestcanvas-removebg-preview.png")
-.setColor("GREEN")
-.setDescription("`Questo suggerimento è stato accettato da un moderatore!`")
-
 interaction.deferUpdate()
-interaction.message.edit({content: "nuovo contenuto msg"})
+interaction.message.delete()
             client.channels.cache.get("944987091421499404").send({ embeds: [suggesta] })
             .then(msg => {
                 msg.react("👍")
@@ -79,14 +73,8 @@ interaction.message.edit({content: "nuovo contenuto msg"})
 })
 client.on("interactionCreate", interaction => {
     if (interaction.customId == "rifiutasuggest") {
-        const giarifiutato = new Discord.MessageEmbed()
-.setTitle(`👍 Questo suggerimento è stato già rifiutato!`)
-.setThumbnail("https://media.discordapp.net/attachments/941101779297378314/944975611791822848/suggestcanvas-removebg-preview.png")
-.setColor("GREEN")
-.setDescription("`Questo suggerimento è stato rifiutato da un moderatore!`", suggest)
-
         interaction.deferUpdate()
-        interaction.message.edit({content: "Sono state già fatte azioni su questo suggerimento! \n > Stato: RIFIUTATO", embeds: null, components: null})
+        interaction.message.delete()
     }
 })
 
