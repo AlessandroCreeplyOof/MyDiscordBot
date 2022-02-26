@@ -21,7 +21,7 @@ client.on("messageCreate", message => {
             return
         }
 
-         const suggerimentoinviato = new Discord.MessageEmbed()
+         const buginviato = new Discord.MessageEmbed()
          .setTitle(`🐙 BUG REPORT INVIATO 🐙`)
          .setDescription(`Grazie per aver segnalato un bug all'interno del server!`)
          .setThumbnail(message.author.displayAvatarURL())
@@ -34,7 +34,7 @@ client.on("messageCreate", message => {
 .setColor("#356331")
 .setDescription(bug)
 
-        client.channels.cache.get("946088529199497237").send({embeds: [embed], components: [row] }); 
-        message.channel.send({embeds: [suggerimentoinviato]});
+        client.channels.cache.get("946088529199497237").send({embeds: [suggesta]}); 
+        message.channel.send({embeds: [buginviato]});
     }
 })
