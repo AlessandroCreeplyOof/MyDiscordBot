@@ -16,7 +16,7 @@ client.on("messageCreate", message => {
         var args = message.content.split(/\s+/);
         var bug = args.slice(1).join(" ")
 
-        if (!suggest) {
+        if (!bug) {
             message.channel.send({embeds: [nonvalido]})
             return
         }
