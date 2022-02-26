@@ -69,7 +69,7 @@ client.on("interactionCreate", interaction => {
 .setDescription("`Questo suggerimento è stato accettato da un moderatore!`")
 
 interaction.deferUpdate()
-interaction.message.edit({ embeds: giaaccettato, components: null})
+interaction.message.edit({content: "nuovo contenuto msg"})
             client.channels.cache.get("944987091421499404").send({ embeds: [suggesta] })
             .then(msg => {
                 msg.react("👍")
@@ -86,7 +86,7 @@ client.on("interactionCreate", interaction => {
 .setDescription("`Questo suggerimento è stato rifiutato da un moderatore!`", suggest)
 
         interaction.deferUpdate()
-        interaction.message.edit({ embeds: giarifiutato, components: null})
+        interaction.message.edit({content: "nuovo contenuto msg"})
     }
 })
 
