@@ -64,7 +64,7 @@ client.on("interactionCreate", interaction => {
     if (interaction.customId == "approvasuggest") {
 interaction.deferUpdate()
 interaction.message.delete()
-            client.channels.cache.get("944987091421499404").send({ embeds: [suggesta] })
+            client.channels.cache.get("934745362814623814").send({ embeds: [suggesta] })
             .then(msg => {
                 msg.react("👍")
                 msg.react("💩")
