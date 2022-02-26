@@ -46,9 +46,9 @@ client.on("messageCreate", message => {
 
          const suggerimentoinviato = new Discord.MessageEmbed()
          .setTitle(`💡 Suggerimento inviato`)
-         .setDescription(`Attendi che lo staff ti dia una risposta! \n :bookmark_tabs: Suggestion`)
+         .setDescription(`Attendi che lo staff ti dia una risposta!`)
          .setThumbnail(message.author.displayAvatarURL())
-         .addField(suggest)
+         .addField(":bookmark_tabs: Suggestion", suggest, true)
          .setColor("DARK_ORANGE")
          .setTimestamp()
 
