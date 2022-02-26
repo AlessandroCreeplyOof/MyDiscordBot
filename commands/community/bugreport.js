@@ -14,7 +14,7 @@ client.on("messageCreate", message => {
         const buginviato = new Discord.MessageEmbed()
         .setTitle(`🐙 BUG REPORT INVIATO 🐙`)
         .setDescription(`Grazie per aver segnalato un bug all'interno del server!`)
-        .addField(":bookmark_tabs: Content", suggest, true)
+        .addField(":bookmark_tabs: Content", bug, true)
 
        const bugreportato = new Discord.MessageEmbed()
 .setTitle(`🐙 BUG REPORTATO DA ${message.author.username}`)
