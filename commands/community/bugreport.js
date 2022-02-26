@@ -17,14 +17,16 @@ client.on("messageCreate", message => {
         }
 
         const buginviato = new Discord.MessageEmbed()
-        .setTitle(`🐙 BUG REPORT INVIATO 🐙`)
-        .setDescription(`Grazie per aver segnalato un bug all'interno del server!`)
+        .setTitle(`🪲 Bug Report INVIATO 🪲`)
+        .setDescription(`Grazie per aver segnalato un bug all'interno del server! \n Il Nostro staff cercherà di **risolverlo** il prima possibile!`)
         .addField(":bookmark_tabs: Content", bug, true)
+        .setColor("#35781d")
 
        const bugreportato = new Discord.MessageEmbed()
-.setTitle(`🐙 BUG REPORTATO DA ${message.author.username}`)
+.setTitle(`🪲 Bug Report By ${message.author.username} 🪲`)
 .setThumbnail(message.author.displayAvatarURL())
 .setDescription(bug)
+.setColor("YELLOW")
 
         client.channels.cache.get("946088529199497237").send({embeds: [bugreportato]}); 
         message.channel.send({embeds: [buginviato]});
