@@ -37,8 +37,7 @@ client.on("messageCreate", message => {
 
                         const logban = new Discord.MessageEmbed()
                             .setTitle(`:no_entry: BAN :no_entry:`)
-                            .addField(`:brain: Member: ${utente.user.username}`, false)
-                            .addField(`:bust_in_silhouette: Executor: ${message.author.toString()}`, false)
+                            .setDescription(`:brain: Member: ${utente.user.username} \n :bust_in_silhouette: Moderator: ${message.author.toString()}`)
                             .setColor("#8227cc")
         
                         message.channel.send({ embeds: [embed] })
