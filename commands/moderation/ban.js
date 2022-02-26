@@ -14,6 +14,9 @@ const nonmenzione = new Discord.MessageEmbed()
 
 client.on("messageCreate", message => {
     if (message.content.startsWith("!ban")) {
+        var args = message.content.split(/\s+/);
+        var reason = args.slice(3).join(" ")
+
                 const utente = message.mentions.members.first();
                 if (!message.member.permissions.has('BAN_MEMBERS')) {
                     return message.channel.send({embeds : [nonpermesso1]});
@@ -27,19 +30,19 @@ client.on("messageCreate", message => {
                 utente.ban()
                     .then(() => {
 
-                        const logban = new Discord.MessageEmbed()
-                            .setTitle(`#BAN ${utente.user.username}`)
-                            .setDescription(`**Nuovo ban** \n ${utente.user.username} è stato bannato dal server \n \n 🌐 Moderatore: ${message.author.toString()} \n \n 💬 Motivo: Non disponibile`)
-                            .setColor("RED")
-                            .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/944975826779271249/bancanvas-removebg-preview_1.png")
-
-
                         const embed = new Discord.MessageEmbed()
-                            .setAuthor(`#BAN ${utente.user.username}`)
-                            .setDescription(`Reason: \n Nessun Motivo \n Moderator: ${message.author.toString()}`)
-                            .setFooter("ID Utente:", utente.user.user)
-                            .setColor("ORANGE")
+                            .setTitle(`#BAN ${utente.user.username}`)
+                            .setDescription(`:brain: Member: ${utente.user.username} \n :bust_in_silhouette: Moderator: ${message.author.toString()} \n :clock: Reason: ${reason}`)
+                            .setColor("PURPLE")
                             .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/944975826779271249/bancanvas-removebg-preview_1.png")
+
+
+                        const logban = new Discord.MessageEmbed()
+                            .setTitle(`:no_entry: BAN :no_entry:`)
+                            .addField(`:brain: Member: ${utente.user.username}`, false)
+                            .addField(`:bust_in_silhouette: Executor: ${message.author.toString()}`, false)
+                            .addField(`:clock: Reason: ${reason}`, false)
+                            .setColor("#8227cc")
         
                         message.channel.send({ embeds: [embed] })
                         client.channels.cache.get("944904295034290236").send({embeds: [logban]}); 
