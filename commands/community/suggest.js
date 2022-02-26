@@ -46,12 +46,14 @@ client.on("messageCreate", message => {
 
          const suggerimentoinviato = new Discord.MessageEmbed()
          .setTitle(`💡 Suggerimento inviato`)
-         .setDescription("`Il tuo suggerimento è stato inviato allo staff con successo!` \n \n Attendi che lo staff lo accetti!")
+         .setDescription(`Attendi che lo staff ti dia una risposta! \n :bookmark_tabs: Suggestion`)
+         .setThumbnail(message.author.displayAvatarURL())
+         .addField(suggest)
          .setColor("DARK_ORANGE")
          .setTimestamp()
 
         const suggesta = new Discord.MessageEmbed()
-.setTitle(`💡 Suggerimento di ${message.author.toString()}`)
+.setTitle(`💡 Suggerimento di ${message.author.username()}`)
 .setThumbnail(message.author.displayAvatarURL())
 .setColor("#203ea1")
 .setDescription(suggest)
