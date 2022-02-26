@@ -32,3 +32,33 @@ client.on("messageCreate", message => {
         message.channel.send({embeds: [buginviato]});
     }
 })
+
+client.on("messageCreate", message => {
+    if (message.content.startsWith("!responsebug")) {
+        var args = message.content.split(/\s+/);
+        var messaggio = args.slice(3).join(" ")
+        const utente = message.mentions.members.first();
+
+        if (!message.member.roles.has('869234525576765552')) {
+            return message.channel.send("Solo il founder può eseguire questo comando");
+        }
+        if (!utente) {
+            return message.channel.send("Non hai inserito nessuno a cui rispondere");
+        }
+
+        const bugreported = new Discord.MessageEmbed()
+        .setTitle(`🪲 Bug Report RESPONSE 🪲`)
+        .setDescription(`Uno staffer ha risposto al tuo bug report! \n Grazie ancora per il **report**`)
+        .addField(":bookmark_tabs: Response", messaggio, true)
+        .setColor("#35781d")
+
+        const hairisposto = new Discord.MessageEmbed()
+        .setTitle(`🪲 Bug Report RESPONSE 🪲`)
+        .setDescription(`Hai risposto ad un bug report!`)
+        .addField(":bookmark_tabs: Response", messaggio, true)
+        .setColor("#35781d")
+
+        message.utente.send({ embed: bugreported })
+        message.channel.send({ embeds: hairisposto })
+    }
+})
