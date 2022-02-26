@@ -11,22 +11,20 @@ client.on("messageCreate", message => {
         var args = message.content.split(/\s+/);
         var bug = args.slice(1).join(" ")
 
+        const buginviato = new Discord.MessageEmbed()
+        .setTitle(`🐙 BUG REPORT INVIATO 🐙`)
+        .setDescription(`Grazie per aver segnalato un bug all'interno del server!`)
+        .addField(":bookmark_tabs: Content", suggest, true)
+
+       const bugreportato = new Discord.MessageEmbed()
+.setTitle(`🐙 BUG REPORTATO DA ${message.author.username}`)
+.setThumbnail(message.author.displayAvatarURL())
+.setDescription(bug)
+
         if (!bug) {
             message.channel.send({embeds: [nonvalido]})
             return
         }
-
-         const buginviato = new Discord.MessageEmbed()
-         .setTitle(`🐙 BUG REPORT INVIATO 🐙`)
-         .setDescription(`Grazie per aver segnalato un bug all'interno del server!`)
-         .addField(":bookmark_tabs: Content", suggest, true)
-         .setColor("#356331")
-
-        const bugreportato = new Discord.MessageEmbed()
-.setTitle(`🐙 BUG REPORTATO DA ${message.author.username} 🐙`)
-.setThumbnail(message.author.displayAvatarURL())
-.setColor("#356331")
-.setDescription(bug)
 
         client.channels.cache.get("946088529199497237").send({embeds: [bugreportato]}); 
         message.channel.send({embeds: [buginviato]});
