@@ -11,6 +11,11 @@ client.on("messageCreate", message => {
         var args = message.content.split(/\s+/);
         var bug = args.slice(1).join(" ")
 
+        if (!bug) {
+            message.channel.send({embeds: [nonvalido]})
+            return
+        }
+
         const buginviato = new Discord.MessageEmbed()
         .setTitle(`🐙 BUG REPORT INVIATO 🐙`)
         .setDescription(`Grazie per aver segnalato un bug all'interno del server!`)
@@ -20,11 +25,6 @@ client.on("messageCreate", message => {
 .setTitle(`🐙 BUG REPORTATO DA ${message.author.username}`)
 .setThumbnail(message.author.displayAvatarURL())
 .setDescription(bug)
-
-        if (!bug) {
-            message.channel.send({embeds: [nonvalido]})
-            return
-        }
 
         client.channels.cache.get("946088529199497237").send({embeds: [bugreportato]}); 
         message.channel.send({embeds: [buginviato]});
