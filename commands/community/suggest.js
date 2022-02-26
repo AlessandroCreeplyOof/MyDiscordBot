@@ -86,7 +86,7 @@ client.on("interactionCreate", interaction => {
 .setDescription("`Questo suggerimento è stato rifiutato da un moderatore!`", suggest)
 
         interaction.deferUpdate()
-        interaction.message.edit({content: "nuovo contenuto msg"})
+        interaction.message.edit({content: "Sono state già fatte azioni su questo suggerimento! \n > Stato: RIFIUTATO", embeds: null, components: null})
     }
 })
 
