@@ -53,7 +53,7 @@ client.on("messageCreate", message => {
          .setTimestamp()
 
         const suggesta = new Discord.MessageEmbed()
-.setTitle(`💡 Suggerimento di ${message.author.username()}`)
+.setTitle(`💡 Suggerimento di ${message.author.username}`)
 .setThumbnail(message.author.displayAvatarURL())
 .setColor("#203ea1")
 .setDescription(suggest)
