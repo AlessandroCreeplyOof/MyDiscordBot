@@ -14,8 +14,6 @@ const nonmenzione = new Discord.MessageEmbed()
 
 client.on("messageCreate", message => {
     if (message.content.startsWith("!ban")) {
-        var args = message.content.split(/\s+/);
-        var reason = args.slice(3).join(" ")
 
                 const utente = message.mentions.members.first();
                 if (!message.member.permissions.has('BAN_MEMBERS')) {
@@ -32,7 +30,7 @@ client.on("messageCreate", message => {
 
                         const embed = new Discord.MessageEmbed()
                             .setTitle(`#BAN ${utente.user.username}`)
-                            .setDescription(`:brain: Member: ${utente.user.username} \n :bust_in_silhouette: Moderator: ${message.author.toString()} \n :clock: Reason: ${reason}`)
+                            .setDescription(`:brain: Member: ${utente.user.username} \n :bust_in_silhouette: Moderator: ${message.author.toString()}`)
                             .setColor("PURPLE")
                             .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/944975826779271249/bancanvas-removebg-preview_1.png")
 
@@ -41,7 +39,6 @@ client.on("messageCreate", message => {
                             .setTitle(`:no_entry: BAN :no_entry:`)
                             .addField(`:brain: Member: ${utente.user.username}`, false)
                             .addField(`:bust_in_silhouette: Executor: ${message.author.toString()}`, false)
-                            .addField(`:clock: Reason: ${reason}`, false)
                             .setColor("#8227cc")
         
                         message.channel.send({ embeds: [embed] })
