@@ -39,10 +39,6 @@ client.on("messageCreate", message => {
         var messaggio = args.slice(3).join(" ")
         const utente = message.mentions.members.first();
 
-        if (!utente) {
-            return message.channel.send("Non hai inserito nessuno a cui rispondere");
-        }
-
         const bugreported = new Discord.MessageEmbed()
         .setTitle(`🪲 Bug Report RESPONSE 🪲`)
         .setDescription(`Uno staffer ha risposto al tuo bug report! \n Grazie ancora per il **report**`)
