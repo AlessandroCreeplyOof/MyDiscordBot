@@ -20,18 +20,11 @@ client.on("messageCreate", message => {
         message.delete();
 
         var embed = new Discord.MessageEmbed()
-        .setAuthor("[BADWORD] ", message.author.username)
+        .setTitle(`[BADWORDS] ${message.author.username}`)
         .setDescription("Hai scritto un messaggio con parole bloccate\r**Message** \n " + testo)
         .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/947283079863603251/parolabloccata-removebg-preview.png")
         .setColor("PURPLE")
 
-        var dmembed = new Discord.MessageEmbed()
-            .setTitle("Hai detto una parolaccia")
-            .setDescription("Hai scritto un messaggio con parole bloccate\r**Message** \n " + testo)
-            .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/947283079863603251/parolabloccata-removebg-preview.png")
-            .setColor("PURPLE")
-
         message.channel.send({ embeds: [embed] })
-        message.user.send( {embeds: [dmembed] })
     }
 })
