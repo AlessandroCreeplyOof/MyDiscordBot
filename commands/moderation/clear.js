@@ -32,9 +32,10 @@ client.on("messageCreate", message => {
         }
         message.channel.bulkDelete(count, true)
         const deletemessage = new Discord.MessageEmbed()
-.setTitle("Eseguito con successo!")
-.setDescription("Ho cancellato con successo" + count + " messaggi da questa chat")
-.setColor("ORANGE")
+.setTitle("CLEAR ESEGUITO!")
+.setDescription("Ho cancellato con successo " + count + " messaggi da questa chat")
+.setColor("GREEN")
+.setThumbnail("https://media.discordapp.net/attachments/941101779297378314/947283060653690930/warn-removebg-preview.png")
         message.channel.send({embeds: [deletemessage]}).then(msg => {
             setTimeout(() => msg.delete(), 10000)
         })
