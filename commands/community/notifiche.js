@@ -11,14 +11,17 @@ client.on("messageCreate", message => {
 
         var news = new Discord.MessageButton()
         .setEmoji("📢")
+        .setStyle("SUCCESS")
         .setCustomId("news")
 
         var ytnews = new Discord.MessageButton()
         .setEmoji("📹")
+        .setStyle("SUCCESS")
         .setCustomId("ytnews")
 
         var newsmini = new Discord.MessageButton()
         .setEmoji("📣")
+        .setStyle("SUCCESS")
         .setCustomId("mininews")
 
         var row = new Discord.MessageActionRow()
