@@ -5,7 +5,7 @@ client.on("messageCreate", message => {
         const embed = new Discord.MessageEmbed()
             .setTitle(":woman_raising_hand: Invito del server")
             .setColor("#677BC4")
-            .setDescription("<:festa:944921599059066931> Con questo invito potrai invitare i tuoi **amici** nel server \n \n https://discord.gg/eXWPat6CTb")
+            .setDescription("<:festa:944921599059066931> Con questo invito potrai invitare i tuoi **amici** nel server \n \n https://dsc.gg/creeply")
         message.channel.send({embeds: [embed]})
     }
 })

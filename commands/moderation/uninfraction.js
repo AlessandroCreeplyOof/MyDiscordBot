@@ -25,9 +25,8 @@ client.on("messageCreate", message => {
         utente.roles.remove("896396962113421392")
 
         var embed = new Discord.MessageEmbed()
-            .setTitle(`#UNMUTE ${utente.user.username}`)
+            .setTitle(`[UNMUTE] ${utente.user.username}`)
             .setDescription(`Moderator: ${message.author.toString()}`)
-            .setTimestamp()
             .setColor("PURPLE")
 
         message.channel.send({ embeds: [embed] })
@@ -51,10 +50,9 @@ client.on("messageCreate", async message => {
         message.guild.members.unban(idUtente)
             .then(() => {
                 var embed = new Discord.MessageEmbed()
-                    .setTitle(`#UNBAN ${utente.user.username}`)
+                    .setTitle(`[UNBAN] ${utente.user.username}`)
                     .setDescription(`Moderator: ${message.author.toString()}`)
                     .setColor("PURPLE")
-                    .setTimestamp()
 
                 message.channel.send({ embeds: [embed] })
                 client.channels.cache.get("944904295034290236").send({embeds: [embed]}); 

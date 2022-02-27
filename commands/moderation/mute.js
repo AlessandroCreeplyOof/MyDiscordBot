@@ -25,15 +25,15 @@ client.on("messageCreate", message => {
         utente.roles.add("896396962113421392")
 
         var logmute = new Discord.MessageEmbed()
-        .setTitle(`LOG | MUTE ${utente.user.username}`)
+        .setTitle(`[MUTE] ${utente.user.username}`)
         .setDescription(`Muted: ${utente.user.username} \n \n Executer: ${message.author.toString()}`)
         .setColor("RED")
         .setTimestamp()
 
         var embed = new Discord.MessageEmbed()
             .setAuthor(`[MUTE] ${utente.user.username}`)
-            .setDescription(`Muted: ${utente.user.username} \n Moderator: ${message.author.toString()}`)
-            .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/947283051052957747/kick-removebg-preview.png")
+            .setDescription(`Moderator: ${message.author.toString()}`)
+            .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/947283069763735572/ban__1_-removebg-preview.png")
             .setColor("PURPLE")
 
         message.channel.send({ embeds: [embed] })

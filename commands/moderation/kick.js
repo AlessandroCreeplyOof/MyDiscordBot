@@ -31,13 +31,13 @@ client.on("messageCreate", message => {
                     .setTitle(`#KICK ${utente.user.username}`)
                     .setDescription(`Kicked ${utente.user.username} \n Moderator: ${message.author.toString()}`)
                     .setColor("PURPLE")
-                    .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/947283060653690930/warn-removebg-preview.png")
+                    .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/947283069763735572/ban__1_-removebg-preview.png")
 
                 var logkick = new Discord.MessageEmbed()
-                    .setAuthor(`#KICK ${utente.user.username}`)
-                    .setDescription(`Reason: \n Nessun Motivo \n Moderator: ${message.author.toString()}`)
+                    .setAuthor(`[KICK] ${utente.user.username}`)
+                    .setDescription(`Moderator: ${message.author.toString()}`)
                     .setColor("RED")
-                    .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/944975826779271249/bancanvas-removebg-preview_1.png")
+                    .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/947283069763735572/ban__1_-removebg-preview.png")
 
                 message.channel.send({ embeds: [embed] })
                 client.channels.cache.get("944904295034290236").send({embeds: [logkick]}); 
