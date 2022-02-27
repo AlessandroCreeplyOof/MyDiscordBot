@@ -9,17 +9,17 @@ client.on("messageCreate", message => {
         .addField("📹 Youtube Notifications", "Tutte le notifiche dei video youtube", false)
         .addField("📣 Mini News Notifications", "Tutte le piccole notizie del server!", false)
 
-        var news = new Discord.MessageButton()
+        const news = new Discord.MessageButton()
         .setEmoji("📢")
         .setStyle("SUCCESS")
         .setCustomId("news")
 
-        var ytnews = new Discord.MessageButton()
+        const ytnews = new Discord.MessageButton()
         .setEmoji("📹")
         .setStyle("SUCCESS")
         .setCustomId("ytnews")
 
-        var newsmini = new Discord.MessageButton()
+        const newsmini = new Discord.MessageButton()
         .setEmoji("📣")
         .setStyle("SUCCESS")
         .setCustomId("mininews")
@@ -33,21 +33,21 @@ client.on("messageCreate", message => {
 
 client.on("InteractionCreate", interaction => {
     if (interaction.customId == "news") {
-        interaction.user.role.add("947458885520863263")
+        interaction.user.roles.add("947458885520863263")
         interaction.deferUpdate()
 }
 })
 
 client.on("InteractionCreate", interaction => {
     if (interaction.customId == "ytnews") {
-        interaction.user.role.add("947458992408518666")
+        interaction.member.roles.add("947458992408518666")
         interaction.deferUpdate()
 }
 })
 
 client.on("InteractionCreate", interaction => {
     if (interaction.customId == "mininews") {
-        interaction.user.role.add("947458950553542708")
+        interaction.member.roles.add("947458950553542708")
         interaction.deferUpdate()
 }
 })
