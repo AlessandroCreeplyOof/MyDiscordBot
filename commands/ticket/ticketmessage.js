@@ -42,6 +42,11 @@ const utentenonvalido = new Discord.MessageEmbed()
 .setDescription("L'utente da te selezionato non è valido!")
 .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/947283060653690930/warn-removebg-preview.png")
 
+const adminrimosso = new Discord.MessageEmbed()
+.setTitle("Non puoi rimuovere un admin!")
+.setDescription("Non puoi rimuovere questo utente dal ticket!")
+.setThumbnail("https://media.discordapp.net/attachments/941101779297378314/947283060653690930/warn-removebg-preview.png")
+
 //Prima di tutto mandare il messaggio del ticket
 client.on("messageCreate", message => {
     if (message.content == "!ticketmessage") {
@@ -164,7 +169,7 @@ client.on("messageCreate", message => {
                     return
                 }
                 if (utente.permissions.has("MANAGE_CHANNELS")) {
-                    message.channel.send("Non puoi rimuovere questo utente")
+                    message.channel.send({ embeds: [adminrimosso]})
                     return
                 }
                 message.channel.permissionOverwrites.edit(utente, {
