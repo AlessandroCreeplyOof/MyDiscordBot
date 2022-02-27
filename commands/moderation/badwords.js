@@ -20,9 +20,10 @@ client.on("messageCreate", message => {
         message.delete();
 
         var embed = new Discord.MessageEmbed()
-        .setTitle(`[BADWORDS] ${message.author.username}`)
-        .setDescription("Hai scritto un messaggio con parole bloccate\r**Message** \n " + testo)
+        .setTitle(`[BAD WORD] ${message.author.username}`)
+        .setDescription("**Message** \n " + testo)
         .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/947283079863603251/parolabloccata-removebg-preview.png")
+        .setFooter("Id Utente:", message.author.username)
         .setColor("PURPLE")
 
         message.channel.send({ embeds: [embed] })

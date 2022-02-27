@@ -25,16 +25,16 @@ client.on("messageCreate", message => {
         utente.roles.add("896396962113421392")
 
         var logmute = new Discord.MessageEmbed()
-        .setTitle(`#MUTE ${utente.user.username}`)
-        .setDescription(`Nuovo mute \n \n ${utente.user.username} è stato mutato \n \n 🌐 Moderatore: ${message.author.toString()}`)
+        .setTitle(`LOG | MUTE ${utente.user.username}`)
+        .setDescription(`Muted: ${utente.user.username} \n \n Executer: ${message.author.toString()}`)
         .setColor("RED")
-        .setTimestamp("")
+        .setTimestamp()
 
         var embed = new Discord.MessageEmbed()
-            .setAuthor(`#MUTE ${utente.user.username}`)
-            .setDescription(`Reason: \n Nessun Motivo \n Moderator: ${message.author.toString()}`)
+            .setAuthor(`[MUTE] ${utente.user.username}`)
+            .setDescription(`Muted: ${utente.user.username} \n Moderator: ${message.author.toString()}`)
+            .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/947283051052957747/kick-removebg-preview.png")
             .setColor("PURPLE")
-            .setTimestamp("")
 
         message.channel.send({ embeds: [embed] })
         client.channels.cache.get("944904295034290236").send({embeds: [logmute]}); 
