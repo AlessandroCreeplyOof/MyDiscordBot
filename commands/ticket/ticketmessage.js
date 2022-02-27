@@ -21,9 +21,34 @@ const giaperto = new Discord.MessageEmbed()
 .setColor("RED")
 .setImage("https://media.discordapp.net/attachments/941101779297378314/942424826373603378/TICKETGIA.png?width=1193&height=671")
 
+const nonqui = new Discord.MessageEmbed()
+.setTitle("Non puoi qui!")
+.setDescription("Non puoi usare questo comando in questa chat!")
+.setColor("RED")
+.setThumbnail("https://media.discordapp.net/attachments/941101779297378314/947283060653690930/warn-removebg-preview.png")
+
+const giaaccesso = new Discord.MessageEmbed()
+.setTitle("Questo utente ha gia' accesso!")
+.setDescription("L'utente da te selezionato ha già accesso a questo ticket!")
+.setThumbnail("https://media.discordapp.net/attachments/941101779297378314/947283060653690930/warn-removebg-preview.png")
+
+const giarimosso = new Discord.MessageEmbed()
+.setTitle("Questo utente non è mai stato qui!")
+.setDescription("L'utente da te selezionato non ha mai avuto accesso a questo ticket!")
+.setThumbnail("https://media.discordapp.net/attachments/941101779297378314/947283060653690930/warn-removebg-preview.png")
+
+const utentenonvalido = new Discord.MessageEmbed()
+.setTitle("Questo utente non è valido!")
+.setDescription("L'utente da te selezionato non è valido!")
+.setThumbnail("https://media.discordapp.net/attachments/941101779297378314/947283060653690930/warn-removebg-preview.png")
+
 //Prima di tutto mandare il messaggio del ticket
 client.on("messageCreate", message => {
-    if (message.content == "!comando") {
+    if (message.content == "!ticketmessage") {
+        if (!message.member.roles.cache.has("869234525576765552")) {
+            return message.channel.send("Non puoi eseguire questo comando perchè non hai il permesso");
+        } 
+
         var button1 = new Discord.MessageButton()
             .setLabel("Apri ticket")
             .setCustomId("apriTicket")
@@ -72,7 +97,7 @@ client.on("messageCreate", message => {
     if (message.content == "!tclose") {
         var topic = message.channel.topic;
         if (!topic) {
-            message.channel.send("Non puoi utilizzare questo comando qui");
+            message.channel.send({ embeds: [nonqui]});
             return
         }
         if (topic.startsWith("ID Ticket:")) {
@@ -82,13 +107,13 @@ client.on("messageCreate", message => {
             }
         }
         else {
-            message.channel.send("Non puoi utilizzare questo comando qui")
+            message.channel.send({ embeds: [nonqui]})
         }
     }
     if (message.content.startsWith("!tadd")) {
         var topic = message.channel.topic;
         if (!topic) {
-            message.channel.send("Non puoi utilizzare questo comando qui");
+            message.channel.send({ embeds: [nonqui]});
             return
         }
         if (topic.startsWith("ID Ticket:")) {
@@ -96,28 +121,33 @@ client.on("messageCreate", message => {
             if (message.author.id == idUtente || message.member.permissions.has("MANAGE_CHANNELS")) {
                 var utente = message.mentions.members.first();
                 if (!utente) {
-                    message.channel.send("Inserire un utente valido");
+                    message.channel.send({embeds: [utentenonvalido]});
                     return
                 }
                 var haIlPermesso = message.channel.permissionsFor(utente).has("VIEW_CHANNEL", true)
                 if (haIlPermesso) {
-                    message.channel.send("Questo utente ha gia accesso al ticket")
+                    message.channel.send({ embeds: [giaaccesso]})
                     return
                 }
                 message.channel.permissionOverwrites.edit(utente, {
                     VIEW_CHANNEL: true
                 })
-                message.channel.send(`${utente.toString()} è stato aggiunto al ticket`)
+                const aggiunto = new Discord.MessageEmbed()
+.setTitle(`Hai aggiunto con successo ${utente.toString()}`)
+.setThumbnail("https://media.discordapp.net/attachments/941101779297378314/947443747673767946/fatto-removebg-preview.png")
+.setDescription("Hai aggiunto con successo l'utente ", utente.toString(), " al ticket")
+
+                message.channel.send({ embeds: [aggiunto]})
             }
         }
         else {
-            message.channel.send("Non puoi utilizzare questo comando qui")
+            message.channel.send({ embeds: [nonqui]})
         }
     }
     if (message.content.startsWith("!tremove")) {
         var topic = message.channel.topic;
         if (!topic) {
-            message.channel.send("Non puoi utilizzare questo comando qui");
+            message.channel.send({ embeds: [nonqui]});
             return
         }
         if (topic.startsWith("ID Ticket:")) {
@@ -125,12 +155,12 @@ client.on("messageCreate", message => {
             if (message.author.id == idUtente || message.member.permissions.has("MANAGE_CHANNELS")) {
                 var utente = message.mentions.members.first();
                 if (!utente) {
-                    message.channel.send("Inserire un utente valido");
+                    message.channel.send({ embeds: [utentenonvalido]});
                     return
                 }
                 var haIlPermesso = message.channel.permissionsFor(utente).has("VIEW_CHANNEL", true)
                 if (!haIlPermesso) {
-                    message.channel.send("Questo utente non ha gia accesso al ticket")
+                    message.channel.send({ embeds: [giarimosso]})
                     return
                 }
                 if (utente.permissions.has("MANAGE_CHANNELS")) {
@@ -140,11 +170,17 @@ client.on("messageCreate", message => {
                 message.channel.permissionOverwrites.edit(utente, {
                     VIEW_CHANNEL: false
                 })
-                message.channel.send(`${utente.toString()} è stato rimosso al ticket`)
+                const rimosso = new Discord.MessageEmbed()
+                .setTitle(`Hai rimosso con successo ${utente.toString()}`)
+                .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/947443747673767946/fatto-removebg-preview.png")
+                .setDescription("Hai rimosso con successo l'utente ", utente.toString(), " al ticket")
+                .setColor("RED")
+
+                message.channel.send({ embeds: [rimosso]})
             }
         }
         else {
-            message.channel.send("Non puoi utilizzare questo comando qui")
+            message.channel.send({ embeds: [nonqui]})
         }
     }
 })
