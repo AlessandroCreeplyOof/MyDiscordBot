@@ -30,3 +30,24 @@ client.on("messageCreate", message => {
         message.channel.send({embeds: [embed], components: [row]});
     }
 })
+
+client.on("InteractionCreate", interaction => {
+    if (interaction.customId == "news") {
+        interaction.deferUpdate()
+        interaction.member.roles.add("947458885520863263")
+}
+})
+
+client.on("InteractionCreate", interaction => {
+    if (interaction.customId == "ytnews") {
+        interaction.deferUpdate()
+        interaction.member.roles.add("947458992408518666")
+}
+})
+
+client.on("InteractionCreate", interaction => {
+    if (interaction.customId == "mininews") {
+        interaction.deferUpdate()
+        interaction.member.roles.add("947458950553542708")
+}
+})
