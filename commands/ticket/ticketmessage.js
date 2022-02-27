@@ -74,7 +74,7 @@ client.on("interactionCreate", interaction => {
             interaction.user.send({ embeds: [giaperto] }).catch(() => { })
             return
         }
-        interaction.guild.channels.create("🎟️╵", interaction.user.username, {
+        interaction.guild.channels.create("🎟️╵" + interaction.user.username, {
             type: "text",
             topic: `ID Ticket: ${interaction.user.id}`,
             parent: "933801615545233408",
