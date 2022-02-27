@@ -1,9 +1,12 @@
 const Discord = require("discord.js")
 
 client.on('ready', () => {
-    //Stato classico (Sta guardando..., Sta giocando a...)
-    client.user.setActivity('Creeply', { type: 'LISTENING' }); //Oppure LISTENING, PLAYING
-    client.user.setStatus('online') //Oppure idle, dnd, invisible
+client.user.setActivity("Creeply&Bot", {
+    type: "STREAMING",
+    url: "https://www.twitch.tv/creeplyalessandro"
+});
+//Stato online/offine/non disturbare... (Potrebbe volerci qualche tempo per doversi settare)
+client.user.setStatus('online') //Oppure idle, dnd, invisible
 })
 
 setInterval(function () {
