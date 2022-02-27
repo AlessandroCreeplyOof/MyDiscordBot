@@ -33,21 +33,21 @@ client.on("messageCreate", message => {
 
 client.on("InteractionCreate", interaction => {
     if (interaction.customId == "news") {
-        interaction.user.roles.add("947458885520863263")
+        interaction.user.role.add("947458885520863263")
         interaction.deferUpdate()
 }
 })
 
 client.on("InteractionCreate", interaction => {
     if (interaction.customId == "ytnews") {
-        interaction.user.roles.add("947458992408518666")
+        interaction.user.role.add("947458992408518666")
         interaction.deferUpdate()
 }
 })
 
 client.on("InteractionCreate", interaction => {
     if (interaction.customId == "mininews") {
-        interaction.user.roles.add("947458950553542708")
+        interaction.user.role.add("947458950553542708")
         interaction.deferUpdate()
 }
 })
