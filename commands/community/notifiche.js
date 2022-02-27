@@ -34,20 +34,20 @@ client.on("messageCreate", message => {
 client.on("InteractionCreate", interaction => {
     if (interaction.customId == "news") {
         interaction.deferUpdate()
-        interaction.member.roles.add("947458885520863263")
+        interaction.user.roles.add("947458885520863263")
 }
 })
 
 client.on("InteractionCreate", interaction => {
     if (interaction.customId == "ytnews") {
         interaction.deferUpdate()
-        interaction.member.roles.add("947458992408518666")
+        interaction.user.roles.add("947458992408518666")
 }
 })
 
 client.on("InteractionCreate", interaction => {
     if (interaction.customId == "mininews") {
         interaction.deferUpdate()
-        interaction.member.roles.add("947458950553542708")
+        interaction.user.roles.add("947458950553542708")
 }
 })
