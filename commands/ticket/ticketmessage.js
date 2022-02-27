@@ -9,9 +9,9 @@ const embedticket = new Discord.MessageEmbed()
 const apertoticket = new Discord.MessageEmbed()
 .setTitle("Hai APERTO con successo un ticket!")
 .setDescription("Ecco i comandi utili nei ticket!")
-.addField("!tadd", "Aggiungi utente al ticket", true)
-.addField("!tremove", "Rimuovi utente dal ticket", true)
-.addField("!tclose", "Chiudi il ticket", true)
+.addField("!tadd", "Aggiungi utente al ticket", false)
+.addField("!tremove", "Rimuovi utente dal ticket", false)
+.addField("!tclose", "Chiudi il ticket", false)
 .setColor("AQUA")
 .setImage("https://media.discordapp.net/attachments/941101779297378314/942424475415240714/TICKETOPEN.png?width=1193&height=671")
 
@@ -33,7 +33,7 @@ client.on("messageCreate", message => {
         var row = new Discord.MessageActionRow()
             .addComponents(button1)
 
-        message.channel.send({ embed: [embedticket], components: [row] })
+        message.channel.send({ embeds: [embedticket], components: [row] })
     }
 })
 
