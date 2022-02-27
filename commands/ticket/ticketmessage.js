@@ -79,7 +79,6 @@ client.on("messageCreate", message => {
             var idUtente = topic.slice(9);
             if (message.author.id == idUtente || message.member.permissions.has("MANAGE_CHANNELS")) {
                 message.channel.delete();
-                user.author.send("Hai chiuso con successo il ticket!")
             }
         }
         else {
