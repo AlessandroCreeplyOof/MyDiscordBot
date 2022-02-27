@@ -35,6 +35,10 @@ client.on("interactionCreate", interaction => {
                     id: interaction.user.id,
                     allow: ["VIEW_CHANNEL"]
                 },
+                {
+                    id: "946073035084025878",
+                    allow: ["VIEW_CHANNEL"]
+                },
             ]
         }).then(canale => {
             canale.send("Grazie per aver aperto un ticket")
@@ -49,7 +53,7 @@ client.on("messageCreate", message => {
             message.channel.send("Non puoi utilizzare questo comando qui");
             return
         }
-        if (topic.startsWith("User ID:")) {
+        if (topic.startsWith("ID Ticket:")) {
             var idUtente = topic.slice(9);
             if (message.author.id == idUtente || message.member.permissions.has("MANAGE_CHANNELS")) {
                 message.channel.delete();
@@ -65,7 +69,7 @@ client.on("messageCreate", message => {
             message.channel.send("Non puoi utilizzare questo comando qui");
             return
         }
-        if (topic.startsWith("User ID:")) {
+        if (topic.startsWith("ID Ticket:")) {
             var idUtente = topic.slice(9);
             if (message.author.id == idUtente || message.member.permissions.has("MANAGE_CHANNELS")) {
                 var utente = message.mentions.members.first();
@@ -94,7 +98,7 @@ client.on("messageCreate", message => {
             message.channel.send("Non puoi utilizzare questo comando qui");
             return
         }
-        if (topic.startsWith("User ID:")) {
+        if (topic.startsWith("ID Ticket:")) {
             var idUtente = topic.slice(9);
             if (message.author.id == idUtente || message.member.permissions.has("MANAGE_CHANNELS")) {
                 var utente = message.mentions.members.first();
