@@ -35,10 +35,6 @@ client.on("interactionCreate", interaction => {
                     id: interaction.user.id,
                     allow: ["VIEW_CHANNEL"]
                 },
-                { //Aggiungere altri "blocchi" se si vogliono dare permessi anche a ruoli o utenti
-                    id: "idRuolo",
-                    allow: ["VIEW_CHANNEL"]
-                }
             ]
         }).then(canale => {
             canale.send("Grazie per aver aperto un ticket")
