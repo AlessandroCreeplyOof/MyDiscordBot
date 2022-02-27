@@ -1,17 +1,39 @@
 const Discord = require("discord.js")
 
+const embedticket = new Discord.MessageEmbed()
+.setTitle("Hai bisogno di aiuto?")
+.setDescription("Apri un **ticket** di supporto per richiedere aiuto allo staff! \n \n Potrai parlare e fare domande allo staff, se aprirai un ticket inutilmente subirai un **WARN!**")
+.setImage("https://media.discordapp.net/attachments/941101779297378314/942424504876015636/TICKETGRAPHIC.png?width=1193&height=671")
+.setColor("AQUA")
+
+const apertoticket = new Discord.MessageEmbed()
+.setTitle("Hai APERTO con successo un ticket!")
+.setDescription("Ecco i comandi utili nei ticket!")
+.addField("!tadd", "Aggiungi utente al ticket", true)
+.addField("!tremove", "Rimuovi utente dal ticket", true)
+.addField("!tclose", "Chiudi il ticket", true)
+.setColor("AQUA")
+.setImage("https://media.discordapp.net/attachments/941101779297378314/942424475415240714/TICKETOPEN.png?width=1193&height=671")
+
+const giaperto = new Discord.MessageEmbed()
+.setTitle("Hai GIA' un ticket aperto!")
+.setDescription("Non puoi creare più di: **1** ticket!")
+.setColor("RED")
+.setImage("https://media.discordapp.net/attachments/941101779297378314/942424826373603378/TICKETGIA.png?width=1193&height=671")
+
 //Prima di tutto mandare il messaggio del ticket
 client.on("messageCreate", message => {
     if (message.content == "!comando") {
         var button1 = new Discord.MessageButton()
             .setLabel("Apri ticket")
             .setCustomId("apriTicket")
-            .setStyle("PRIMARY")
+            .setStyle("SUCCESS")
+            .setEmoji("🎟️")
 
         var row = new Discord.MessageActionRow()
             .addComponents(button1)
 
-        message.channel.send({ content: "Clicca sul bottone per aprire un ticket", components: [row] })
+        message.channel.send({ embed: [embedticket], components: [row] })
     }
 })
 
@@ -19,7 +41,7 @@ client.on("interactionCreate", interaction => {
     if (interaction.customId == "apriTicket") {
         interaction.deferUpdate()
         if (interaction.guild.channels.cache.find(canale => canale.topic == `ID Ticket: ${interaction.user.id}`)) {
-            interaction.user.send("Hai gia un ticket aperto").catch(() => { })
+            interaction.user.send({ embeds: [giaperto] }).catch(() => { })
             return
         }
         interaction.guild.channels.create(interaction.user.username, {
@@ -41,7 +63,7 @@ client.on("interactionCreate", interaction => {
                 },
             ]
         }).then(canale => {
-            canale.send("Grazie per aver aperto un ticket")
+            canale.send({ embeds: [apertoticket] })
         })
     }
 })
@@ -57,6 +79,7 @@ client.on("messageCreate", message => {
             var idUtente = topic.slice(9);
             if (message.author.id == idUtente || message.member.permissions.has("MANAGE_CHANNELS")) {
                 message.channel.delete();
+                user.author.send("Hai chiuso con successo il ticket!")
             }
         }
         else {
