@@ -7,7 +7,7 @@ client.on("messageDelete", message => {
     .setTitle("Deleted Message")
     .addField("Deleted by", message.author, false)
     .addField("In", message.channel, false)
-    .addField("Content:", message.content)
+    .addField("Content:", message.content, false)
     .setColor("RED")
 
     LogChannel.send({ embeds: [DeletedLog]})
