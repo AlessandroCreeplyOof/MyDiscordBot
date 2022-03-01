@@ -78,7 +78,6 @@ client.on("interactionCreate", interaction => {
     if (interaction.customId == "approvasuggest") {
 interaction.deferUpdate()
 interaction.message.delete()
-message.author.user.send({ embeds: [accettato] })
             client.channels.cache.get("934745362814623814").send({ embeds: [suggesta] })
             .then(msg => {
                 msg.react("👍")
@@ -89,7 +88,6 @@ message.author.user.send({ embeds: [accettato] })
 
 client.on("interactionCreate", interaction => {
     if (interaction.customId == "rifiutasuggest") {
-        message.author.user.send({ embeds: [rifiutato] })
         interaction.deferUpdate()
         interaction.message.delete()
     }
