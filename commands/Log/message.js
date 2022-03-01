@@ -9,7 +9,6 @@ client.on("messageDelete", message => {
     .addField("In", message.channel, false)
     .addField("Content:", message.content)
     .setColor("RED")
-    .setThumbnail(message.author.displayAvatarURL({dybamic: true}))
 
     LogChannel.send({ embeds: [DeletedLog]})
 
