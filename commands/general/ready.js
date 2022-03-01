@@ -1,7 +1,7 @@
 const Discord = require("discord.js")
 
 client.on('ready', () => {
-client.user.setActivity("Creeply", {
+client.user.setActivity("Creeply&Community", {
     type: "STREAMING",
     url: "https://www.twitch.tv/creeplyalessandro"
 });
