@@ -7,9 +7,9 @@ const nonmenzione = new Discord.MessageEmbed()
 .setThumbnail(`https://media.discordapp.net/attachments/941101779297378314/947283060653690930/warn-removebg-preview.png`)
 
 var nonvalido = new Discord.MessageEmbed()
-.setTitle(`:x: Inserire un suggerimento`)
+.setTitle(`:x: Inserisci un messaggio`)
 .setColor("#eb4034")
-.setDescription("Scrivi un testo nel suggerimento! \n \n **Sintassi corretta:** `!suggest [testo]`")
+.setDescription("Scrivi un testo nel messaggio! \n \n **Sintassi corretta:** `!scherzo [utente] [testo]`")
 
 client.on("messageCreate", message => {
     if (message.content.startsWith("!scherzo")) {
