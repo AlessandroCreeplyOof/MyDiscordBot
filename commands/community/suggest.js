@@ -58,12 +58,27 @@ client.on("messageCreate", message => {
 .setColor("#1f53a6")
 .setDescription(suggest)
 
+const accettato = new Discord.MessageEmbed()
+.setTitle(`💡 Il tuo suggerimento è stato accettato!`)
+.setThumbnail(message.author.displayAvatarURL())
+.setColor("GREEN")
+.setDescription("Il tuo **suggerimento** è stato **accettato** :bookmark_tabs: Suggestion: \n", suggest)
+.setTimestamp()
+
+const rifiutato = new Discord.MessageEmbed()
+.setTitle(`💡 Il tuo suggerimento è stato rifiutato!`)
+.setThumbnail(message.author.displayAvatarURL())
+.setColor("RED")
+.setDescription("Il tuo **suggerimento** è stato **rifiutato** :bookmark_tabs: Suggestion: \n", suggest)
+.setTimestamp()
+
 // INTERAZIONI
 
 client.on("interactionCreate", interaction => {
     if (interaction.customId == "approvasuggest") {
 interaction.deferUpdate()
 interaction.message.delete()
+message.author.user.send({ embeds: [accettato] })
             client.channels.cache.get("934745362814623814").send({ embeds: [suggesta] })
             .then(msg => {
                 msg.react("👍")
@@ -71,8 +86,10 @@ interaction.message.delete()
             })
     }
 })
+
 client.on("interactionCreate", interaction => {
     if (interaction.customId == "rifiutasuggest") {
+        message.author.user.send({ embeds: [rifiutato] })
         interaction.deferUpdate()
         interaction.message.delete()
     }

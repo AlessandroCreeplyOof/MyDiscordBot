@@ -27,8 +27,8 @@ client.on("messageCreate", message => {
 
         var embed = new Discord.MessageEmbed()
         .setTitle(`Hai ricevuto uno scherzo in anonimo!`)
-        .setDescription(`Hai ricevuto uno **scherzo** di carnevale in anonimo \n :bookmark_tabs: **Messaggio** \n` + testo)
-        .setColor("ORANGE")
+        .setDescription(`Hai ricevuto uno **scherzo** di carnevale in anonimo \n \n :bookmark_tabs: **Content** \n` + testo)
+        .setColor("GREEN")
         .setTimestamp()
 
         utente.user.send({embeds: [embed]})
