@@ -50,4 +50,10 @@ client.on("message", message => {
     comando.execute(message, args);
 })
 
+client.on("guildMemberAdd", member => {
+    if (member.user.bot) return
+
+    member.roles.add("933384681498505258");
+});
+
 
