@@ -1,20 +1,18 @@
 const Discord = require("discord.js")
 
 client.on("messageCreate", message => {
-    if (message.content.startsWith("!battuta")) {
-
-        const embed1 = new Discord.MessageEmbed()
-        .setTitle("BATTUTA ORRIBILE")
-        .setDescription("Il gabibbo cade nel caffè... SPLASH! ☕")
-        .setColor("BURPLE")
-        .setTimestamp()
-
-        const embed2 = new Discord.MessageEmbed()
-        .setTitle("BATTUTA ORRIBILE")
-        .setDescription("Una tv cade in acqua.. meglio perchè va in onda... 📺")
-        .setColor("AQUA")
-        .setTimestamp()
-
-        message.channel.send({ embeds: [messaggi[Math.floor(Math.random() * messaggi.length)]] });
-    }
+    if (message.content == "!prova") {
+    var embed1 = new Discord.MessageEmbed()
+        .setTitle("Embed1")
+        .setDescription("Questo è il primo embed")
+    var embed2 = new Discord.MessageEmbed()
+        .setTitle("Embed1")
+        .setDescription("Questo è il secondo embed")
+    var embed3 = new Discord.MessageEmbed()
+        .setTitle("Embed1")
+        .setDescription("Questo è il terzo embed")
+    var messaggi = [embed1, embed2, embed3]
+    message.channel.send({ embeds: [messaggi[Math.floor(Math.random() * messaggi.length)]] });
+}
 })
+
