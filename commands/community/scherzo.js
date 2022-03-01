@@ -15,7 +15,7 @@ client.on("messageCreate", message => {
     if (message.content.startsWith("!scherzo")) {
         var utente = message.mentions.members.first();
         var args = message.content.split(/\s+/);
-        var testo = args.slice(3).join(" ")
+        var testo = args.slice(2).join(" ")
 
         if (!utente) {
             return message.channel.send({ embeds: [nonmenzione]});
