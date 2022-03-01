@@ -8,7 +8,7 @@ client.on("messageCreate", message => {
     var embed2 = new Discord.MessageEmbed()
         .setTitle("Battuta ORRIBILE...")
         .setDescription("Una tv viene gettata in acqua, ora purtroppo.. va in onda 📺")
-    var messaggi = [embed1, embed2, embed3]
+    var messaggi = [embed1, embed2]
     message.channel.send({ embeds: [messaggi[Math.floor(Math.random() * messaggi.length)]] });
 }
 })
