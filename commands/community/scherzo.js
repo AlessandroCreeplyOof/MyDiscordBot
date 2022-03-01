@@ -13,10 +13,9 @@ var nonvalido = new Discord.MessageEmbed()
 
 client.on("messageCreate", message => {
     if (message.content == "!scherzo") {
-        var args = message.content.split(/\s+/);
-        var testo = args.slice(2).join(" ")
-
         var utente = message.mentions.members.first();
+        var args = message.content.split(/\s+/);
+        var testo = args.slice(3).join(" ")
 
         if (!utente) {
             return message.channel.send({ embeds: [nonmenzione]});
