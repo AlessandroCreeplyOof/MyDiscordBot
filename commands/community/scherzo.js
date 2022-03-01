@@ -12,7 +12,7 @@ var nonvalido = new Discord.MessageEmbed()
 .setDescription("Scrivi un testo nel suggerimento! \n \n **Sintassi corretta:** `!suggest [testo]`")
 
 client.on("messageCreate", message => {
-    if (message.content == "!scherzo") {
+    if (message.content.startsWith("!scherzo")) {
         var utente = message.mentions.members.first();
         var args = message.content.split(/\s+/);
         var testo = args.slice(3).join(" ")
@@ -27,7 +27,7 @@ client.on("messageCreate", message => {
 
         var embed = new Discord.MessageEmbed()
         .setTitle(`Hai ricevuto uno scherzo in anonimo!`)
-        .setDescription(`Hai ricevuto uno **scherzo** in anonimo \n :bookmark_tabs: **Content:** \n` + testo)
+        .setDescription(`Hai ricevuto uno **scherzo** di carnevale in anonimo \n :bookmark_tabs: **Messaggio** \n` + testo)
         .setColor("ORANGE")
         .setTimestamp()
 
