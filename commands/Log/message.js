@@ -1,23 +1,13 @@
 const Discord = require("discord.js")
 
-client.on("messageUpdate", message => {
-    if (member.user.bot) return
-    var embed = new Discord.MessageEmbed()
-    .setTitle(`[MESSAGE LOG] ${member.toString()}`)
-    .setDescription(`Un messaggio è stato inviato \n User: ${member.toString()} \n Messaggio: ${message.toString()}`)
-    .setColor("YELLOW")
-    .setTimestamp()
-
-    client.channels.cache.get("948344721368027246").send({embeds: [embed]}); 
-})
-
 client.on("messageDelete", message => {
-    if (member.user.bot) return
-    var embed = new Discord.MessageEmbed()
-    .setTitle(`[MESSAGE LOG] ${member.toString()}`)
-    .setDescription(`Un messaggio è stato inviato \n User: ${member.toString()} \n Messaggio: ${message.toString()}`)
+    
+    const DeletedLog = new Discord.MessageEmbed()
+    .setTitle("Deleted Message")
+    .addField("Deleted by", message.author, false)
+    .addField("In", message.channel, false)
+    .addField("Content:", message.content)
     .setColor("RED")
-    .setTimestamp()
-
-    client.channels.cache.get("948344721368027246").send({embeds: [embed]}); 
+    .setThumbnail(message.author.displayAvatarURL({dybamic: true}))
 })
+
