@@ -5,7 +5,7 @@ client.on("roleCreate", role => {
     const ruolocreato = new Discord.MessageEmbed()
     .setTitle("[ROLE CREATED]")
     .setDescription("Added Role to the server.")
-    .addField("Role:", `${role}`, false)
+    .addField("Role:", `${role.name}`, false)
     .setTimestamp()
     .setColor("PURPLE")
 
@@ -17,7 +17,7 @@ client.on("roleDelete", role => {
     const ruolodelete = new Discord.MessageEmbed()
     .setTitle("[ROLE DELETED]")
     .setDescription("Removed Role to the server.")
-    .addField("Role:", `${role}`, false)
+    .addField("Role:", `${role.name}`, false)
     .setTimestamp()
     .setColor("PURPLE")
 
