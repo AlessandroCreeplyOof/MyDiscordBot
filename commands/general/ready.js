@@ -1,13 +1,9 @@
 const Discord = require("discord.js")
 
 client.on('ready', () => {
-client.user.setActivity("Creeply&Community", {
-    type: "STREAMING",
-    url: "https://www.twitch.tv/creeplyalessandro"
+    client.user.setActivity('StandWithUkraine', { type: 'WATCHING' });
+    client.user.setStatus('online');
 });
-//Stato online/offine/non disturbare... (Potrebbe volerci qualche tempo per doversi settare)
-client.user.setStatus('online') //Oppure idle, dnd, invisible
-})
 
 setInterval(function () {
     var canale = client.channels.cache.get("936771474809847908");
