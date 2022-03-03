@@ -6,7 +6,7 @@ client.on("messageUpdate", message. oldMessage, newMessage => {
     .setTitle("[UPDATE MESSAGE]")
     .setDescription("User edited message.")
     .addField("User:", `${message.author.toString()}`, false)
-    .addField("oldMessage:", `${oldMessage}`,false)
+    .addField("oldMessage:", `${oldMessage}`, false)
     .addField("newMessage", `${newMessage}`, false)
     .setTimestamp()
     .setColor("PURPLE")
