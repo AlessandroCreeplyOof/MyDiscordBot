@@ -31,7 +31,6 @@ client.on("roleUpdate", (oldRole, newRole) => {
     const ruolodelete = new Discord.MessageEmbed()
     .setTitle("[ROLE DELETED]")
     .setDescription("Removed Role to the server.")
-    .addField("User:", `${newRole.author.ToString()}`, false)
     .addField("New Role:", `${newRole}`, false)
     .addField("Old Role:", `${oldRole}`, false)
     .setTimestamp()
