@@ -9,6 +9,7 @@ client.login("OTM3MzQ1MTk3MDYxMzEyNTIz.YfaYvg.ALjAeWYBr4eOvS4fuLyfnUR0xuM")
 require('events').EventEmitter.prototype._maxListeners = 100;
 
 const fs = require("fs");
+const { MongoClient } = require("mongodb");
 global.ytch = require('yt-channel-info');
 
 client.commands = new Discord.Collection();
@@ -55,5 +56,9 @@ client.on("guildMemberAdd", member => {
 
     member.roles.add("933384681498505258");
 });
+
+MongoClient.connect("mongodb+srv://CreeplyCluster:ale01092009@creeplycluster.xcx7k.mongodb.net/test")
+var database = db.db("DatabaseCreeply")
+database.createcollection("CreeplyCollezione")
 
 
