@@ -11,6 +11,6 @@ client.on("messageUpdate", (oldMessage, newMessage) => {
     .setTimestamp()
     .setColor("PURPLE")
 
-    client.channels.cache.get("934182975267041321").send({embeds: [online]})
+    client.channels.cache.get("934182975267041321").send({embeds: [messaggioupdate]})
 })
 
