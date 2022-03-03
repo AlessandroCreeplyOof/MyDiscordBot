@@ -37,15 +37,8 @@ client.on("messageCreate", message => {
 .setColor("GREEN")
 .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/947283060653690930/warn-removebg-preview.png")
 
-const deletelog = new Discord.MessageEmbed()
-.setTitle("[CLEAR]")
-.setDescription("Clear \n Deleted Message " + count)
-.setColor("GREEN")
-.setThumbnail("https://media.discordapp.net/attachments/941101779297378314/947283060653690930/warn-removebg-preview.png")
-
         message.channel.send({embeds: [deletemessage]}).then(msg => {
             setTimeout(() => msg.delete(), 10000)
         })
-        client.channels.cache.get("944904295034290236").send({ embeds: [deletelog]})
     }
 })
