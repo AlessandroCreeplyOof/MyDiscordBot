@@ -107,9 +107,6 @@ client.on("messageCreate", message => {
         }
         if (topic.startsWith("ID Ticket:")) {
             var idUtente = topic.slice(9);
-            if (message.author.id == idUtente || message.member.permissions.has("MANAGE_CHANNELS")) {
-                message.channel.delete();
-            }
         }
         else {
             message.channel.send({ embeds: [nonqui]})
@@ -123,8 +120,6 @@ client.on("messageCreate", message => {
         }
         if (topic.startsWith("ID Ticket:")) {
             var idUtente = topic.slice(9);
-            if (message.author.id == idUtente || message.member.permissions.has("MANAGE_CHANNELS")) {
-                var utente = message.mentions.members.first();
                 if (!utente) {
                     message.channel.send({embeds: [utentenonvalido]});
                     return
@@ -148,7 +143,6 @@ client.on("messageCreate", message => {
         else {
             message.channel.send({ embeds: [nonqui]})
         }
-    }
     if (message.content.startsWith("!tremove")) {
         var topic = message.channel.topic;
         if (!topic) {
@@ -157,8 +151,6 @@ client.on("messageCreate", message => {
         }
         if (topic.startsWith("ID Ticket:")) {
             var idUtente = topic.slice(9);
-            if (message.author.id == idUtente || message.member.permissions.has("MANAGE_CHANNELS")) {
-                var utente = message.mentions.members.first();
                 if (!utente) {
                     message.channel.send({ embeds: [utentenonvalido]});
                     return
@@ -187,5 +179,4 @@ client.on("messageCreate", message => {
         else {
             message.channel.send({ embeds: [nonqui]})
         }
-    }
-})
+    })

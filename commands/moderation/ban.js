@@ -34,7 +34,7 @@ client.on("messageCreate", message => {
 
                 var logban = new Discord.MessageEmbed()
                     .setTitle(`[BAN] ${utente.user.username}`)
-                    .setDescription(`Modertaor: ${message.author.toString()}`)
+                    .setDescription(`Moderator: ${message.author.toString()}`)
                     .setColor("PURPLE")
                     .setImage("https://media.discordapp.net/attachments/941101779297378314/947283069763735572/ban__1_-removebg-preview.png")
 

@@ -36,7 +36,7 @@ client.on("messageCreate", message => {
                 var logkick = new Discord.MessageEmbed()
                     .setAuthor(`[KICK] ${utente.user.username}`)
                     .setDescription(`Moderator: ${message.author.toString()}`)
-                    .setColor("RED")
+                    .setColor("PURPLE")
                     .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/947283069763735572/ban__1_-removebg-preview.png")
 
                 message.channel.send({ embeds: [embed] })

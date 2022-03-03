@@ -8,7 +8,7 @@ client.on("messageCreate", message => {
                 .setTitle(response.items[0].title)
                 .setURL("https://www.youtube.com/watch?v=" + response.items[0].videoId)
                 .setImage(response.items[0].videoThumbnails[3].url)
-                .setColor("LUMINOUS_VIVID_PINK")
+                .setColor("AQUA")
                 .addField("👁️ Views", response.items[0].viewCount.toString(), true)
                 .addField("🪧 Durata", response.items[0].durationText, true)
                 .addField("💼 Pubblicato il", response.items[0].publishedText, true)

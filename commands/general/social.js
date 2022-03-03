@@ -9,6 +9,7 @@ client.on("messageCreate", message => {
         .setFooter("Comando in continuo aggiornamento...")
         .setTimestamp()
         .setImage("https://media.discordapp.net/attachments/941101779297378314/944266920255963206/communitybanner_1.png?width=1342&height=671")
+        .setColor("AQUA")
 
         message.channel.send({ embeds: [social] })
     }
