@@ -1,6 +1,6 @@
 const Discord = require("discord.js")
 
-client.on("messageUpdate", oldMessage, newMessage => {
+client.on("messageUpdate", (oldMessage, newMessage) => {
     
     const messaggioupdate = new Discord.MessageEmbed()
     .setTitle("[UPDATE MESSAGE]")
