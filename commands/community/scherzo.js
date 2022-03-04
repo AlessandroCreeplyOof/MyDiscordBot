@@ -37,7 +37,7 @@ client.on("messageCreate", message => {
         .setColor("GREEN")
         .setTimestamp()
 
-        utente.user.send({embeds: [embed]})
-        message.channel.send({ embeds: [inviato] })
+        utente.user.send({embeds: [embed]}).catch(() => {return})
+        message.channel.send({ embeds: [inviato] }).catch(() => {return})
     }
 })
