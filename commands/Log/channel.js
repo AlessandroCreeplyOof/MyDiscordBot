@@ -15,22 +15,7 @@ client.on("channelCreate", channel => {
     client.channels.cache.get("937711348664635453").send( { embeds: [canalecreato] } )
 })
 
-client.on("channelDelete", channel => {
-    let channelDeleteAuthor = channelDelete.action.author
-
-    const canaledelete = new Discord.MessageEmbed()
-    .setTitle("[DELETED CHANNEL]")
-    .setDescription("Deleted the channel")
-    .addField(`**ChannelName:**`, `${channel.name}`)
-    .addField(`**Author**`, `${channelDeleteAuthor}`)
-    .setColor("PURPLE")
-    .setTimestamp()
-
-    client.channels.cache.get("937711348664635453").send( { embeds: [canaledelete] } )
-})
-
-client.on("channelUpdate", channel => {
-    let channelDeleteAuthor = channelDelete.action.author
+client.on("channelUpdate", (oldchannel, newChannel) => {
 
     const canaleupdate = new Discord.MessageEmbed()
     .setDescription("Channel name updated.")
