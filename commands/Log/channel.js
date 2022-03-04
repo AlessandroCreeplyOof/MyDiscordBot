@@ -15,7 +15,7 @@ client.on("channelCreate", channel => {
     client.channels.cache.get("937711348664635453").send( { embeds: [canalecreato] } )
 })
 
-client.on("channelUpdate", (oldchannel, newChannel) => {
+client.on("channelUpdate", (oldChannel, newChannel) => {
 
     const canaleupdate = new Discord.MessageEmbed()
     .setDescription("Channel name updated.")
