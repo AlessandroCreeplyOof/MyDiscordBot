@@ -20,11 +20,7 @@ client.on("channelUpdate", (oldChannel, newChannel) => {
     const canaleupdate = new Discord.MessageEmbed()
     .setDescription("Channel name updated.")
     .addField("Old channel name", `\`${oldChannel.name}\``, true)
-    .addBlankField(true)
     .addField("New channel name", `\`${newChannel.name}\``, true)
-    .addBlankField(true)
-    .addField("Channel category", `${newCategory}`, true)
-    .setFooter(`Channel ID: ${newChannel.id} 🔥`)
     .setTimestamp()
     .setColor("PURPLE")
 
