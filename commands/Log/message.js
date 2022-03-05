@@ -9,7 +9,7 @@ client.on("messageUpdate", (oldMessage, newMessage) => {
     .addField("oldMessage:", `${oldMessage}`, false)
     .addField("newMessage", `${newMessage}`, false)
     .setTimestamp()
-    .setColor("PURPLE")
+    .setColor("YELLOW")
 
     client.channels.cache.get("948344721368027246").send({embeds: [messaggioupdate]})
 })
@@ -22,7 +22,7 @@ client.on("messageDelete", message => {
     .addField("User:", `${message.author.toString()}`, false)
     .addField("Message:", `${message}`, false)
     .setTimestamp()
-    .setColor("PURPLE")
+    .setColor("RED")
 
     client.channels.cache.get("948344721368027246").send({embeds: [messaggioeliminato]})
 })
