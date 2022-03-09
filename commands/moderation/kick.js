@@ -1,46 +1,44 @@
-const Discord = require("discord.js")
-
-const nonpermesso1 = new Discord.MessageEmbed()
-.setTitle(`Error 404`)
-.setDescription(`Non hai il permesso per eseguire questa azione!`)
-.setColor(`ORANGE`)
-.setThumbnail(`https://media.discordapp.net/attachments/941101779297378314/944975611208794162/permsscanvas-removebg-preview.png`)
-
-const nonmenzione = new Discord.MessageEmbed()
-.setTitle(`Error 404`)
-.setDescription("Non hai menzionato nessun utente da kickare! \n \n **Syntax:** `!kick [utente]`")
-.setColor(`ORANGE`)
-.setThumbnail(`https://media.discordapp.net/attachments/941101779297378314/944976235568701491/mentionscanvas-removebg-preview.png`)
-
-client.on("messageCreate", message => {
-    if (message.content.startsWith("!kick")) {
-        var utente = message.mentions.members.first();
-        if (!message.member.permissions.has('KICK_MEMBERS')) {
-            return message.channel.send({ embeds: [nonpermesso1] });
+module.exports = {
+    name: "kick",
+    data: {
+        name: "kick",
+        description: "Espellere un utente",
+        options: [
+            {
+                name: "user",
+                description: "L'utente da espellere",
+                type: "USER",
+                required: true
+            },
+            {
+                name: "reason",
+                description: "Motivazione",
+                type: "STRING",
+                required: false
+            }
+        ]
+    },
+    execute(interaction) {
+        if (!interaction.member.permissions.has("KICK_MEMBERS")) {
+            return interaction.reply({ content: "Non hai il permesso", ephemeral: true })
         }
-        if (!utente) {
-            return message.channel.send({embeds: [nonmenzione] });
+
+        var utente = interaction.options.getUser("user")
+        var reason = interaction.options.getString("reason") || "Nessun motivo"
+
+        var member = interaction.guild.members.cache.get(utente.id)
+        if (!member?.kickable) {
+            return interaction.reply({ content: "Non posso kickare questo utente", ephemeral: true })
         }
-        if (!utente.kickable) {
-            return message.channel.send({ embeds: [nonpermesso1] });
-        }
-        utente.kick()
-            .then(() => {
 
-                var embed = new Discord.MessageEmbed()
-                    .setTitle(`#KICK ${utente.user.username}`)
-                    .setDescription(`Kicked ${utente.user.username} \n Moderator: ${message.author.toString()}`)
-                    .setColor("PURPLE")
-                    .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/947283069763735572/ban__1_-removebg-preview.png")
+        member.kick()
 
-                var logkick = new Discord.MessageEmbed()
-                    .setAuthor(`[KICK] ${utente.user.username}`)
-                    .setDescription(`Moderator: ${message.author.toString()}`)
-                    .setColor("PURPLE")
-                    .setThumbnail("https://media.discordapp.net/attachments/941101779297378314/947283069763735572/ban__1_-removebg-preview.png")
+        var embed = new Discord.MessageEmbed()
+            .setTitle("Utente kickato")
+            .setThumbnail(utente.displayAvatarURL())
+            .addField("User", utente.toString())
+            .addField("Reason", reason)
 
-                message.channel.send({ embeds: [embed] })
-                client.channels.cache.get("944904295034290236").send({embeds: [logkick]}); 
-            })
+        interaction.reply({ embeds: [embed] })
     }
-})
+}
