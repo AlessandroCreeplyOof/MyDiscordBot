@@ -21,7 +21,6 @@ module.exports = {
 
         let suggest = new Discord.MessageEmbed()
         .setTitle("Suggestion")
-        .setThumbnail(interaction.author.user.displayAvatarURL())
         .setDescription(suggestmessage)
         .setTimestamp()
 
