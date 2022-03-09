@@ -13,21 +13,5 @@ module.exports = {
                 required: true
             }
         ]
-    },
-
-execute(interaction) {
-
-    let utente = interaction.options.getUser("user")
-
-    let embed = new Discord.MessageEmbed()
-    .setTitle("Avatar")
-    .setDescription("L'avatar di questo utente")
-    .setImage(utente.user.displayAvatarURL({
-        dynamic: true,
-        format: "png",
-        size: 512
-    }))
-
-    interaction.reply({ embeds: [embed] })
-
-}}
+    }
+}
