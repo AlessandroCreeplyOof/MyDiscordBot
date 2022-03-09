@@ -18,7 +18,7 @@ execute(interaction) {
     let utente = interaction.options.getUser("user")
 
     let embed = new Discord.MessageEmbed()
-    .setTitle(utente.user.tag)
+    .setTitle("Avatar")
     .setDescription("L'avatar di questo utente")
     .setImage(utente.user.displayAvatarURL({
         dynamic: true,
