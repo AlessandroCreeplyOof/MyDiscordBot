@@ -58,7 +58,7 @@ client.on("ready", message => {
 
     let owner = client.users.cache.get("799302684908847164")
 
-    owner.user.send({ embeds: [onlinebot]})
+    owner.send({ embeds: [onlinebot]})
 })
 
 
