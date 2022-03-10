@@ -56,8 +56,6 @@ client.on("ready", message => {
     .setDescription("⏰ Ping", `${client.ws.ping}ms`)
     .setColor("GREEN")
 
-    message.channels.cache("951145777131044884").send({embeds: [onlinebot]})
-
     let owner = client.users.cache.get("799302684908847164")
 
     owner.user.send({ embeds: [onlinebot]})
