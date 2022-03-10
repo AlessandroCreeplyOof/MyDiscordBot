@@ -49,4 +49,18 @@ client.on("messageCreate", message => {
     if(message.content.startsWith("!")) return message.reply("Hey! Il server si è convertito agli slash commands! Provali ora!")
 })
 
+client.on("ready", message => {
+
+    let onlinebot = new Discord.MessageEmbed()
+    .setTitle("🟢 Bot ONLINE")
+    .setDescription("⏰ Ping", `${client.ws.ping}ms`)
+    .setColor("GREEN")
+
+    message.channel.send({embeds: [onlinebot]})
+
+    var owner = "799302684908847164"
+
+    owner.send({ embeds: [onlinebot]})
+})
+
 
