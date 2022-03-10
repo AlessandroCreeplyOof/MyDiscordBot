@@ -53,7 +53,7 @@ client.on("ready", message => {
 
     let onlinebot = new Discord.MessageEmbed()
     .setTitle("🟢 Bot ONLINE")
-    .setDescription("⏰ Ping", `${client.ws.ping}ms`)
+    .addField("⏰ Ping", `${client.ws.ping}ms`)
     .setColor("GREEN")
 
     let owner = client.users.cache.get("799302684908847164")
