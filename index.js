@@ -60,7 +60,7 @@ client.on("ready", message => {
 
     var owner = "799302684908847164"
 
-    owner.send({ embeds: [onlinebot]})
+    owner.user.send({ embeds: [onlinebot]})
 })
 
 
