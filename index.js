@@ -57,10 +57,6 @@ client.on("ready", message => {
     .setColor("GREEN")
 
     message.channels.cache("951145777131044884").send({embeds: [onlinebot]})
-
-    var owner = "799302684908847164"
-
-    owner.user.send({ embeds: [onlinebot]})
 })
 
 
