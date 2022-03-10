@@ -45,4 +45,8 @@ client.on("ready", () => {
     console.log("--------------------");
 })
 
+client.on("messageCreate", message => {
+    if(message.content.startsWith("!")) return message.reply("Hey! Il server si è convertito agli slash commands! Provali ora!")
+})
+
 
