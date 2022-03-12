@@ -20,11 +20,6 @@ module.exports = {
         var infochannel = interaction.options.getChannel("channel")
         let canale = interaction.guild.members.cache.get(infochannel.id)
 
-        switch (canale.type) {
-            case "GUILD_TEXT": canale.type = "Text"; break;
-            case "GUILD_VOICE": canale.type = "Voice"; break;
-            case "GUILD_CATEGORY": canale.type = "Category"; break;
-        }
         if (canale.type == "Voice") {
             var embed = new Discord.MessageEmbed()
                 .setTitle(canale.name)
