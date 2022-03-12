@@ -23,10 +23,15 @@ module.exports = {
     execute(interaction) {
 
         var muteduser = interaction.options.getUser("user")
-        let utente = interaction.guild.members.cache.get(muteduser.id)
+        var reason = interaction.options.getString("reason") || "Nessun motivo"
 
         if (!interaction.member.permissions.has("KICK_MEMBERS")) {
             return interaction.reply({ content: "Non hai il permesso", ephemeral: true })
+        }
+
+        var member = interaction.guild.members.cache.get(muteduser.id)
+        if (!member?.kickable) {
+            return interaction.reply({ content: "Non posso mutare questo utente", ephemeral: true })
         }
 
         utente.roles.add("896396962113421392")
