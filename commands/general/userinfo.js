@@ -17,7 +17,8 @@ module.exports = {
 
     execute(interaction) {
 
-        var utente = interaction.options.getUser("user")
+        var infouser = interaction.options.getUser("user")
+        let utente = interaction.guild.members.cache.get(infouser.id)
 
         let embed = new Discord.MessageEmbed()
         .setTitle(utente.user.tag)
