@@ -25,8 +25,12 @@ module.exports = {
         var muteduser = interaction.options.getUser("user")
         let utente = interaction.guild.members.cache.get(muteduser.id)
 
-        if (!message.member.permissions.has("MANAGE_ROLES")) {
-            return message.channel.send({ content: "Non hai il permesso", ephemeral: true });
+        if (!interaction.member.permissions.has("KICK_MEMBERS")) {
+            return interaction.reply({ content: "Non hai il permesso", ephemeral: true })
+        }
+
+        if (!member?.bannable) {
+            return interaction.reply({ content: "Non posso mutare questo utente", ephemeral: true })
         }
 
         utente.roles.add("896396962113421392")
