@@ -12,7 +12,7 @@ execute(interaction) {
     let embed = new Discord.MessageEmbed()
         .setTitle("Social - Telegram")
         .setDescription("Ecco il canale Telegram di **Creeply**")
-        .addField("<:githublogo:947452305538691093> None", true)
+        .addField("<:githublogo:947452305538691093> None")
         .setColor("AQUA")
 
     interaction.reply({ embeds: [embed] })

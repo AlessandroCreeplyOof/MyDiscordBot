@@ -12,7 +12,7 @@ execute(interaction) {
     let embed = new Discord.MessageEmbed()
         .setTitle("Social - YouTube")
         .setDescription("Ecco il canale YouTube di **Creeply**")
-        .addField("📹 https://youtube.com/c/creeply", true)
+        .addField("📹 https://youtube.com/c/creeply")
         .setColor("RED")
 
     interaction.reply({ embeds: [embed] })
