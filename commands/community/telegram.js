@@ -1,10 +1,10 @@
 const Discord = require("discord.js")
 
 module.exports = {
-    name: "youtube",
+    name: "telegram",
     data: {
-        name: "youtube",
-        description: "Ricevi il link del canale youtube"
+        name: "telegram",
+        description: "Ricevi il link del canale telegram"
     },
 
 execute(interaction) {

@@ -1,10 +1,10 @@
 const Discord = require("discord.js")
 
 module.exports = {
-    name: "youtube",
+    name: "github",
     data: {
-        name: "youtube",
-        description: "Ricevi il link del canale youtube"
+        name: "github",
+        description: "Ricevi il link del profilo GitHub"
     },
 
 execute(interaction) {
