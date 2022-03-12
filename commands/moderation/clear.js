@@ -23,9 +23,7 @@ module.exports = {
         var count = interaction.options.getString("numero")
 
         interaction.channel.bulkDelete(count, true)
-        interaction.reply(count + " messaggi eliminati").then(msg => {
-            setTimeout(() => msg.delete(), 5000)
-        })
+        interaction.reply(count + " messaggi eliminati")
     }
 
 }
