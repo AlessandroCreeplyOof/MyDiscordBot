@@ -46,7 +46,14 @@ client.on("ready", () => {
 })
 
 client.on("messageCreate", message => {
-    if(message.content.startsWith("!")) return message.reply("Hey! Il server si è convertito agli slash commands! Provali ora!")
+
+    let embed = new Discord.MessageEmbed()
+    .setDescription("Hey! Il bot ha cambiato prefisso! Il bot è stato convertito agli slash commands! \n \n **PROVALI ORA!**")
+    .setImage("https://media.discordapp.net/attachments/952171653561982978/952171837738078259/slashcommands_1.gif?width=1008&height=567")
+    .setColor("AQUA")
+
+
+    if(message.content.startsWith("!")) return message.reply({ embeds: [embed]})
 })
 
 client.on("ready", message => {
