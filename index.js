@@ -56,9 +56,9 @@ client.on("ready", message => {
     .addField("⏰ Ping", `${client.ws.ping}ms`)
     .setColor("GREEN")
 
-    let owner = client.users.cache.get("799302684908847164")
+    let canale = client.channels.cache.get("951992175107932170")
 
-    owner.send({ embeds: [onlinebot]})
+    canale.send({ embeds: [onlinebot]})
 })
 
 
