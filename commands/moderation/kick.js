@@ -29,9 +29,6 @@ module.exports = {
         var reason = interaction.options.getString("reason") || "Nessun motivo"
 
         var member = interaction.guild.members.cache.get(utente.id)
-        if (!member?.kickable) {
-            return interaction.reply({ content: "Non posso kickare questo utente", ephemeral: true })
-        }
 
         member.kick()
 

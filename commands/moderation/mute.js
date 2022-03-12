@@ -29,10 +29,6 @@ module.exports = {
             return interaction.reply({ content: "Non hai il permesso", ephemeral: true })
         }
 
-        if (!member?.bannable) {
-            return interaction.reply({ content: "Non posso mutare questo utente", ephemeral: true })
-        }
-
         utente.roles.add("896396962113421392")
 
         var embed = new Discord.MessageEmbed()
