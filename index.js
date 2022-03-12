@@ -49,7 +49,7 @@ client.on("messageCreate", message => {
 
     let embed = new Discord.MessageEmbed()
     .setDescription("Hey! Il bot ha cambiato prefisso! Il bot è stato convertito agli slash commands! \n \n **PROVALI ORA!**")
-    .setImage("https://media.discordapp.net/attachments/952171653561982978/952171837738078259/slashcommands_1.gif?width=1008&height=567")
+    .setImage("https://media.discordapp.net/attachments/952171653561982978/952176257704009778/slashcommands_2.gif?width=1074&height=604")
     .setColor("AQUA")
 
 
